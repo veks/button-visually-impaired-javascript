@@ -1,0 +1,210 @@
+.bvi-btn {
+  font-weight: bold;
+  display: inline-block;
+  padding: 8px 12px;
+  margin-bottom: 0;
+  line-height: 15px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0px;
+
+  &,
+  &:active,
+  &.active {
+    background-color: #e6e6e6;
+    outline: 0;
+    &:focus,
+    &.focus {
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    color: #333333;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-color: #e6e6e6;
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  a& {
+    &.disabled,
+    fieldset[disabled] & {
+      pointer-events: none;
+    }
+  }
+  &.bvi-btn-default {
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #7D7D7D;
+    &.active {
+      position: relative;
+      background-color: #e8e8e8;
+      outline: 0;
+      border-color: #7D7D7D;
+    }
+  }
+  &.bvi-btn-white {
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #7D7D7D;
+    &.active {
+      position: relative;
+      background-color: #ffffff;
+      outline: 0;
+      border-color: #7D7D7D;
+    }
+  }
+  &.bvi-btn-black {
+    color: #ffffff;
+    background-color: #000000;
+    border-color: #7D7D7D;
+    &.active {
+      position: relative;
+      background-color: #000000;
+      outline: 0;
+      border-color: #7D7D7D;
+    }
+  }
+  &.bvi-btn-blue {
+    color: #063462;
+    background-color: #9DD1FF;
+    border-color: #7D7D7D;
+    &.active {
+      position: relative;
+      background-color: #9DD1FF;
+      outline: 0;
+      border-color: #7D7D7D;
+    }
+  }
+  &.bvi-btn-brown {
+    color: #4d4b43;
+    background-color: #f7f3d6;
+    border-color: #7D7D7D;
+    &.active {
+      position: relative;
+      background-color: #f7f3d6;
+      outline: 0;
+      border-color: #7D7D7D;
+    }
+  }
+  &.bvi-btn-green {
+    color: #a9e44d;
+    background-color: #3b2716;
+    border-color: #7D7D7D;
+    &.active {
+      position: relative;
+      background-color: #3b2716;
+      outline: 0;
+      border-color: #7D7D7D;
+    }
+  }
+}
+.bvi-btn-group,
+.bvi-btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  > .bvi-btn {
+    position: relative;
+    float: left;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 2;
+    }
+  }
+}
+
+.bvi-btn-group {
+  .bvi-btn + .bvi-btn,
+  .bvi-btn + .bvi-btn-group,
+  .bvi-btn-group + .bvi-btn,
+  .bvi-btn-group + .bvi-btn-group {
+    margin-left: -1px;
+  }
+}
+
+.bvi-btn-toolbar {
+  margin-left: -5px;
+  //&:extend(.clearfix all);
+
+  .bvi-btn,
+  .bvi-btn-group,
+  .input-group {
+    float: left;
+  }
+  > .bvi-btn,
+  > .bvi-btn-group,
+  > .input-group {
+    margin-left: 5px;
+  }
+}
+
+.bvi-btn-group > .bvi-btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+
+.bvi-btn-group > .bvi-btn:first-child {
+  margin-left: 0;
+  &:not(:last-child):not(.dropdown-toggle) {
+    border-radius: 0px;
+  }
+}
+.bvi-btn-group > .bvi-btn:last-child:not(:first-child),
+.bvi-btn-group > .dropdown-toggle:not(:first-child) {
+  border-radius: 0px;
+}
+
+.bvi-btn-group > .bvi-btn-group {
+  float: left;
+}
+.bvi-btn-group > .bvi-btn-group:not(:first-child):not(:last-child) > .bvi-btn {
+  border-radius: 0;
+}
+.bvi-btn-group > .bvi-btn-group:first-child:not(:last-child) {
+  > .bvi-btn:last-child,
+  > .dropdown-toggle {
+    border-radius: 0px;
+  }
+}
+.bvi-btn-group > .bvi-btn-group:last-child:not(:first-child) > .bvi-btn:first-child {
+  border-radius: 0px;
+}
+.bvi-btn-block {
+  display: block;
+  width: 100%;
+}
+.bvi-btn-block + .bvi-btn-block {
+  margin-top: 5px;
+}

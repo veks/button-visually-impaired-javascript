@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Плагин для слабовидящих</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="assets/css/mdb.min.css" rel="stylesheet">
+    <!-- Button visually impaired -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="button-visually-impaired/css/bvi.min.css" type="text/css">
+</head>
+<body>
+
+<!-- Start your project here-->
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Button visually impaired v1.0.6</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link bvi-panel-open-menu" href="#">Версия для слабовидящих</a>
+                <a class="nav-item nav-link" href="#install">Установка</a>
+                <a class="nav-item nav-link" href="#contact">Контакты</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-4">
+            <img src="assets/img/solarspectrum_noao_big.jpg" class="img-thumbnail" alt="solarspectrum_noao_big.jpg">
+        </div>
+        <div class="col-4">
+            <img src="assets/img/solarspectrum_noao_big.jpg" class="img-thumbnail" alt="solarspectrum_noao_big.jpg">
+        </div>
+        <div class="col-4">
+            <img src="assets/img/solarspectrum_noao_big.jpg" class="img-thumbnail" alt="solarspectrum_noao_big.jpg">
+        </div>
+    </div>
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-8">
+            <div class="z-depth-1" style="padding: 1.25rem; background: white">
+                <h3>Исходный код Button visually impaired</h3><hr>
+                <code style="padding-left: 10%">
+                    button-visually-impaired/<br>
+                    ├── /css<br>
+                    |  ├── bvi.css<br>
+                    |  ├── bvi.min.css<br>
+                    |  └── /less<br>
+                    |     ├── btn.less<br>
+                    |     ├── bvi.less<br>
+                    |     ├── grid.less<br>
+                    |     ├── /mixins<br>
+                    |     |  ├── grid-framework.less<br>
+                    |     |  └── grid.less<br>
+                    |     └── variables.less<br>
+                    ├── /fonts
+                    |  ├── glyphicons-halflings-regular.eot<br>
+                    |  ├── glyphicons-halflings-regular.svg<br>
+                    |  ├── glyphicons-halflings-regular.ttf<br>
+                    |  ├── glyphicons-halflings-regular.woff<br>
+                    |  └── glyphicons-halflings-regular.woff2<br>
+                    └── /js<br>
+                    ├── bvi-init-panel.js<br>
+                    ├── bvi-init-panel.min.js<br>
+                    ├── bvi-panel.js<br>
+                    ├── bvi-panel.min.js<br>
+                    ├── bvi.js<br>
+                    ├── bvi.min.js<br>
+                    ├── js.cookie.js<br>
+                    ├── js.cookie.min.js<br>
+                    ├── responsivevoice.js<br>
+                    └── responsivevoice.min.js<br>
+                </code>
+                <br>
+                <h3 id="install">Установка плагина</h3><hr>
+                <p><strong>Подключите файл сss в ваш HTML</strong></p>
+                <code>
+                    &lt;link rel="stylesheet" href="assets/css/bvi.min.css" type="text/css"&gt;</code>
+                <br>
+                <p><strong>Подключите файлы js в ваш HTML</strong></p>
+                <code>
+                    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">&lt;/script&gt;
+                    <br>
+                    &lt;script src='assets/css/responsivevoice.min.js?ver=1.5.0'&gt;&lt;/script&gt;
+                    <br>
+                    &lt;script src="assets/css/bvi-init-panel.js"&lt;/script&gt;
+                    <br>
+                    &lt;script src="assets/css/bvi.min.js"&gt;&lt;/script&gt;
+                    <br>
+                    &lt;script src="assets/css/js.cookie.js"&gt;&lt;/script&gt;
+                </code>
+                <br>
+                <p><strong>Инициализация плагина</strong></p>
+                <code>
+                    //link
+                    <br>
+                    &lt;a href="#" class="bvi-panel-open"&gt;Версия для слабовидящих&lt;/a&gt;
+                    <br>
+                    <br>
+                    //navbar menu
+                    <br>
+                    &lt;li>&lt;a href="#" class="bvi-panel-open-menu"&gt;Версия для слабовидящих&lt;/a&gt;&lt;/li>
+                </code>
+                <br>
+                <p><strong>Инициализация плагина с настройками</strong></p>
+                <code>
+                    //В файле bvi-init-panel.js измените настройки
+                    <br>
+                    jQuery(document).ready(function($) {
+                    <br>
+                    $('.bvi-panel-open').bvi('Init', {"BviPanel" : "1", "BviPanelBg" : "white", "BviPanelFontSize" : "12", "BviPanelLetterSpacing" : "normal", "BviPanelLineHeight" : "normal", "BviPanelImg" : "1", "BviPanelImgXY" : "1", "BviPanelReload" : "0", "BviCloseClassAndId" : ".hide-screen-fixed", "BviFixPanel" : "1", "BviPlay" : "1"});
+                    <br>
+                    });
+                </code>
+                <br>
+                <p><strong>Классы CSS</strong></p>
+                <code>
+                    //Класс bvi-hide скрывает содержимое при включении плагина
+                    <br>
+                    &lt;div class="bvi-hide">Текст скроется когда включите версию сайта для слабовидящих&lt;/div>
+                </code>
+                <br>
+                <h3>Опции Jquery</h3><hr>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="active">
+                            <td class="text-center"></td>
+                            <td class="text-center">Настройка по умолчанию</td>
+                            <td class="text-center">Параметры</td>
+                            <td class="text-center">Описание</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelBg</td>
+                            <td scope="row">white</td>
+                            <td scope="row">white, black, blue, brown, green</td>
+                            <td scope="row">
+                                Цвета сайта
+                                <br>
+                                white - Черным по белому
+                                <br>
+                                black - Белым по черному
+                                <br>
+                                blue - Темно-синим по голубому
+                                <br>
+                                brown - Коричневым по бежевому
+                                <br>
+                                green - Зеленым по темно-коричневому
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelFontFamily</pre></td>
+                            <td scope="row">default</td>
+                            <td scope="row">default, times</td>
+                            <td scope="row">default - Без засечек, times - С засечками.</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelFontSize</td>
+                            <td scope="row">12</td>
+                            <td scope="row">0-50</td>
+                            <td scope="row">
+                                Размер шрифта от 0 до 50 пунктов.
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelLetterSpacing</td>
+                            <td scope="row">normal</td>
+                            <td scope="row">normal, average, big</td>
+                            <td scope="row">
+                                Интервал между буквами
+                                <br>
+                                normal - Стандартный
+                                <br>
+                                average - Средний
+                                <br>
+                                big - Большой
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelLineHeight</td>
+                            <td scope="row">normal</td>
+                            <td scope="row">normal, average, big</td>
+                            <td scope="row">
+                                Интервал между буквами
+                                <br>
+                                normal - Стандартный
+                                <br>
+                                average - Средний
+                                <br>
+                                big - Большой
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelImg</td>
+                            <td scope="row">1</td>
+                            <td scope="row">1 , 0, grayScale</td>
+                            <td scope="row">
+                                Изображения
+                                <br>
+                                1 - Включение изображения
+                                <br>
+                                0 - Отключение изображения
+                                <br>
+                                grayScale - Включение черное-белого изображения
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelImgXY</td>
+                            <td scope="row">1</td>
+                            <td scope="row">1, 0</td>
+                            <td scope="row">
+                                Сохранение размера исходного изображения
+                                <br>
+                                1 - Включение
+                                <br>
+                                0 - Отключение
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelReload</td>
+                            <td scope="row">0</td>
+                            <td scope="row">1, 0</td>
+                            <td scope="row">
+                                Перезагрузка страницы
+                                <br>
+                                1 - Включение
+                                <br>
+                                0 - Отключение
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPanelCloseText</td>
+                            <td scope="row">Обычная версия сайта</td>
+                            <td scope="row">Обычная версия сайта</td>
+                            <td scope="row">Текст (Название ссылки выключения плагина)</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviCloseClassAndId</td>
+                            <td scope="row">null</td>
+                            <td scope="row">null</td>
+                            <td scope="row">
+                                Скрывает класс или ид при включении версии для слабовидящих.
+                                <br>
+                                Впишите название class или id через запятую для отключения при включении версии для слабовидящих.
+                                <br>
+                                Например: <code>.className1,.className2,#idName1</code>
+                                <br>
+                                Правильно вводите название класса или ид иначе плагин не будет работать.
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviFixPanel</td>
+                            <td scope="row">1</td>
+                            <td scope="row">1, 0</td>
+                            <td scope="row">
+                                Фиксировать панель настроек вверху страницы
+                                <br>
+                                1 - Включение
+                                <br>
+                                0 - Отключение
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviFixPanel</td>
+                            <td scope="row">1</td>
+                            <td scope="row">1, 0</td>
+                            <td scope="row">
+                                Фиксировать панель настроек вверху страницы
+                                <br>
+                                1 - Включение
+                                <br>
+                                0 - Отключение
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviPlay</td>
+                            <td scope="row">0</td>
+                            <td scope="row">1, 0</td>
+                            <td scope="row">
+                                1 - Включение
+                                <br>
+                                0 - Отключение
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td scope="row">BviFlash</td>
+                            <td scope="row">0</td>
+                            <td scope="row">1, 0</td>
+                            <td scope="row">
+                                1 - Включение
+                                <br>
+                                0 - Отключение
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3 id="contact">Контакты</h3><hr>
+                По всем вопросам пишите на почту <a href="mailto:oleg@isvek.ru">oleg@isvek.ru</a> или icq: <a href="https://icq.com/people/6855564/">6855564</a>
+            </div>
+        </div>
+        <div class="col-4">
+            <!--Panel-->
+            <div class="card">
+                <div class="card-header red lighten-1 white-text">
+                    Виджет
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Виджет плагина</h4>
+                    <p class="card-text">Нажмите на кнопку может она заработает?</p>
+                    <a class="btn btn-red bvi-panel-open">Версия для слабовидящих</a>
+                </div>
+            </div>
+            <!--/.Panel-->
+        </div>
+    </div>
+</div>
+<!--Footer-->
+<footer>
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="page-footer primary-color-dark center-on-small-only" style="padding: 1.25rem; color: white;margin-top: 1.25rem;">
+                © 2017 Copyright: <a href="http://bvi.isvek.ru" style="color: #c5f6fe"> bvi.isvek.ru</a>
+            </div>
+        </div>
+    </div>
+    <!--/.Copyright-->
+</footer>
+<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px; display: block;" id="scrollUp">
+    <a href="#" class="btn-floating btn-large red waves-effect waves-light">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+<!--/.Footer-->
+<!-- /Start your project here <span class="sr-only">(current)</span>-->
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="assets/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="assets/js/mdb.min.js"></script>
+<!-- Button visually impaired -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type='text/javascript' src='button-visually-impaired/js/responsivevoice.min.js?ver=1.5.3'></script>
+<script type='text/javascript' src='button-visually-impaired/js/bvi-init-panel.min.js?ver=0.1'></script>
+<script type='text/javascript' src='button-visually-impaired/js/bvi.min.js?ver=1.0.6'></script>
+<script type='text/javascript' src='button-visually-impaired/js/js.cookie.min.js?ver=2.1.3'></script>
+</body>
+
+</html>

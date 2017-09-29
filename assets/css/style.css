@@ -1,0 +1,221 @@
+/* YOUR CUSTOM STYLES */
+body {
+    padding-top: 20px;
+    background-color: #F5F5F5;
+}
+body {
+    font-weight: 400 !important;
+}
+.table td {
+    font-size: 1rem !important;
+    font-weight: bold;
+}
+.card {
+    border-radius: 0px;
+}
+.error-404 {
+    font-size: 15em;
+    font-weight: bold;
+    color: black;
+}
+code {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.shape {
+    text-shadow: rgb(187, 187, 189) 1px 1px,
+    rgb(188, 188, 190) 2px 2px,
+    rgb(189, 189, 191) 3px 3px,
+    rgb(190, 190, 192) 4px 4px,
+    rgb(191, 191, 193) 5px 5px,
+    rgb(192, 192, 194) 6px 6px,
+    rgb(193, 193, 195) 7px 7px,
+    rgb(194, 194, 196) 8px 8px,
+    rgb(195, 195, 197) 9px 9px,
+    rgb(196, 196, 198) 10px 10px,
+    rgb(197, 197, 199) 11px 11px,
+    rgb(198, 198, 200) 12px 12px,
+    rgb(199, 199, 201) 13px 13px,
+    rgb(200, 200, 202) 14px 14px,
+    rgb(201, 201, 203) 15px 15px,
+    rgb(202, 202, 204) 16px 16px,
+    rgb(203, 203, 205) 17px 17px,
+    rgb(204, 204, 206) 18px 18px,
+    rgb(205, 205, 207) 19px 19px,
+    rgb(206, 206, 208) 20px 20px,
+    rgb(207, 207, 209) 21px 21px,
+    rgb(208, 208, 210) 22px 22px,
+    rgb(209, 209, 211) 23px 23px,
+    rgb(210, 210, 212) 24px 24px,
+    rgb(211, 211, 213) 25px 25px,
+    rgb(212, 212, 214) 26px 26px,
+    rgb(213, 213, 215) 27px 27px,
+    rgb(214, 214, 216) 28px 28px,
+    rgb(215, 215, 217) 29px 29px,
+    rgb(216, 216, 218) 30px 30px,
+    rgb(217, 217, 219) 31px 31px,
+    rgb(218, 218, 220) 32px 32px,
+    rgb(219, 219, 221) 33px 33px,
+    rgb(220, 220, 222) 34px 34px,
+    rgb(221, 221, 223) 35px 35px,
+    rgb(222, 222, 224) 36px 36px,
+    rgb(223, 223, 225) 37px 37px,
+    rgb(224, 224, 226) 38px 38px,
+    rgb(225, 225, 227) 39px 39px,
+    rgb(226, 226, 228) 40px 40px,
+    rgb(227, 227, 229) 41px 41px,
+    rgb(228, 228, 230) 42px 42px,
+    rgb(229, 229, 231) 43px 43px,
+    rgb(230, 230, 232) 44px 44px,
+    rgb(231, 231, 233) 45px 45px,
+    rgb(232, 232, 234) 46px 46px,
+    rgb(233, 233, 235) 47px 47px,
+    rgb(234, 234, 236) 48px 48px,
+    rgb(236, 236, 238) 49px 49px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+#scrollUp {
+    display: none;
+}
+.fixed-action-btn {
+    position: fixed;
+    right: 23px;
+    bottom: 23px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 998;
+}
+.btn-floating.btn-large {
+    width: 55.5px;
+    height: 55.5px;
+}
+.btn-floating, .card .card-reveal .card-title, .card-wrapper .back .card-title, .dropdown-content li, .file-field span, input[type=range], input[type=range]+.thumb {
+    cursor: pointer;
+}
+.btn .fa, .btn-floating, .picker__box, .product-table td, .switch label .lever {
+    vertical-align: middle;
+}
+.btn-floating.btn-large i {
+    line-height: 55.5px;
+}
+.btn-floating i {
+    width: inherit;
+    text-align: center;
+    font-size: 1.6rem;
+}
+.btn-floating, .btn-floating i {
+    color: #fff;
+    display: inline-block;
+    line-height: 37px;
+}
+.btn-floating {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 37px;
+    height: 37px;
+    padding: 0;
+    background-color: #a6c;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    transition: .3s;
+    margin: 10px;
+}
+.btn-floating, .btn-floating i {
+    color: #fff;
+    display: inline-block;
+    line-height: 37px;
+}
+.post-container {
+    background: white;
+    padding: 8px 16px 8px 16px;
+}
+.dropdown .dropdown-menu .dropdown-item:active,
+.dropdown .dropdown-menu .dropdown-item:hover {
+    border-radius: 2px;
+    color: #fff!important;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+    background-color: #1DADE2;
+}
+.btn-floating:hover,
+.card-overlay,
+.card.card-cascade .view,
+.colorful-select .dropdown-content li a:hover,
+.colorful-select .dropdown-content li span:hover,
+.comments-list img,
+.dropdown .dropdown-menu .dropdown-item:active,
+.dropdown .dropdown-menu .dropdown-item:hover,
+.modal-dialog.cascading-modal.modal-avatar .modal-header img,
+.reply-form img,
+.testimonial-carousel .testimonial .avatar img,
+.z-depth-2 {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+.btn-floating, .btn-floating.btn-flat.active,
+.btn:active,
+.btn:focus,
+.btn:hover,
+.card.card-cascade.card-avatar img,
+.card.card-cascade.wider.reverse .card-body,
+.colorful-select .dropdown-content li.active span,
+.comments-list .badge,
+.dropdown .dropdown-menu .dropdown-item:active,
+.dropdown .dropdown-menu .dropdown-item:hover,
+.form-header,
+.md-pills .nav-link.active:hover,
+.media .media-left img,
+.modal-dialog .modal-content,
+.modal-dialog.cascading-modal .modal-header,
+.nav-tabs,
+.picker__box .picker__table .picker--focused,
+.picker__box .picker__table .picker__day--selected,
+.picker__box .picker__table .picker__day--selected:hover,
+.pricing-card .header,
+.reply-form .badge,
+.z-depth-1-half,
+ul.instagram-photos li img {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #1DADE2 !important;
+}
+.dropdown .dropdown-menu {
+    padding: .5rem;
+}
+.navbar .dropdown-menu a.active {
+    color: #fff !important;
+}
+.modal-header {
+    text-align: center !important;
+    margin: -2rem 1rem 1rem !important;
+    padding: 1.5rem !important;
+    border: none !important;
+    border-radius: 3px !important;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+.modal-dialog .close {
+    color: #fff;
+    opacity: 1;
+    text-shadow: none;
+}
+.modal-dialog {
+    margin-top: 10%;
+}
