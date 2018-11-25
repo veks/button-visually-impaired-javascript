@@ -36,8 +36,6 @@
                 BviPanelHide: 0
             }, setting);
 
-            console.log('Button visually impaired v1.0.6');
-
             function BviOn() {
 
                 if (Cookies.get("bvi-panel") == '1') {
