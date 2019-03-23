@@ -1,5 +1,5 @@
 /*!
- * Button visually impaired v1.0.7
+ * Button visually impaired v1.0.8
  */
 (function($){
     $.bvi = function(options) {
@@ -8,8 +8,8 @@
             'bvi_theme': 'white',
             'bvi_font': 'arial',
             'bvi_font_size': 16,
-            'bvi_letter_spacing': "normal",
-            'bvi_line_height': "normal",
+            'bvi_letter_spacing': 'normal',
+            'bvi_line_height': 'normal',
             'bvi_images': true,
             'bvi_reload': false,
             'bvi_fixed': true,
@@ -18,7 +18,7 @@
             'bvi_hide': false
         }, options);
 
-        console.log('Button visually impaired v1.0.7');
+        console.log('Button visually impaired v1.0.8');
 
         var versionIE = detectIE();
         var selector = default_setting.bvi_target;
@@ -38,24 +38,20 @@
             var ua = window.navigator.userAgent;
             var msie = ua.indexOf('MSIE ');
             if (msie > 0) {
-                // IE 10 or older => return version number
                 return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
             }
 
             var trident = ua.indexOf('Trident/');
             if (trident > 0) {
-                // IE 11 => return version number
                 var rv = ua.indexOf('rv:');
                 return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
             }
 
             var edge = ua.indexOf('Edge/');
             if (edge > 0) {
-                // Edge (IE 12+) => return version number
                 return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
             }
 
-            // other browser
             return false;
         }
 
@@ -107,7 +103,6 @@
                     responsiveVoice.cancel();
                     return false;
                 });
-
             } else {
                 $('.bvi-btn-voice').hide();
                 set('data-bvi-voice', 'bvi-voice', false);
@@ -393,6 +388,7 @@
                 || typeof Cookies.get("bvi-panel-hide") === 'undefined'
                 || typeof Cookies.get("bvi-flash-iframe") === 'undefined'
                 || typeof Cookies.get("bvi-reload") === 'undefined'
+                || typeof Cookies.get("bvi-fixed") === 'undefined'
             ){
                 Cookies.set("bvi-font-size", default_setting.bvi_font_size, {path: "/", expires: 1});
                 Cookies.set("bvi-theme", default_setting.bvi_theme, {path: "/", expires: 1});
@@ -404,6 +400,7 @@
                 Cookies.set("bvi-panel-hide", default_setting.bvi_hide, {path: "/", expires: 1});
                 Cookies.set("bvi-flash-iframe", default_setting.bvi_flash_iframe, {path: "/", expires: 1});
                 Cookies.set("bvi-reload", default_setting.bvi_reload, {path: "/", expires: 1});
+                Cookies.set("bvi-fixed", default_setting.bvi_fixed, {path: "/", expires: 1});
             }
 
             $('.bvi-body').attr({
@@ -416,7 +413,9 @@
                 'data-bvi-font-family' : Cookies.get("bvi-font-family"),
                 'data-bvi-flash-iframe' : Cookies.get("bvi-flash-iframe"),
                 'data-bvi-reload' : Cookies.get("bvi-reload"),
-                'data-bvi-voice' : Cookies.get("bvi-voice")
+                'data-bvi-voice' : Cookies.get("bvi-voice"),
+                'data-bvi-fixed' : Cookies.get("bvi-fixed")
+
             });
 
             var bvi_panel = Cookies.get("bvi-panel-hide");
@@ -528,8 +527,8 @@
                 '                <div class="bvi-text-center">\n' +
                 '                    <div class="bvi-title bvi-mb-2">Размер шрифта</div>\n' +
                 '                    <div class="bvi-btn-group">\n' +
-                '                        <a href="#" id="bvi-font-size-less" class="bvi-btn bvi-btn-outline-dark bg" title="Уменьшить размер шрифта"><i class="fas fa-font"></i><i class="fas fa-minus"></i></a>\n' +
-                '                        <a href="#" id="bvi-font-size-more" class="bvi-btn bvi-btn-outline-dark" title="Увеличить размер шрифта"><i class="fas fa-font"></i><i class="fas fa-plus"></i></a>\n' +
+                '                        <a href="#" id="bvi-font-size-less" class="bvi-btn bvi-btn-outline-dark bg" title="Уменьшить размер шрифта"><i class="bvi-icon bvi-font"></i><i class="bvi-icon bvi-minus"></i></a>\n' +
+                '                        <a href="#" id="bvi-font-size-more" class="bvi-btn bvi-btn-outline-dark" title="Увеличить размер шрифта"><i class="bvi-icon bvi-font"></i><i class="bvi-icon bvi-plus"></i></a>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
                 '            </div>\n' +
@@ -537,11 +536,11 @@
                 '                <div class="bvi-text-center">\n' +
                 '                    <div class="bvi-title bvi-mb-2">Цвета сайта</div>\n' +
                 '                    <div class="bvi-btn-group">\n' +
-                '                        <a href="#" id="bvi-theme-white" class="bvi-btn bvi-btn-link bvi-border bvi-border-dark" title="Черным по белому" style="color: black; background-color: white !important;"><i class="fas fa-font"></i></a>\n' +
-                '                        <a href="#" id="bvi-theme-black" class="bvi-btn bvi-btn-link" title="Белым по черному" style="color: white !important; background-color: black !important;"><i class="fas fa-font"></i></a>\n' +
-                '                        <a href="#" id="bvi-theme-blue" class="bvi-btn bvi-btn-link bvi-border bvi-border-dark" title="Темно-синим по голубому" style="color: #063462 !important; background-color: #9DD1FF !important;"><i class="fas fa-font"></i></a>\n' +
-                '                        <a href="#" id="bvi-theme-brown" class="bvi-btn bvi-btn-dark bvi-border bvi-border-dark" title="Коричневым по бежевому" style="color: #4D4B43 !important; background-color: #F7F3D6 !important;"><i class="fas fa-font"></i></a>\n' +
-                '                        <a href="#" id="bvi-theme-green" class="bvi-btn bvi-btn-dark bvi-border bvi-border-dark" title="Зеленым по темно-коричневому" style="color: #A9E44D !important; background-color: #3B2716 !important;"><i class="fas fa-font"></i></a>\n' +
+                '                        <a href="#" id="bvi-theme-white" class="bvi-btn bvi-btn-link bvi-border bvi-border-dark" title="Черным по белому" style="color: black; background-color: white !important;"><i class="bvi-icon bvi-font"></i></a>\n' +
+                '                        <a href="#" id="bvi-theme-black" class="bvi-btn bvi-btn-link" title="Белым по черному" style="color: white !important; background-color: black !important;"><i class="bvi-icon bvi-font"></i></a>\n' +
+                '                        <a href="#" id="bvi-theme-blue" class="bvi-btn bvi-btn-link bvi-border bvi-border-dark" title="Темно-синим по голубому" style="color: #063462 !important; background-color: #9DD1FF !important;"><i class="bvi-icon bvi-font"></i></a>\n' +
+                '                        <a href="#" id="bvi-theme-brown" class="bvi-btn bvi-btn-dark bvi-border bvi-border-dark" title="Коричневым по бежевому" style="color: #4D4B43 !important; background-color: #F7F3D6 !important;"><i class="bvi-icon bvi-font"></i></a>\n' +
+                '                        <a href="#" id="bvi-theme-green" class="bvi-btn bvi-btn-dark bvi-border bvi-border-dark" title="Зеленым по темно-коричневому" style="color: #A9E44D !important; background-color: #3B2716 !important;"><i class="bvi-icon bvi-font"></i></a>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
                 '            </div>\n' +
@@ -549,9 +548,9 @@
                 '                <div class="bvi-text-center">\n' +
                 '                    <div class="bvi-title bvi-mb-2">Изображения</div>\n' +
                 '                    <div class="bvi-btn-group">\n' +
-                '                        <a href="#" id="bvi-images-true" class="bvi-btn bvi-btn-outline-dark" title="Изображения включены"><i class="fas fa-circle fa-1x"></i></a>\n' +
-                '                        <a href="#" id="bvi-images-false" class="bvi-btn bvi-btn-outline-dark" title="Изображения выключены"><i class="far fa-circle fa-1x"></i></a>\n' +
-                '                        <a href="#" id="bvi-images-grayscale" class="bvi-btn bvi-btn-outline-dark" title="Изображения черно-белые"><i class="fas fa-adjust fa-1x"></i></a>\n' +
+                '                        <a href="#" id="bvi-images-true" class="bvi-btn bvi-btn-outline-dark" title="Изображения включены"><i class="bvi-icon bvi-circle"></i></a>\n' +
+                '                        <a href="#" id="bvi-images-false" class="bvi-btn bvi-btn-outline-dark" title="Изображения выключены"><i class="bvi-icon bvi-circle-notch"></i></a>\n' +
+                '                        <a href="#" id="bvi-images-grayscale" class="bvi-btn bvi-btn-outline-dark" title="Изображения черно-белые"><i class="bvi-icon bvi-adjust"></i></a>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
                 '            </div>\n' +
@@ -559,20 +558,20 @@
                 '                <div class="bvi-text-center">\n' +
                 '                    <div class="bvi-title bvi-mb-2">Дополнительно</div>\n' +
                 '                    <div class="bvi-btn-group bvi-btn-voice">\n' +
-                '                        <a href="#" id="bvi-voice-true" class="bvi-btn bvi-btn-outline-dark" title=""><i class="fas fa-volume-up"></i></a>\n' +
-                '                        <a href="#" id="bvi-voice-false" class="bvi-btn bvi-btn-outline-dark"><i class="fas fa-volume-off"></i></a>\n' +
+                '                        <a href="#" id="bvi-voice-true" class="bvi-btn bvi-btn-outline-dark" title=""><i class="bvi-icon bvi-volume-up"></i></a>\n' +
+                '                        <a href="#" id="bvi-voice-false" class="bvi-btn bvi-btn-outline-dark"><i class="bvi-icon bvi-volume-off"></i></a>\n' +
                 '                    </div>\n' +
                 '                    <div class="bvi-btn-group">\n' +
-                '                        <a href="#" id="bvi-setting" class="bvi-btn bvi-btn-outline-dark" title="Настройки"><i class="fas fa-cogs mr-1"></i> Настройки</a>\n' +
-                '                        <a href="#" id="bvi-panel-close" class="bvi-btn bvi-btn-outline-dark" title="Обычная версия сайта"><i class="fas fa-low-vision"></i></a>\n' +
-                '                        <a href="#" id="bvi-panel-hide" class="bvi-btn bvi-btn-outline-dark" title="Скрыть панель"><i class="fas fa-chevron-circle-up"></i></a>\n' +
+                '                        <a href="#" id="bvi-setting" class="bvi-btn bvi-btn-outline-dark" title="Настройки"><i class="bvi-icon bvi-cogs bvi-mr-1"></i> Настройки</a>\n' +
+                '                        <a href="#" id="bvi-panel-close" class="bvi-btn bvi-btn-outline-dark" title="Обычная версия сайта"><i class="bvi-icon bvi-low-vision"></i></a>\n' +
+                '                        <a href="#" id="bvi-panel-hide" class="bvi-btn bvi-btn-outline-dark" title="Скрыть панель"><i class="bvi-icon bvi-chevron-circle-up"></i></a>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
                 '            </div>\n' +
                 '        </div>\n' +
                 '        <div class="bvi-row bvi-setting-menu">\n' +
                 '            <div class="bvi-col">\n' +
-                '                <hr class="bvi-hr">\n' +
+                '                <hr class="bvi-hr mt-1">\n' +
                 '                <div class="bvi-row">\n' +
                 '                    <div class="bvi-col bvi-p-0">\n' +
                 '                        <div class="bvi-text-center">\n' +
@@ -608,15 +607,15 @@
                 '                    <div class="bvi-col bvi-p-0">\n' +
                 '                        <div class="bvi-text-left bvi-mt-3">\n' +
                 '                            <div class="bvi-btn-group">\n' +
-                '                                <a href="#" id="bvi-flash-iframe-true" class="bvi-btn bvi-btn-outline-dark bvi-btn-sm" title="Включить Фрейм"><i class="fas fa-bolt"></i> Включить Фрейм</a>\n' +
-                '                                <a href="#" id="bvi-flash-iframe-false" class="bvi-btn bvi-btn-outline-dark bvi-btn-sm" title="Включить Фрейм"><i class="fas fa-bolt"></i> Выключить Фрейм</a>\n' +
+                '                                <a href="#" id="bvi-flash-iframe-true" class="bvi-btn bvi-btn-outline-dark bvi-btn-sm" title="Включить Фрейм"><i class="bvi-icon bvi-bolt"></i> Включить Фрейм</a>\n' +
+                '                                <a href="#" id="bvi-flash-iframe-false" class="bvi-btn bvi-btn-outline-dark bvi-btn-sm" title="Включить Фрейм"><i class="bvi-icon bvi-bolt"></i> Выключить Фрейм</a>\n' +
                 '                            </div>\n' +
                 '                        </div>\n' +
                 '                    </div>\n' +
                 '                    <div class="bvi-col bvi-p-0">\n' +
                 '                        <div class="bvi-text-right bvi-mt-3">\n' +
-                '                            <a href="#" id="bvi-settings-default" class="bvi-btn bvi-btn-outline-dark bvi-btn-sm" title="Вернуть стандартные настройки"><i class="fas fa-sync-alt"></i> Настройки по умолчанию</a>\n' +
-                '                            <a href="#" id="bvi-setting-close" class="bvi-btn bvi-btn-dark bvi-btn-sm" title="Закрыть панель">Закрыть <i class="fas fa-times-circle"></i> </a>\n' +
+                '                            <a href="#" id="bvi-settings-default" class="bvi-btn bvi-btn-outline-dark bvi-btn-sm" title="Вернуть стандартные настройки"><i class="bvi-icon bvi-sync-alt"></i> Настройки по умолчанию</a>\n' +
+                '                            <a href="#" id="bvi-setting-close" class="bvi-btn bvi-btn-dark bvi-btn-sm" title="Закрыть панель">Закрыть <i class="bvi-icon bvi-times-circle"></i> </a>\n' +
                 '                        </div>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
@@ -632,22 +631,25 @@
                 '    </div>\n' +
                 '</div>\n' +
                 '<div class="bvi">\n' +
-                '    <a href="#" id="bvi-panel-show" class="bvi-btn bvi-btn-danger shadow-sm bvi-eye-link" style="display: none"><i class="fas fa-eye fa-2x"></i></a>\n' +
+                '    <a href="#" id="bvi-panel-show" class="bvi-btn bvi-btn-danger shadow-sm bvi-eye-link" style="display: none"><i class="bvi-icon bvi-eye bvi-2x"></i></a>\n' +
                 '</div>');
 
             var scroll = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
 
             if (scroll > 99) {
-                $(".bvi-panel").addClass("bvi-fixed-top");
-            }
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() >= 99) {
-                    $(".bvi-panel").addClass('bvi-fixed-top');
-                } else {
-                    $(".bvi-panel").removeClass("bvi-fixed-top");
+                if (Cookies.get("bvi-fixed") == 'true') {
+                    $(".bvi-panel").addClass("bvi-fixed-top");
                 }
-            });
+            }
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() >= 99) {
+                        if (Cookies.get("bvi-fixed") == 'true') {
+                            $(".bvi-panel").addClass('bvi-fixed-top');
+                        }
+                    } else {
+                        $(".bvi-panel").removeClass("bvi-fixed-top");
+                    }
+                });
 
             get();
             get_image();
