@@ -1,3 +1,3 @@
-jQuery(document).ready(function($){
-    $.bvi();
+jQuery(document).ready(function ($) {
+    $.bvi(bvi_init.settings);
 });
