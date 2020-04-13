@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Button visually impaired CSS -->
+    <link rel="stylesheet" href="../dist/css/bvi.min.css" type="text/css">
+
+    <!-- Button visually impaired Font Awesome Free CSS -->
+    <link rel="stylesheet" href="../dist/css/bvi-font.min.css" type="text/css">
+    <title>Плагин для слабовидящих</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+<div class="container pt-4 mb-2">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Button visually impaired</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link bvi-open" href="#">Версия для слабовидящих</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row mt-4">
+        <div class="col-4">
+            <img src="./img/image.jpg" class="img-thumbnail" alt="Картинка 1">
+        </div>
+        <div class="col-4">
+            <img src="./img/image.jpg" class="img-thumbnail" alt="Картинка 2">
+        </div>
+        <div class="col-4">
+            <img src="./img/image.jpg" class="img-thumbnail" alt="Картинка 3">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card rounded-0 p-4 bg-white">
+                <h1>Установка плагина Jquery</h1>
+                <h5>CSS</h5>
+                <p data-tadv-p="keep">Скопируйте и вставьте таблицу стилей <span class="bvi-code text-danger">&lt;link&gt;</span> в ваш файл <span class="bvi-code text-danger">&lt;head&gt;</span> после всеми другими таблицами стилей, чтобы загрузить наш CSS.</p>
+                <pre><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://domain.name/css/bvi.min.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;<br></code><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://domain.name/css/bvi-font.min.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</code></pre>
+                <h5>Классы CSS</h5>
+                <p data-tadv-p="keep"><span class="bvi-code text-danger">.bvi-hide</span></p>
+                <pre><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-hide"</span>&gt;Текст скроется при включении плагина.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <p data-tadv-p="keep"><span class="bvi-code text-danger">.bvi-show</span></p>
+                <pre><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-show"</span>&gt;Текст покажется при включении плагина.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <p data-tadv-p="keep"><span class="bvi-code text-danger">.bvi-voice</span></p>
+                <pre><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-voice"</span>&gt;Текст который нужно воспроизвести.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <h5>JS</h5>
+                <p data-tadv-p="keep">Скопируйте и вставте следующие скрипты в конце своих страниц, прямо перед закрывающим <span class="bvi-code text-danger">&lt;/body&gt;</span> тегом, чтобы загрузить наши JS файлы. Поддерживаются следующие версии jQuery: <span class="bvi-code text-danger">1.x, 2.x, 3.x;</span></p>
+                <pre><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://code.jquery.com/jquery-1.12.4.min.js"</span>&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code><br><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/responsivevoice.min.js"</span>&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code><br><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/js.cookie.js"</span>&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code><br><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/bvi-init.js"</span>&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code><br><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/bvi.min.js"</span>&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+                <h5>Инициализация плагина с индивидуальными настройками</h5>
+                <p data-tadv-p="keep">Ссылка инициализации плагина.</p>
+                <pre><code class="hljs html m-0 p-0">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-open"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Версия сайта для слабовидящих"</span>&gt;Версия сайта для слабовидящих<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+                <p data-tadv-p="keep">Откройте файл <span class="bvi-code text-danger">bvi-init.js</span> для редактирования. Ниже приведена таблица опций.</p>
+                <pre><code class="hljs javascript html m-0 p-0">jQuery(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>)</span>{<br />    $.bvi({<br />            <span class="hljs-string">'bvi_target'</span>: <span class="hljs-string">'.bvi-open'</span>,<br />            <span class="hljs-string">"bvi_theme"</span>:<span class="hljs-string">"white"</span>,<br />            <span class="hljs-string">"bvi_font"</span>:<span class="hljs-string">"arial"</span>,<br />            <span class="hljs-string">"bvi_font_size"</span>:<span class="hljs-number">16</span>,<br />            <span class="hljs-string">"bvi_letter_spacing"</span>:<span class="hljs-string">"normal"</span>,<br />            <span class="hljs-string">"bvi_line_height"</span>:<span class="hljs-string">"normal"</span>,<br />            <span class="hljs-string">"bvi_images"</span>:<span class="hljs-literal">true</span>,<br />            <span class="hljs-string">"bvi_reload"</span>:<span class="hljs-literal">false</span>,<br />            <span class="hljs-string">"bvi_fixed"</span>:<span class="hljs-literal">false</span>,<br />            <span class="hljs-string">"bvi_voice"</span>:<span class="hljs-literal">true</span>,<br />            <span class="hljs-string">"bvi_flash_iframe"</span>:<span class="hljs-literal">true</span>,<br />            <span class="hljs-string">"bvi_hide"</span>:<span class="hljs-literal">false</span><br />    });<br />});</code></pre>
+                <h5>Опции</h5>
+                <table class="table table-bordered table-responsive table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th class="align-middle">Название</th>
+                        <th class="align-middle">Тип</th>
+                        <th class="align-middle">Настройка по умолчанию</th>
+                        <th class="align-middle">Параметры</th>
+                        <th class="align-middle">Описание</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">bvi_target</td>
+                        <td class="align-middle">String</td>
+                        <td class="align-middle">.bvi-open</td>
+                        <td class="align-middle">-</td>
+                        <td class="align-middle">Класс ссылки включения плагина <br />Например: .my-class</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_theme</td>
+                        <td class="align-middle">String</td>
+                        <td class="align-middle">white</td>
+                        <td class="align-middle">white, black, blue, brown, green</td>
+                        <td class="align-middle">Цвета сайта <br />white - Черным по белому <br />black - Белым по черному <br />blue - Темно-синим по голубому <br />brown - Коричневым по бежевому <br />green - Зеленым по темно-коричневому</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_font</td>
+                        <td class="align-middle">String</td>
+                        <td class="align-middle">arial</td>
+                        <td class="align-middle">arial, times</td>
+                        <td class="align-middle">Шрифты <br />arial - Шрифт без засечек<br />times - Шрифт с засечками</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_font_size</td>
+                        <td class="align-middle">Int</td>
+                        <td class="align-middle">16</td>
+                        <td class="align-middle">1-50</td>
+                        <td class="align-middle">Размер шрифта от 1 до 50 пикселей</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_letter_spacing</td>
+                        <td class="align-middle">String</td>
+                        <td class="align-middle">normal</td>
+                        <td class="align-middle">normal, average, big</td>
+                        <td class="align-middle">Межбуквенный интервал <br />normal - Одинарный <br />average - Полуторный <br />big - Двойной</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_line_height</td>
+                        <td class="align-middle">String</td>
+                        <td class="align-middle">normal</td>
+                        <td class="align-middle">normal, average, big</td>
+                        <td class="align-middle">Междустрочный интервал <br />normal - Стандартный <br />average - Средний <br />big - Большой</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_images</td>
+                        <td class="align-middle">Boolean | String</td>
+                        <td class="align-middle">false</td>
+                        <td class="align-middle">true, false, grayscale</td>
+                        <td class="align-middle">Изображения <br />true - Включить изображения <br />false - Отключить изображения <br />grayscale - Черное-белые изображения</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_reload</td>
+                        <td class="align-middle">Boolean</td>
+                        <td class="align-middle">true</td>
+                        <td class="align-middle">true, false</td>
+                        <td class="align-middle">Перезагрузка страницы при выключении плагина <br />true - Включить <br />false - Выключить</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_fixed</td>
+                        <td class="align-middle">Boolean</td>
+                        <td class="align-middle">true</td>
+                        <td class="align-middle">true, false</td>
+                        <td class="align-middle">Фиксирование панели для слабовидящих вверху страницы <br />true - Включить <br />false - Выключить</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_voice</td>
+                        <td class="align-middle">Boolean</td>
+                        <td class="align-middle">true</td>
+                        <td class="align-middle">true, false</td>
+                        <td class="align-middle">Синтез речи <br />true - Включить <br />false - Выключить</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_flash_iframe</td>
+                        <td class="align-middle">Boolean</td>
+                        <td class="align-middle">true</td>
+                        <td class="align-middle">true, false</td>
+                        <td class="align-middle">Flash-объекты, фреймы <br />true - Включить <br />false - Выключить</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">bvi_hide</td>
+                        <td class="align-middle">Boolean</td>
+                        <td class="align-middle">false</td>
+                        <td class="align-middle">true, false</td>
+                        <td class="align-middle">Скрывает панель для слабовидящих и показывает иконку панели.<br />true - Включить <br />false - Выключить</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h5>Стартовый шаблон</h5>
+                <p data-tadv-p="keep">Соберите все вместе, и ваши страницы должны выглядеть так:</p>
+                <pre><code class="hljs html m-0 p-0">&lt;!doctype html&gt;<br />&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ru"</span>&gt;<br />    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br />        <span class="hljs-comment">&lt;!-- Required meta tags --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span><br />
+        <span class="hljs-comment">&lt;!-- Button visually impaired CSS --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://domain.name/css/bvi.min.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span><br />        <br />        <span class="hljs-comment">&lt;!-- Button visually impaired Font Awesome Free CSS --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://domain.name/css/bvi-font.min.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span><br />
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Button visually impaired<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br />    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br />    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Привет, мир!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br />
+        <span class="hljs-comment">&lt;!-- Button visually impaired LINK --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-open"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Версия сайта для слабовидящих"</span>&gt;</span>Версия сайта для слабовидящих<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br />
+        <span class="hljs-comment">&lt;!-- Button visually impaired CLASS bvi-hide --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-hide"</span>&gt;</span>Текст скроется при включении плагина.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br />
+        <span class="hljs-comment">&lt;!-- Button visually impaired CLASS bvi-show --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-show"</span>&gt;</span>Текст покажется при включении плагина.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br />
+        <span class="hljs-comment">&lt;!-- Button visually impaired CLASS bvi-voice --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-voice"</span>&gt;</span><br />            Михаи́л Ю́рьевич Ле́рмонтов] (3 октября 1814, Москва — 15 июля 1841, Пятигорск) — русский поэт, прозаик, драматург, художник. Творчество Лермонтова, в котором сочетаются гражданские, философские и личные мотивы, отвечавшие насущным потребностям духовной жизни русского общества, ознаменовало собой новый расцвет русской литературы и оказало большое влияние на виднейших русских писателей и поэтов XIX и XX веков. Произведения Лермонтова получили большой отклик в живописи, театре, кинематографе. Его стихи стали подлинным кладезем для оперного, симфонического и романсового творчества. Многие из них стали народными песнями.<br />        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bvi-voice"</span>&gt;</span><br />            Алекса́ндр Серге́евич Пу́шкин (26 мая [6 июня] 1799, Москва — 29 января [10 февраля] 1837, Санкт-Петербург) — русский поэт, драматург и прозаик, заложивший основы русского реалистического направления, критик и теоретик литературы, историк, публицист; один из самых авторитетных литературных деятелей первой трети XIX века.<br />        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br />
+        <span class="hljs-comment">&lt;!-- Button visually impaired JS --&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://code.jquery.com/jquery-1.12.4.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/responsivevoice.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/js.cookie.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/bvi-init.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br />        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://domain.name/js/bvi.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br />    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br />&lt;/<span class="hljs-name">html</span>&gt;</code></pre></div>
+        </div>
+    </div>
+</div>
+<footer class="footer mt-auto py-3" style="background-color: white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="text-center">
+                    <span class="text-muted">2015 - 2019 <a href="http://bvi.isvek.ru"> bvi.isvek.ru</a></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="text-center">
+                    <a href="http://inbrt.ru" target="_blank"><img src="http://bvi.isvek.ru/wp-content/uploads/2019/03/brtlogo2_gray.png" class="w-25"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Button visually impaired JS -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="../dist/js/responsivevoice.min.js"></script>
+<script src="../dist/js/js.cookie.js"></script>
+<script src="../dist/js/bvi-init.js"></script>
+<script src="../dist/js/bvi.min.js"></script>
+</body>
+</html>
