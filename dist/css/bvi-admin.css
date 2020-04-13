@@ -1,0 +1,16 @@
+/*!
+ * Button visually impaired bvi-admin.css v1.0.5
+ */
+.bvi-text-center {
+    text-align: center;
+}
+.bvi-link {
+    font-size: 26px;
+    color: red;
+    text-decoration: none;
+}
+.bvi-link:hover {
+    font-size: 26px;
+    color: red;
+    text-decoration: underline;
+}
