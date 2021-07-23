@@ -51,7 +51,7 @@
                     $('.bvi-tts-stop').addClass('disabled');
                 }
             }, 1000);
-            console.log('Bvi console: Чтение речи поддерживается в данной браузере');
+            console.log('Bvi console: Чтение речи поддерживается в данном браузере');
         } else {
             console.log('Bvi console: Чтение речи не поддерживается в данном браузере');
         }
