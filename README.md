@@ -1,145 +1,106 @@
-<h1>Плагин для слабовидящих.</h1> 
+# Button visually impaired
+Button visually impaired - is a plugin that automatically changes the visually impaired version of your site. The panel on the site for the visually impaired allows the color scheme of the site, font sizes, the synthesizer reads aloud settings changes. Thanks to it, you can use the functions of the site that meet the needs of people with disabilities.
 
-Button visually impaired — это плагин, который автоматически изменяет версию вашего сайта для слабовидящих людей.
-Панель на сайте для слабовидящих дает возможность изменять цветовую гамму сайта, размеры шрифтов, синтезатор речи озвучит вслух изменения настроек.
-С помощью неё можно изменять функции сайта, которые удовлетворят потребностями людей с ограниченными возможностями.
+* Change the font size (up to 200%);
+* Change the color scheme of the site;
+* Change the font of the site (serif or sans serif);
+* Change the image (gray scale, hide the image);
+* Change letter spacing (kerning);
+* Change line spacing;
+* Automatically set Alt tag to all site images;
+* Speech synthesizer will read aloud changes to display settings;
+* Disable embedded elements (videos, maps, etc.);
+* Play text to voice;
+* Support for browsers Chrome, Firefox, Safari, Microsoft Edge, Opera;
 
-<h3>Плагин включает в себя:</h3>
+### Demo
+view demo version [here](https://bvi.isvek.ru/demo/).
 
-* Изменение размера шрифта (до 200%);
-* Изменять цветовую гамму сайта;
-* Изменение шрифта сайта (с засечками или без засечек);
-* Изменение изображения (серая гамма, скрыть изображение);
-* Изменять межбуквенный интервал (кернинг);
-* Изменять межстрочный интервал;
-* Автоматически устанавливать тег Alt ко всем изображениям сайта;
-* Синтезатор речи озвучит вслух изменения настроек отображения;
-* Отключать встроенные элементы (видео, карты и тд.);
-* Воспроизведение текста;
-* Поддержка браузеров Chrome, Firefox, Safari, Internet Explorer(11, 10), Microsoft Edge, Opera;
+### NPM
+```
+$ npm install bvi
+```
+### Browser Usage
 
-<a href="http://bvi.isvek.ru/demo" target="_blank">Демо версия</a>
+Download the [latest package](https://github.com/veks/button-visually-impaired-javascript/archive/master.zip). unpack and inspect the contents. You need to copy the `bvi.js` and `bvi.css` or their minified variations to your app `dist` folders as follows.
+Link the required CSS in your document `<head>` tag
+```html
+<link href="dist/css/bvi.css" rel="stylesheet">
+```
 
-<h3>Установка</h3>
+Link the required JS in your document  at the end of the pages, right before the closing `</body>` tag
+```html
+<script src="dist/js/bvi.js"></script>
+```
 
-<a href="http://bvi.isvek.ru/" target="_blank">Инструкция по установке</a>
+Run function with default settings
+```html
+<script>
+new isvek.Bvi();
+</script>
+```
+Run function with your settings
+```html
+<script>
+  new isvek.Bvi({
+    target: '.className',
+    fontSize: 24,
+    theme: 'black'
+    //...etc
+  });
+</script>
+```
+### Html class
 
-<h3>Changelog</h3>
+Arbitrary links
+```html
+<a href="#" class="className">version for visually impaired</a>
+```
 
-<h5>2.0</h5>
-* Добавлена возможность изменять background-image css (серая гамма, скрыть изображение);
-* Добавлена адаптивная верстка под все разрешения экрана;
-* Обновление интерфейса панели;
-* Обновление ситезатора речи;
-* Исправление ошибок;
+Speech synthesis
+```html
+<div class="bvi-speech">
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</div>
+```
 
-<h5>1.0.8</h5>
-* Исправлены ошибки;
+Hide element
+```html
+<div class="bvi-hide">The text will be hidden when the plugin is enabled.</div>
+```
 
-<h5>1.0.7</h5>
-* Исправлены ошибки;
+Show element
+```html
+<div class="bvi-show">The text will be shown when the plugin is enabled.</div>
+```
 
-<h5>1.0.6</h5>
-* Исправлены ошибки;
-* Добавлена возможность скрывать панель для слабовидящих;
+Disable styles div block
+```html
+<div class="bvi-no-styles">Plugin styles will not be applied in this block.</div>
+```
 
-<h5>1.0.5</h5>
+### Settings
 
-* Добавлено включение/отключение плавающего фрейма;
-* Изменен интерфейс панели;
-* Исправлены ошибки;
-* Добавлено увеличение шрифта до 200%;
+Option | Type | Default value| Value options | Description
+------ | ---- | ------- | -------------- | -----------
+target | string |  '.bvi-open' | '.className' | Plugin initialization class |
+fontSize | number |  16 | 1-39 | Font size  |
+theme | string |  'white' |  (`white`&#124;`black`&#124;`blue`&#124;`brown`&#124;`green`) | Color spectrum |
+images |(string&#124;boolean) | 'grayscale' |  (`true`&#124;`false`&#124;`grayscale`) | Adapting images |
+letterSpacing | string | 'normal' | (`normal`&#124;`average`&#124;`big`) | Letter spacing |
+lineHeight | string | 'normal' | (`normal`&#124;`average`&#124;`big`) | Line spacing |
+speech | boolean | true | (`true`&#124;`false`) | Speech synthesis |
+fontFamily | string | 'arial' |  (`arial`&#124;`times`) | Fonts |
+builtElements | boolean | false | (`true`&#124;`false`) | Inline elements are a component of an HTML element that allows you to embed documents, videos, maps, and interactive media into a page.|
+fixed | boolean | true | (`true`&#124;`false`) | Fixing the panel for the visually impaired at the top of the page. |
+panelHide | boolean | false | (`true`&#124;`false`) | Hides the panel for the visually impaired and shows the panel icon. |
+reloadPage | boolean | false | (`true`&#124;`false`) | Enable / Disable page reload when switching to the regular version of the site. |
+lang | string | 'ru-RU' | (`'ru-RU'`&#124;`'en-US')`| Language |
 
-<h5>1.0.4</h5>
+### Changelog
 
-* Добавлен язык перевода "en_US - английский (Соединенные Штаты)";
-* Исправлены ошибки с конфликтующими шаблонами;
-* Исправлены ошибки скрипта;
+#### 1.0.0
+* new version created
 
-<h5>1.0.3</h5>
-
-* Исправлены ошибки;
-
-<h5>1.0.2</h5>
-
-* Изменен дизайн панели
-* Добавлен синтез речи
-
-<h5>1.0.1</h5>
-
-* Изменен дизайн панели
-
-<h5>1.0.0</h5>
-
-* Добавлен интервал между строками;
-* Небольшие добавления;
-* Исправлены ошибки;
-
-<h5>0.9</h5>
-
-* Добавлен размер шрифта в пикселях "14", "16", "18", "20", "23";
-* Добавлена кнопка для включения "оттенка серого" для изображений;
-* Переписан плагин;
-
-<h5>0.8</h5>
-
-* Изменен дизайн панели;
-* Изменен размер шрифта в пикселях "14", "18", "23";
-* Добавлен выбор шрифтов "Arial", "Times New Roman";
-* Добавлена цветовая схема "Коричневым по бежевому";
-* Переписан плагин;
-
-<h5>0.7</h5>
-
-* Исправлены ошибки в тексте;
-* Добавлена опция если плагин не работает;
-* Мелкие исправления;
-
-<h5>0.6</h5>
-
-* Полностью переписан плагин;
-* Изменен дизайн панели;
-* Добавлен шорт код;
-* Добавлена возможность скрывать изображения и заменять на alt атрибут;
-* Добавлена возможность сохранять ширину и высоту изображения при отключении;
-* Добавлена возможность выбирать иконки;
-* Исправлены все баги;
-* Добавлен раздел `Помощь`;
-
-<h5>0.5.3</h5>
-
-* Изменение структуры плагина
-<h5>0.5.2</h5>
-
-* Изменен дизайн панели;
-* Переписан плагин;
-
-<h5>0.5.1</h5>
-
-* Исправления плагина;
-
-<h5>0.5</h5>
-
-* Изменений нет;
-
-<h5>0.4</h5>
-
-* Добавлены настройки плагина:
-* Исправлено оформление;
-* Исправлено действие при активации плагина;
-
-<h5>0.3</h5>
-
-* Исправлен баг при переходе на обычную версию сайта "картинки не отображалась";
-* Добавлены активные элементы;
-* Добавлены подсказки при наведении на ссылку;
-* Добавлена цветовая схема "Зеленым по темно-коричневому";
-* Добавлен интервал межстрочный и строчный.
-<h5>0.2</h5>
-
-* Изменен дизайн;
-* Исправлены несколько багов при нажатии на кнопку "Обычная версия сайта".
-
-<h5>0.1</h5>
-
-* Первый старт.
+### License
+[MIT License](https://github.com/veks/button-visually-impaired-javascript/blob/master/README.md)

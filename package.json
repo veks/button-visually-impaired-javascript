@@ -1,0 +1,64 @@
+{
+  "name": "bvi",
+  "version": "1.0.0",
+  "description": "Button visually impaired - is a plugin that automatically changes the visually impaired version of your site. The panel on the site for the visually impaired allows the color scheme of the site, font sizes, the synthesizer reads aloud settings changes. Thanks to it, you can use the functions of the site that meet the needs of people with disabilities.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://bvi.isvek.ru",
+  "author": "Oleg Korotenko <bvi@isvek.ru>",
+  "style": "dist/css/bvi.min.css",
+  "sass": "src/scss/bvi.scss",
+  "main": "dist/js/bvi.min.js",
+  "unpkg": "dist/js/bvi.js",
+  "scripts": {
+    "rollup": "rollup -c",
+    "css": "npm-run-all --parallel css-compile css-minify",
+    "css-compile": "sass --style expanded src/scss/bvi.scss --source-map dist/css/bvi.css",
+    "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/*.css\" \"!dist/css/*.min.css\"",
+    "js": "npm-run-all --parallel js-compile js-minify-umd",
+    "js-compile": "rollup --config rollup.config.js --sourcemap",
+    "js-lint": "eslint src/js/**/*.js",
+    "js-lint:fix": "eslint src/js/**/*.js --fix",
+    "js-minify-umd": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bvi.js.map,includeSources,url=bvi.min.js.map\" --output dist/js/bvi.min.js dist/js/bvi.js",
+    "js-minify-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bvi.esm.js.map,includeSources,url=bvi.esm.min.js.map\" --output dist/js/bvi.esm.min.js dist/js/bvi.esm.js",
+    "watch-js": "nodemon --watch src/js/ --ext js --exec \"npm-run-all js-compile js-minify-umd\"",
+    "watch-css": "nodemon --watch src/scss/ --ext scss --exec \"npm-run-all css-compile\""
+  },
+  "files": [
+    "dist/{css,js}/*.{css,js,map}",
+    "src/{js,scss}/*.{js,scss,map}"
+  ],
+  "keywords": [
+    "accessibility",
+    "accessible",
+    "bvi",
+    "Button visually impaired",
+    "visually impaired"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.14.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-object-assign": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "babel-plugin-array-includes": "^2.0.3",
+    "clean-css-cli": "^5.3.0",
+    "eslint": "^7.28.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.3",
+    "postcss-cli": "^8.3.1",
+    "rollup": "^2.51.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.34.1"
+  },
+  "dependencies": {
+    "core-js": "^3.14.0",
+    "regenerator-runtime": "^0.13.7"
+  }
+}
