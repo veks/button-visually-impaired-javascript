@@ -100,7 +100,7 @@ lang | string | 'ru-RU' | (`'ru-RU'`&#124;`'en-US')`| Language |
 ### Changelog
 
 #### 1.0.0
-* new version created
+* new version created JavaScript
 
 ### License
 [MIT License](https://github.com/veks/button-visually-impaired-javascript/blob/master/README.md)
