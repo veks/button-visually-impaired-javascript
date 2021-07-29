@@ -128,28 +128,6 @@ class I18n {
   v(key) {
     return lang[this._config.lang]['voice'][key]
   }
-
-  /*_readFile(url) {
-    const request = new Request(url, {
-      method: "GET",
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      cache: 'default'
-    })
-    return fetch(request).then(response => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        throw Error('Error')
-      }
-    }).then(data => {
-      return data
-    }).catch(error => {
-      console.log(error)
-    });
-  }*/
 }
 
 export default I18n

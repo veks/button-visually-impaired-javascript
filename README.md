@@ -92,7 +92,7 @@ lineHeight | string | 'normal' | (`normal`&#124;`average`&#124;`big`) | Line spa
 speech | boolean | true | (`true`&#124;`false`) | Speech synthesis |
 fontFamily | string | 'arial' |  (`arial`&#124;`times`) | Fonts |
 builtElements | boolean | false | (`true`&#124;`false`) | Inline elements are a component of an HTML element that allows you to embed documents, videos, maps, and interactive media into a page.|
-fixed | boolean | true | (`true`&#124;`false`) | Fixing the panel for the visually impaired at the top of the page. |
+panelFixed | boolean | true | (`true`&#124;`false`) | Fixing the panel for the visually impaired at the top of the page. |
 panelHide | boolean | false | (`true`&#124;`false`) | Hides the panel for the visually impaired and shows the panel icon. |
 reloadPage | boolean | false | (`true`&#124;`false`) | Enable / Disable page reload when switching to the regular version of the site. |
 lang | string | 'ru-RU' | (`'ru-RU'`&#124;`'en-US')`| Language |

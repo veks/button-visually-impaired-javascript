@@ -1196,28 +1196,6 @@
       value: function v(key) {
         return lang[this._config.lang]['voice'][key];
       }
-      /*_readFile(url) {
-        const request = new Request(url, {
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          cache: 'default'
-        })
-        return fetch(request).then(response => {
-          if (response.ok) {
-            return response.json()
-          } else {
-            throw Error('Error')
-          }
-        }).then(data => {
-          return data
-        }).catch(error => {
-          console.log(error)
-        });
-      }*/
-
     }]);
 
     return I18n;
@@ -1239,7 +1217,7 @@
     speech: true,
     fontFamily: 'arial',
     builtElements: false,
-    fixedPanel: true,
+    panelFixed: true,
     panelHide: false,
     reloadPage: false,
     lang: 'ru-RU'
@@ -1254,7 +1232,7 @@
     speech: 'boolean',
     fontFamily: 'string',
     builtElements: 'boolean',
-    fixedPanel: 'boolean',
+    panelFixed: 'boolean',
     panelHide: 'boolean',
     reloadPage: 'boolean',
     lang: 'string'
@@ -1269,7 +1247,7 @@
     speech: '(true|false)',
     fontFamily: '(arial|times)',
     builtElements: '(true|false)',
-    fixedPanel: '(true|false)',
+    panelFixed: '(true|false)',
     panelHide: '(true|false)',
     reloadPage: '(true|false)',
     lang: '(ru-RU|en-US)'
@@ -1307,7 +1285,7 @@
         return false;
       }
 
-      console.log('Bvi console: ready Button visually impaired v2.1.0');
+      console.log('Bvi console: ready Button visually impaired v1.0.0');
 
       this._target.forEach(function (target) {
         target.addEventListener('click', function (event) {
@@ -1399,7 +1377,7 @@
           var scroll = function scroll() {
             var scroll = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
 
-            if (_this2._config.fixedPanel && selectorBviPanel) {
+            if (_this2._config.panelFixed && selectorBviPanel) {
               if (scroll > 200) {
                 selectorBviPanel.add('bvi-fixed-top');
               } else {
@@ -1446,7 +1424,7 @@
       key: "_setSettings",
       value: function _setSettings() {
         for (var key in this._config) {
-          if ('target' === key || 'reloadPage' === key || 'fixedPanel' === key || 'panelHide' === key) {
+          if ('target' === key || 'reloadPage' === key || 'panelFixed' === key || 'panelHide' === key) {
             continue;
           }
 

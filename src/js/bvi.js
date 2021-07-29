@@ -38,7 +38,7 @@ const Default = {
   speech: true,
   fontFamily: 'arial',
   builtElements: false,
-  fixedPanel: true,
+  panelFixed: true,
   panelHide: false,
   reloadPage: false,
   lang: 'ru-RU',
@@ -54,7 +54,7 @@ const DefaultType = {
   speech: 'boolean',
   fontFamily: 'string',
   builtElements: 'boolean',
-  fixedPanel: 'boolean',
+  panelFixed: 'boolean',
   panelHide: 'boolean',
   reloadPage: 'boolean',
   lang: 'string',
@@ -70,7 +70,7 @@ const DefaultOptions = {
   speech: '(true|false)',
   fontFamily: '(arial|times)',
   builtElements: '(true|false)',
-  fixedPanel: '(true|false)',
+  panelFixed: '(true|false)',
   panelHide: '(true|false)',
   reloadPage: '(true|false)',
   lang: '(ru-RU|en-US)',
@@ -104,7 +104,7 @@ class Bvi {
       return false
     }
 
-    console.log('Bvi console: ready Button visually impaired v2.1.0')
+    console.log('Bvi console: ready Button visually impaired v1.0.0')
 
     this._target.forEach(target => {
       target.addEventListener('click', event => {
@@ -175,7 +175,7 @@ class Bvi {
       const scroll = () => {
         let scroll = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
 
-        if (this._config.fixedPanel && selectorBviPanel) {
+        if (this._config.panelFixed && selectorBviPanel) {
           if (scroll > 200) {
             selectorBviPanel.add('bvi-fixed-top')
           } else {
@@ -221,7 +221,7 @@ class Bvi {
 
   _setSettings() {
     for (let key in this._config) {
-      if ('target' === key || 'reloadPage' === key || 'fixedPanel' === key || 'panelHide' === key) {
+      if ('target' === key || 'reloadPage' === key || 'panelFixed' === key || 'panelHide' === key) {
         continue
       }
 
