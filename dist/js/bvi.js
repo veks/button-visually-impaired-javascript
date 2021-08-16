@@ -970,18 +970,6 @@
     });
   };
 
-  var plural = function plural(number) {
-    var text = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ['пиксель', 'пекселя', 'пикселей'];
-
-    if (number % 10 === 1 && number % 100 !== 11) {
-      return "".concat(number, " ").concat(text[0]);
-    } else if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) {
-      return "".concat(number, " ").concat(text[1]);
-    } else {
-      return "".concat(number, " ").concat(text[2]);
-    }
-  };
-
   var stringToBoolean = function stringToBoolean(string) {
     switch (string) {
       case 'on':
@@ -1018,8 +1006,16 @@
     wrapper.parentNode.replaceChild(docFrag, wrapper);
   };
 
-  var getKey = function getKey(config, callback) {
-    Object.keys(config).forEach(function (key) {
+  var getObject = function getObject(object, callback) {
+    Object.keys(object).forEach(function (key) {
+      if (typeof callback === 'function') {
+        callback(key);
+      }
+    });
+  };
+
+  var getArray = function getArray(array, callback) {
+    Array.from(array).forEach(function (key) {
       if (typeof callback === 'function') {
         callback(key);
       }
@@ -1072,30 +1068,28 @@
     'ru-RU': {
       'text': {
         'fontSize': 'Размер шрифта',
-        'sitColors': 'Цвета сайта',
+        'siteColors': 'Цвета сайта',
         'images': 'Изображения',
-        'sound': 'Звук',
+        'speech': 'Синтез речи',
         'settings': 'Настройки',
         'regularVersionOfTheSite': 'Обычная версия сайта',
-        'lineSpacing': 'Межстрочный интервал',
-        'standard': 'Стандартный',
-        'middle': 'Средний',
-        'large': 'Большой',
-        'spacingBetweenLetters': 'Интервал между буквами',
+        'letterSpacing': 'Межбуквенное расстояние',
+        'normal': 'Стандартный',
+        'average': 'Средний',
+        'big': 'Большой',
+        'lineHeight': 'Межстрочный интервал',
         'font': 'Шрифт',
-        'sansSerif': 'Без засечек',
-        'serif': 'С засечками',
-        'built-inElements': 'Встроенные элементы (Видео, карты и тд.)',
+        'arial': 'Без засечек',
+        'times': 'С засечками',
+        'builtElements': 'Встроенные элементы (Видео, карты и тд.)',
         'on': 'Включить',
         'off': 'Выключить',
-        'resetSettings': 'Сбросить настройки',
+        'reset': 'Сбросить настройки',
         'plural_0': 'пиксель',
         'plural_1': 'пекселя',
         'plural_2': 'пикселей'
       },
       'voice': {
-        'panelOn': 'Версия сайта для слабови́дящий',
-        'panelOff': 'Обычная версия сайта',
         'fontSizePlus': 'Размер шрифта увели́чен',
         'fontSizeMinus': 'Размер шрифта уме́ньшен',
         'siteColorBlackOnWhite': 'Цвет сайта черным по белому',
@@ -1104,50 +1098,50 @@
         'siteColorBeigeBrown': 'Цвет сайта кори́чневым по бе́жевому',
         'siteColorGreenOnDarkBrown': 'Цвет сайта зеленым по тёмно-коричневому',
         'imagesOn': 'Изображения включены',
-        'imagesOF': 'Изображения выключены',
+        'imagesOFF': 'Изображения выключены',
         'imagesGrayscale': 'Изображения чёрно-белые',
         'speechOn': 'Синтез речи включён',
         'speechOff': 'Синтез речи вы́ключен',
-        'lineHeightStandard': 'Межстрочный интервал стандартный',
-        'lineHeightMiddle': 'Межстрочный интервал средний',
-        'lineHeightLarge': 'Межстрочный интервал большой',
-        'LetterSpacingStandard': 'Интервал между буквами стандартный',
-        'LetterSpacingMiddle': 'Интервал между буквами средний',
-        'LetterSpacingLarge': 'Интервал между буквами большой',
-        'fontSansSerif': 'Шрифт без засечек',
-        'fontSerif': 'Шрифт с засечками',
-        'built-inElementsOn': 'Встроенные элементы включены',
-        'built-inElementsOFF': 'Встроенные элементы выключены',
+        'lineHeightNormal': 'Межстрочный интервал стандартный',
+        'lineHeightAverage': 'Межстрочный интервал средний',
+        'lineHeightBig': 'Межстрочный интервал большой',
+        'LetterSpacingNormal': 'Интервал между буквами стандартный',
+        'LetterSpacingAverage': 'Интервал между буквами средний',
+        'LetterSpacingBig': 'Интервал между буквами большой',
+        'fontArial': 'Шрифт без засечек',
+        'fontTimes': 'Шрифт с засечками',
+        'builtElementsOn': 'Встроенные элементы включены',
+        'builtElementsOFF': 'Встроенные элементы выключены',
         'resetSettings': 'Установлены настройки по умолча́нию',
         'panelShow': 'Панель открыта',
-        'panelHide': 'Панель скрыта'
+        'panelHide': 'Панель скрыта',
+        'panelOn': 'Версия сайта для слабови́дящий',
+        'panelOff': 'Обычная версия сайта'
       }
     },
     'en-US': {
       'text': {
-        'panelOn': 'Site version for visually impaired',
-        'panelOff': 'Regular version of the site',
         'fontSize': 'Font size',
-        'sitColors': 'Site colors',
+        'siteColors': 'Site colors',
         'images': 'Images',
-        'sound': 'Sound',
+        'speech': 'Speech synthesis',
         'settings': 'Settings',
-        'regularVersionOfTheSite': 'Regular version of the site',
-        'lineSpacing': 'Line spacing',
-        'standard': 'Standard',
-        'middle': 'Middle',
-        'large': 'Large',
-        'spacingBetweenLetters': 'Spacing between letters',
+        'regularVersionOfTheSite': 'Regular version Of The site',
+        'letterSpacing': 'Letter-to-letter distance',
+        'normal': 'Standard',
+        'average': 'Average',
+        'big': 'Big',
+        'lineHeight': 'Line spacing',
         'font': 'Font',
-        'sansSerif': 'Sans serif',
-        'serif': 'Serif',
-        'built-inElements': 'Built-in elements (Videos, maps, etc.)',
+        'arial': 'Arial',
+        'times': 'Times',
+        'builtElements': 'Built-in elements (Videos, maps, etc.)',
         'on': 'On',
         'off': 'Off',
-        'resetSettings': 'Reset settings',
+        'reset': 'Reset settings',
         'plural_0': 'pixel',
-        'plural_1': 'pixel',
-        'plural_2': 'pixel'
+        'plural_1': 'pixels',
+        'plural_2': 'pixels'
       },
       'voice': {
         'fontSizePlus': 'Font size increased',
@@ -1157,24 +1151,26 @@
         'siteColorDarkBlueOnBlue': 'Site color dark blue on cyan',
         'siteColorBeigeBrown': 'SiteColorBeigeBrown',
         'siteColorGreenOnDarkBrown': 'Site color green on dark brown',
-        'imagesOn': 'Images enabled',
-        'imagesOF': 'Images disabled',
-        'imagesGrayscale': 'Images are black and white',
-        'speechOn': 'Synthesis of speech enabled',
-        'speechOff': 'Synthesis of speech is disabled',
-        'lineHeightStandard': 'Line spacing standard',
-        'lineHeightMiddle': 'Line spacing is average',
-        'lineHeightLarge': 'Line spacing is large',
-        'LetterSpacingStandard': 'Standard letter spacing',
-        'LetterSpacingMiddle': 'Letter spacing is average',
-        'LetterSpacingLarge': 'Large letter spacing',
-        'fontSansSerif': 'Sans serif font',
-        'fontSerif': 'Serif font',
-        'built-inElementsOn': 'Built-in elements are enabled',
-        'built-inElementsOFF': 'Built-in elements are disabled',
+        'imagesOn': 'Images on',
+        'imagesOFF': 'Images off',
+        'imagesGrayscale': 'Images grayscale',
+        'speechOn': 'Synthesis speech on',
+        'speechOff': 'Synthesis speech off',
+        'lineHeightNormal': 'Line spacing normal',
+        'lineHeightAverage': 'Line spacing is average',
+        'lineHeightBig': 'Line spacing is big',
+        'LetterSpacingNormal': 'Normal letter spacing',
+        'LetterSpacingAverage': 'Letter spacing is average',
+        'LetterSpacingBig': 'Big letter spacing',
+        'fontArial': 'Font arial',
+        'fontTimes': 'Font times',
+        'builtElementsOn': 'Built-in elements are enabled',
+        'builtElementsOFF': 'Built-in elements are disabled',
         'resetSettings': 'Default settings have been set',
         'panelShow': 'Panel show',
-        'panelHide': 'Panel hide'
+        'panelHide': 'Panel hide',
+        'panelOn': 'Site version for visually impaired',
+        'panelOff': 'Regular version of the site'
       }
     }
   };
@@ -1219,7 +1215,7 @@
     builtElements: false,
     panelFixed: true,
     panelHide: false,
-    reloadPage: false,
+    reload: false,
     lang: 'ru-RU'
   };
   var DefaultType = {
@@ -1234,12 +1230,12 @@
     builtElements: 'boolean',
     panelFixed: 'boolean',
     panelHide: 'boolean',
-    reloadPage: 'boolean',
+    reload: 'boolean',
     lang: 'string'
   };
   var DefaultOptions = {
     target: '',
-    fontSize: '([1-3][0-9])',
+    fontSize: '(^[1-9]$|^[1-3][0-9]?$|^39$)',
     theme: '(white|black|blue|brown|green)',
     images: '(true|false|grayscale)',
     letterSpacing: '(normal|average|big)',
@@ -1249,11 +1245,9 @@
     builtElements: '(true|false)',
     panelFixed: '(true|false)',
     panelHide: '(true|false)',
-    reloadPage: '(true|false)',
+    reload: '(true|false)',
     lang: '(ru-RU|en-US)'
   };
-  var synth = window.speechSynthesis;
-  var supportSynthBrowser = !(typeof synth === 'undefined');
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -1261,87 +1255,45 @@
    */
 
   var Bvi = /*#__PURE__*/function () {
-    function Bvi() {
-      var _this = this;
-
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function Bvi(options) {
       _classCallCheck(this, Bvi);
 
       this._config = this._getConfig(options);
-      this._target = document.querySelectorAll(this._config.target);
-      this._breakpoint = {
-        'sm': 576,
-        'md': 768,
-        'lg': 992,
-        'xl': 1200,
-        'xxl': 1400
-      };
+      this._elements = document.querySelectorAll(this._config.target);
       this._i18n = new I18n({
         lang: this._config.lang
       });
 
-      if (!this._target) {
-        return false;
-      }
-
-      console.log('Bvi console: ready Button visually impaired v1.0.0');
-
-      this._target.forEach(function (target) {
-        target.addEventListener('click', function (event) {
-          event.preventDefault();
-
-          if (typeof getCookie('panelActive') !== 'undefined') {
-            return false;
-          }
-
-          setCookie('panelActive', true);
-          getKey(_this._config, function (key) {
-            setCookie(key, _this._config[key]);
-          });
-
-          _this._speech("".concat(_this._i18n.v('panelOn')));
-
-          _this._init();
-        }, false);
-      });
+      this._addEventListeners();
 
       this._init();
+
+      console.log('Bvi console: ready Button visually impaired v1.0.0');
     } // Private
 
 
     _createClass(Bvi, [{
       key: "_init",
       value: function _init() {
-        var _this2 = this;
-
-        var selectorBviBody = document.querySelector('.bvi-body');
-        var panelActive = stringToBoolean(getCookie('panelActive'));
-
-        this._target.forEach(function (element) {
-          return element.style.display = 'none';
-        });
-
-        getKey(this._config, function (key) {
+        getObject(this._config, function (key) {
           if (typeof getCookie(key) === 'undefined') {
             removeCookie('panelActive');
           }
         });
 
-        if (panelActive) {
-          wrapInner(document.body, 'div', 'bvi-body');
-
-          this._setSettings();
+        if (stringToBoolean(getCookie('panelActive'))) {
+          this._set();
 
           this._getPanel();
 
-          this._btn();
+          this._addEventListenersPanel();
 
           this._images();
 
           this._speechPlayer();
 
-          if (supportSynthBrowser && stringToBoolean(getCookie('speech'))) {
+          if ('speechSynthesis' in window && stringToBoolean(getCookie('speech'))) {
+            var synth = window.speechSynthesis;
             setInterval(function () {
               if (synth.pending === false) {
                 var play = document.querySelectorAll('.bvi-speech-play');
@@ -1370,103 +1322,67 @@
               }
             }, 1000);
           }
-
-          document.body.classList.add('bvi-active');
-          var selectorBviPanel = document.querySelector('.bvi-panel').classList;
-
-          var scroll = function scroll() {
-            var scroll = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-
-            if (_this2._config.panelFixed && selectorBviPanel) {
-              if (scroll > 200) {
-                selectorBviPanel.add('bvi-fixed-top');
-              } else {
-                selectorBviPanel.remove('bvi-fixed-top');
-              }
-            }
-          };
-
-          window.addEventListener('scroll', scroll);
-          scroll();
         } else {
-          this._target.forEach(function (element) {
-            return element.style.display = 'block';
-          });
-
-          this._speech("".concat(this._i18n.v('panelOff')));
-
-          document.querySelectorAll('img').forEach(function (element) {
-            if (element.classList.contains('bvi-img')) {
-              element.classList.remove('bvi-img');
-            }
-          });
-          document.querySelectorAll('body *').forEach(function (element) {
-            if (element.classList.contains('bvi-background-image')) {
-              element.classList.remove('bvi-background-image');
-            }
-          });
-          removeCookie('panelActive');
-          unwrap(selectorBviBody);
-          Object.keys(this._config).forEach(function (key) {
-            removeCookie(key);
-          });
-
-          this._speechPlayer();
-
-          document.body.classList.remove('bvi-active');
-
-          if (this._config.reloadPage) {
-            document.location.reload();
-          }
+          this._remove();
         }
       }
     }, {
-      key: "_setSettings",
-      value: function _setSettings() {
-        for (var key in this._config) {
-          if ('target' === key || 'reloadPage' === key || 'panelFixed' === key || 'panelHide' === key) {
-            continue;
-          }
+      key: "_addEventListeners",
+      value: function _addEventListeners() {
+        var _this = this;
 
-          if (this._config.hasOwnProperty(key)) {
-            this._setAttrDataBviBody(key, getCookie(key));
-          }
+        if (!this._elements) {
+          return false;
         }
+
+        this._elements.forEach(function (element) {
+          element.addEventListener('click', function (event) {
+            event.preventDefault();
+            getObject(_this._config, function (key) {
+              return setCookie(key, _this._config[key]);
+            });
+            setCookie('panelActive', true);
+
+            _this._speech("".concat(_this._i18n.v('panelOn')));
+
+            _this._init();
+          });
+        });
       }
     }, {
-      key: "_setAttrDataBviBody",
-      value: function _setAttrDataBviBody() {
-        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        document.querySelector('.bvi-body').setAttribute("data-bvi-".concat(name), value);
-      }
-    }, {
-      key: "_getPanel",
-      value: function _getPanel() {
-        var div = document.createElement('div');
-        var btnFixed = document.createElement('div');
-        var panelHide = stringToBoolean(getCookie('panelHide')) ? ' bvi-panel-hide' : '';
-        var fontSize = plural(getCookie('fontSize'), ["".concat(this._i18n.t('plural_0')), "".concat(this._i18n.t('plural_1')), "".concat(this._i18n.t('plural_2'))]);
-        div.setAttribute('class', "bvi-panel".concat(panelHide));
-        div.innerHTML = "\n    <div class=\"bvi-block-settings\">\n        <div class=\"bvi-blocks bvi-block-center\">\n            <div class=\"bvi-block\">\n               <h1>".concat(this._i18n.t('fontSize'), " <span class=\"bvi-fontSize\">").concat(fontSize, "</span></h1>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-fontSize=\"minus\">\u0410-</a>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-fontSize=\"plus\">\u0410+</a>\n            </div>\n            <div class=\"bvi-block\">\n                <h1>").concat(this._i18n.t('sitColors'), "</h1>\n                <a href=\"#\" class=\"bvi-btn bvi-theme-white\" data-bvi-btn-theme=\"white\">\u0426</a>\n                <a href=\"#\" class=\"bvi-btn bvi-theme-black\" data-bvi-btn-theme=\"black\">\u0426</a>\n                <a href=\"#\" class=\"bvi-btn bvi-theme-blue\" data-bvi-btn-theme=\"blue\">\u0426</a>\n                <a href=\"#\" class=\"bvi-btn bvi-theme-brown\" data-bvi-btn-theme=\"brown\">\u0426</a>\n                <a href=\"#\" class=\"bvi-btn bvi-theme-green\" data-bvi-btn-theme=\"green\">\u0426</a>\n            </div>\n            <div class=\"bvi-block\">\n                <h1>").concat(this._i18n.t('images'), "</h1>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-images=\"true\"><i class=\"bvi-images bvi-images-on\"></i></a>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-images=\"false\"><i class=\"bvi-images bvi-images-off\"></i></a>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-images=\"grayscale\"><i class=\"bvi-images bvi-images-adjust\"></i></a>\n            </div>\n            <div class=\"bvi-block\">\n                <h1>").concat(this._i18n.t('sound'), "</h1>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-speech=\"false\"><i class=\"bvi-images bvi-images-volume-off\"></i></a>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-speech=\"true\"><i class=\"bvi-images bvi-images-volume-on\"></i></a>\n            </div>\n            <div class=\"bvi-block\">\n                <h1>").concat(this._i18n.t('settings'), "</h1>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn=\"settings-more\"><i class=\"bvi-images bvi-images-cog\"></i></a>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn=\"close\">").concat(this._i18n.t('regularVersionOfTheSite'), "</a>\n                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn=\"panel-hide\"><i class=\"bvi-images bvi-images-minus-square-o\"></i></a>\n            </div>\n        </div>\n    </div>\n    <div class=\"bvi-modal\">\n        <div class=\"bvi-modal-dialog\">\n            <div class=\"bvi-modal-content\">\n                <div class=\"bvi-modal-header\">\n                    <h3 class=\"bvi-modal-title\">").concat(this._i18n.t('settings'), "</h3>\n                    <a href=\"#\" class=\"bvi-btn bvi-modal-close\" data-bvi-btn=\"close-modal\">\xD7</a>\n                </div>\n                <div class=\"bvi-modal-body\">\n                    <div class=\"bvi-block-settings-more\">\n                         <div class=\"bvi-blocks bvi-block-center\">\n                            <div class=\"bvi-block\">\n                                <h1>").concat(this._i18n.t('lineSpacing'), "</h1>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-lineHeight=\"normal\">").concat(this._i18n.t('standard'), "</a>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-lineHeight=\"average\">").concat(this._i18n.t('middle'), "</a>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-lineHeight=\"big\">").concat(this._i18n.t('large'), "</a>\n                            </div>\n                            <div class=\"bvi-block\">\n                                <h1>").concat(this._i18n.t('spacingBetweenLetters'), "</h1>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-letterSpacing=\"normal\">").concat(this._i18n.t('standard'), "</a>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-letterSpacing=\"average\">").concat(this._i18n.t('middle'), "</a>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-letterSpacing=\"big\">").concat(this._i18n.t('large'), "</a>\n                            </div>\n                            <div class=\"bvi-block\">\n                                <h1>").concat(this._i18n.t('font'), "</h1>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-fontFamily=\"arial\">").concat(this._i18n.t('sansSerif'), "</a>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-fontFamily=\"times\">").concat(this._i18n.t('serif'), "</a>\n                            </div>\n                            <div class=\"bvi-block\">\n                                <h1>").concat(this._i18n.t('built-inElements'), "</h1>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-builtElements=\"true\">").concat(this._i18n.t('on'), "</a>\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn-builtElements=\"false\">").concat(this._i18n.t('off'), "</a><br>\n                            </div>\n                        </div>\n                        <div class=\"bvi-blocks bvi-block-end\">\n                            <div class=\"bvi-block\">\n                                <a href=\"#\" class=\"bvi-btn\" data-bvi-btn=\"reset-settings\">").concat(this._i18n.t('resetSettings'), "</a>\n                            </div>\n                        </div>\n                        <div class=\"bvi-blocks bvi-block-center\">\n                            <a href=\"https://bvi.isvek.ru\" class=\"bvi-copyright\" target=\"_blank\">bvi.isvek.ru</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    ");
-        btnFixed.innerHTML = "<a href=\"#\" class=\"bvi-btn bvi-no-styles\" data-bvi-btn=\"panel-show\"><i class=\"bvi-images bvi-images-eye bvi-no-styles\"></i></a>";
-        document.body.prepend(div);
-        document.querySelector('.bvi-body').prepend(btnFixed);
-        var hide = !stringToBoolean(getCookie('panelHide')) ? ' bvi-btn-hide' : '';
-        btnFixed.setAttribute('class', "bvi-btn-fixed-top".concat(hide));
-      }
-    }, {
-      key: "_btn",
-      value: function _btn() {
-        var _this3 = this;
+      key: "_addEventListenersPanel",
+      value: function _addEventListenersPanel() {
+        var _this2 = this;
 
-        var btnActive = function btnActive(element) {
-          var btnData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        var elements = {
+          fontSizeMinus: document.querySelector('.bvi-fontSize-minus'),
+          fontSizePlus: document.querySelector('.bvi-fontSize-plus'),
+          themeWhite: document.querySelector('.bvi-theme-white'),
+          themeBlack: document.querySelector('.bvi-theme-black'),
+          themeBlue: document.querySelector('.bvi-theme-blue'),
+          themeBrown: document.querySelector('.bvi-theme-brown'),
+          themeGreen: document.querySelector('.bvi-theme-green'),
+          imagesOn: document.querySelector('.bvi-images-on'),
+          imagesOff: document.querySelector('.bvi-images-off'),
+          imagesGrayscale: document.querySelector('.bvi-images-grayscale'),
+          speechOn: document.querySelector('.bvi-speech-on'),
+          speechOff: document.querySelector('.bvi-speech-off'),
+          lineHeightNormal: document.querySelector('.bvi-line-height-normal'),
+          lineHeightAverage: document.querySelector('.bvi-line-height-average'),
+          lineHeightBig: document.querySelector('.bvi-line-height-big'),
+          letterSpacingNormal: document.querySelector('.bvi-letter-spacing-normal'),
+          letterSpacingAverage: document.querySelector('.bvi-letter-spacing-average'),
+          letterSpacingBig: document.querySelector('.bvi-letter-spacing-big'),
+          fontFamilyArial: document.querySelector('.bvi-font-family-arial'),
+          fontFamilyTimes: document.querySelector('.bvi-font-family-times'),
+          builtElementsOn: document.querySelector('.bvi-built-elements-on'),
+          builtElementsOff: document.querySelector('.bvi-built-elements-off'),
+          reset: document.querySelector('.bvi-reset'),
+          links: document.querySelectorAll('.bvi-link'),
+          modal: document.querySelector('.bvi-modal')
+        };
 
-          if (btnData === 'close' || btnData === 'settings-more' || btnData === 'reset-settings' || btnData === 'close-modal' || btnData === 'panel-hide' || btnData === 'panel-show') {
-            return false;
-          }
-
+        var activeLink = function activeLink(element) {
           var _iterator = _createForOfIteratorHelper(element.parentNode.children),
               _step;
 
@@ -1484,293 +1400,430 @@
           element.classList.add('active');
         };
 
-        var btn = document.querySelectorAll('.bvi-btn');
-        getKey(this._config, function (key) {
-          if (key === '') return false;
-          var active = document.querySelector("[data-bvi-btn-".concat(key, "=\"").concat(getCookie(key), "\"]"));
-
-          if (active) {
-            active.classList.add('active');
-          }
-        });
-        btn.forEach(function (element) {
+        var click = function click(element, callback) {
           element.addEventListener('click', function (event) {
             event.preventDefault();
-            var btnData = event.target.getAttribute('data-bvi-btn');
-            var btnDataFontSize = event.target.getAttribute('data-bvi-btn-fontSize');
-            var btnDataTheme = event.target.getAttribute('data-bvi-btn-theme');
-            var btnDataImages = event.target.getAttribute('data-bvi-btn-images');
-            var btnDataSpeech = event.target.getAttribute('data-bvi-btn-speech');
-            var btnDataLineHeight = event.target.getAttribute('data-bvi-btn-lineHeight');
-            var btnDataLetterSpacing = event.target.getAttribute('data-bvi-btn-letterSpacing');
-            var btnDataFontFamily = event.target.getAttribute('data-bvi-btn-fontFamily');
-            var btnDataBuiltElements = event.target.getAttribute('data-bvi-btn-builtElements'); // Fontsize
 
-            if (btnDataFontSize === 'minus') {
-              var size = parseFloat(getCookie('fontSize')) - 1;
-              var fontSize = plural(size, ["".concat(_this3._i18n.t('plural_0')), "".concat(_this3._i18n.t('plural_1')), "".concat(_this3._i18n.t('plural_2'))]);
+            if (typeof callback === 'function') {
+              callback(event);
+            }
+          });
+        };
 
-              if (size !== 0) {
-                document.querySelector('.bvi-fontSize').innerHTML = "".concat(fontSize);
-
-                _this3._speech("".concat(_this3._i18n.v('fontSizeMinus')));
-
-                _this3._setAttrDataBviBody('fontSize', size);
-
-                setCookie('fontSize', size);
-              }
+        var activeAll = function activeAll() {
+          var links = document.querySelectorAll('.bvi-link');
+          links.forEach(function (link) {
+            link.classList.remove('active');
+          });
+          getObject(_this2._config, function (key) {
+            if (key === 'theme') {
+              var value = getCookie(key);
+              document.querySelector(".bvi-theme-".concat(value)).classList.add('active');
             }
 
-            if (btnDataFontSize === 'plus') {
-              var _size = parseFloat(getCookie('fontSize')) + 1;
+            if (key === 'images') {
+              var _value = getCookie(key) === 'grayscale' ? 'grayscale' : stringToBoolean(getCookie(key)) ? 'on' : 'off';
 
-              var _fontSize = plural(_size, ["".concat(_this3._i18n.t('plural_0')), "".concat(_this3._i18n.t('plural_1')), "".concat(_this3._i18n.t('plural_2'))]);
-
-              if (_size !== 40) {
-                document.querySelector('.bvi-fontSize').innerHTML = "".concat(_fontSize);
-
-                _this3._speech("".concat(_this3._i18n.v('fontSizePlus')));
-
-                _this3._setAttrDataBviBody('fontSize', _size);
-
-                setCookie('fontSize', _size);
-              }
-            } // Theme
-
-
-            if (btnDataTheme === 'white') {
-              _this3._speech("".concat(_this3._i18n.v('siteColorBlackOnWhite')));
-
-              _this3._setAttrDataBviBody('theme', 'white');
-
-              setCookie('theme', 'white');
+              document.querySelector(".bvi-images-".concat(_value)).classList.add('active');
             }
 
-            if (btnDataTheme === 'black') {
-              _this3._speech("".concat(_this3._i18n.v('siteColorWhiteOnBlack')));
+            if (key === 'speech') {
+              var _value2 = stringToBoolean(getCookie(key)) ? 'on' : 'off';
 
-              _this3._setAttrDataBviBody('theme', 'black');
-
-              setCookie('theme', 'black');
+              document.querySelector(".bvi-speech-".concat(_value2)).classList.add('active');
             }
 
-            if (btnDataTheme === 'blue') {
-              _this3._speech("".concat(_this3._i18n.v('siteColorDarkBlueOnBlue')));
+            if (key === 'lineHeight') {
+              var _value3 = getCookie(key);
 
-              _this3._setAttrDataBviBody('theme', 'blue');
-
-              setCookie('theme', 'blue');
+              document.querySelector(".bvi-line-height-".concat(_value3)).classList.add('active');
             }
 
-            if (btnDataTheme === 'brown') {
-              _this3._speech("".concat(_this3._i18n.v('siteColorBeigeBrown')));
+            if (key === 'letterSpacing') {
+              var _value4 = getCookie(key);
 
-              _this3._setAttrDataBviBody('theme', 'brown');
-
-              setCookie('theme', 'brown');
+              document.querySelector(".bvi-letter-spacing-".concat(_value4)).classList.add('active');
             }
 
-            if (btnDataTheme === 'green') {
-              _this3._speech("".concat(_this3._i18n.v('siteColorGreenOnDarkBrown')));
+            if (key === 'fontFamily') {
+              var _value5 = getCookie(key);
 
-              _this3._setAttrDataBviBody('theme', 'green');
-
-              setCookie('theme', 'green');
-            } // Images
-
-
-            if (btnDataImages === 'true') {
-              _this3._speech("".concat(_this3._i18n.v('imagesOn')));
-
-              _this3._setAttrDataBviBody('images', 'true');
-
-              setCookie('images', 'true');
+              document.querySelector(".bvi-font-family-".concat(_value5)).classList.add('active');
             }
 
-            if (btnDataImages === 'false') {
-              _this3._speech("".concat(_this3._i18n.v('imagesOF')));
+            if (key === 'builtElements') {
+              var _value6 = stringToBoolean(getCookie(key)) ? 'on' : 'off';
 
-              _this3._setAttrDataBviBody('images', 'false');
-
-              setCookie('images', 'false');
+              document.querySelector(".bvi-built-elements-".concat(_value6)).classList.add('active');
             }
+          });
+        };
 
-            if (btnDataImages === 'grayscale') {
-              _this3._speech("".concat(_this3._i18n.v('imagesGrayscale')));
+        activeAll(); // Font size
 
-              _this3._setAttrDataBviBody('images', 'grayscale');
+        click(elements.fontSizeMinus, function () {
+          var size = parseFloat(getCookie('fontSize')) - 1;
 
-              setCookie('images', 'grayscale');
-            }
+          if (size !== 0) {
+            _this2._setAttrDataBviBody('fontSize', size);
 
-            if (btnDataSpeech === 'true') {
-              _this3._setAttrDataBviBody('speech', 'true');
+            setCookie('fontSize', size);
 
-              setCookie('speech', 'true');
+            _this2._speech("".concat(_this2._i18n.v('fontSizeMinus')));
 
-              _this3._speech("".concat(_this3._i18n.v('speechOn')));
-
-              _this3._speechPlayer();
-            }
-
-            if (btnDataSpeech === 'false') {
-              _this3._speech("".concat(_this3._i18n.v('speechOff')));
-
-              _this3._setAttrDataBviBody('speech', 'false');
-
-              setCookie('speech', 'false');
-
-              _this3._speechPlayer();
-            } // lineHeight
-
-
-            if (btnDataLineHeight === 'normal') {
-              _this3._speech("".concat(_this3._i18n.v('lineHeightStandard')));
-
-              _this3._setAttrDataBviBody('lineHeight', 'normal');
-
-              setCookie('lineHeight', 'normal');
-            }
-
-            if (btnDataLineHeight === 'average') {
-              _this3._speech("".concat(_this3._i18n.v('lineHeightMiddle')));
-
-              _this3._setAttrDataBviBody('lineHeight', 'average');
-
-              setCookie('lineHeight', 'average');
-            }
-
-            if (btnDataLineHeight === 'big') {
-              _this3._speech("".concat(_this3._i18n.v('lineHeightLarge')));
-
-              _this3._setAttrDataBviBody('lineHeight', 'big');
-
-              setCookie('lineHeight', 'big');
-            } // letterSpacing
-
-
-            if (btnDataLetterSpacing === 'normal') {
-              _this3._speech("".concat(_this3._i18n.v('LetterSpacingStandard')));
-
-              _this3._setAttrDataBviBody('letterSpacing', 'normal');
-
-              setCookie('letterSpacing', 'normal');
-            }
-
-            if (btnDataLetterSpacing === 'average') {
-              _this3._speech("".concat(_this3._i18n.v('LetterSpacingMiddle')));
-
-              _this3._setAttrDataBviBody('letterSpacing', 'average');
-
-              setCookie('letterSpacing', 'average');
-            }
-
-            if (btnDataLetterSpacing === 'big') {
-              _this3._speech("".concat(_this3._i18n.v('LetterSpacingLarge')));
-
-              _this3._setAttrDataBviBody('letterSpacing', 'big');
-
-              setCookie('letterSpacing', 'big');
-            } // fontFamily
-
-
-            if (btnDataFontFamily === 'arial') {
-              _this3._speech("".concat(_this3._i18n.v('fontSansSerif')));
-
-              _this3._setAttrDataBviBody('fontFamily', 'arial');
-
-              setCookie('fontFamily', 'arial');
-            }
-
-            if (btnDataFontFamily === 'times') {
-              _this3._speech("".concat(_this3._i18n.v('fontSerif')));
-
-              _this3._setAttrDataBviBody('fontFamily', 'times');
-
-              setCookie('fontFamily', 'times');
-            } // builtElements
-
-
-            if (btnDataBuiltElements === 'true') {
-              _this3._speech("".concat(_this3._i18n.v('built-inElementsOn')));
-
-              _this3._setAttrDataBviBody('builtElements', 'true');
-
-              setCookie('builtElements', 'true');
-            }
-
-            if (btnDataBuiltElements === 'false') {
-              _this3._speech("".concat(_this3._i18n.v('built-inElementsOFF')));
-
-              _this3._setAttrDataBviBody('builtElements', 'false');
-
-              setCookie('builtElements', 'false');
-            } // Settings more
-
-
-            if (btnData === 'settings-more') {
-              var blockSettingsMore = document.querySelector('.bvi-modal');
-              blockSettingsMore.classList.toggle('show');
-            }
-
-            if (btnData === 'close') {
-              setCookie('panelActive', false);
-              document.querySelector('.bvi-panel').remove();
-
-              _this3._init();
-            }
-
-            if (btnData === 'close-modal') {
-              document.querySelector('.bvi-modal').classList.remove('show');
-            }
-
-            if (btnData === 'panel-hide') {
-              _this3._speech("".concat(_this3._i18n.v('panelHide')));
-
-              setCookie('panelHide', 'true');
-              document.querySelector('.bvi-panel').classList.add('bvi-panel-hide');
-              document.querySelector('.bvi-btn-fixed-top').classList.remove('bvi-btn-hide');
-            }
-
-            if (btnData === 'panel-show') {
-              _this3._speech("".concat(_this3._i18n.v('panelShow')));
-
-              setCookie('panelHide', 'false');
-              document.querySelector('.bvi-panel').classList.remove('bvi-panel-hide');
-              document.querySelector('.bvi-btn-fixed-top').classList.add('bvi-btn-hide');
-            }
-
-            if (btnData === 'reset-settings') {
-              getKey(_this3._config, function (key) {
-                _this3._setAttrDataBviBody(key, _this3._config[key]);
-
-                setCookie(key, _this3._config[key]);
-                var active = document.querySelector("[data-bvi-btn-".concat(key, "=\"").concat(getCookie(key), "\"]"));
-                var btnAll = document.querySelectorAll("[data-bvi-btn-".concat(key));
-                btnAll.forEach(function (element) {
-                  if (btnAll && element.classList.contains('active')) {
-                    element.classList.remove('active');
-                  }
-                });
-
-                if (active) {
-                  active.classList.add('active');
-                }
-              });
-
-              _this3._speech("".concat(_this3._i18n.v('resetSettings')));
-            }
-
-            btnActive(event.target, btnData);
-          }, true);
+            activeLink(elements.fontSizeMinus);
+          }
         });
-        var closeModal = document.querySelector('.bvi-modal');
+        click(elements.fontSizePlus, function () {
+          var size = parseFloat(getCookie('fontSize')) + 1;
 
-        window.onclick = function (event) {
-          if (event.target === closeModal) {
-            closeModal.classList.remove('show');
+          if (size !== 40) {
+            _this2._setAttrDataBviBody('fontSize', size);
+
+            setCookie('fontSize', size);
+
+            _this2._speech("".concat(_this2._i18n.v('fontSizePlus')));
+
+            activeLink(elements.fontSizePlus);
+          }
+        }); // Theme
+
+        click(elements.themeWhite, function () {
+          _this2._setAttrDataBviBody('theme', 'white');
+
+          setCookie('theme', 'white');
+
+          _this2._speech("".concat(_this2._i18n.v('siteColorBlackOnWhite')));
+
+          activeLink(elements.themeWhite);
+        });
+        click(elements.themeBlack, function () {
+          _this2._setAttrDataBviBody('theme', 'black');
+
+          setCookie('theme', 'black');
+
+          _this2._speech("".concat(_this2._i18n.v('siteColorWhiteOnBlack')));
+
+          activeLink(elements.themeBlack);
+        });
+        click(elements.themeBlue, function () {
+          _this2._setAttrDataBviBody('theme', 'blue');
+
+          setCookie('theme', 'blue');
+
+          _this2._speech("".concat(_this2._i18n.v('siteColorDarkBlueOnBlue')));
+
+          activeLink(elements.themeBlue);
+        });
+        click(elements.themeBrown, function () {
+          _this2._setAttrDataBviBody('theme', 'brown');
+
+          setCookie('theme', 'brown');
+
+          _this2._speech("".concat(_this2._i18n.v('siteColorBeigeBrown')));
+
+          activeLink(elements.themeBrown);
+        });
+        click(elements.themeGreen, function () {
+          _this2._setAttrDataBviBody('theme', 'green');
+
+          setCookie('theme', 'green');
+
+          _this2._speech("".concat(_this2._i18n.v('siteColorGreenOnDarkBrown')));
+
+          activeLink(elements.themeGreen);
+        }); // Images
+
+        click(elements.imagesOn, function () {
+          _this2._setAttrDataBviBody('images', 'true');
+
+          setCookie('images', 'true');
+
+          _this2._speech("".concat(_this2._i18n.v('imagesOn')));
+
+          activeLink(elements.imagesOn);
+        });
+        click(elements.imagesOff, function () {
+          _this2._setAttrDataBviBody('images', 'false');
+
+          setCookie('images', 'false');
+
+          _this2._speech("".concat(_this2._i18n.v('imagesOFF')));
+
+          activeLink(elements.imagesOff);
+        });
+        click(elements.imagesGrayscale, function () {
+          _this2._setAttrDataBviBody('images', 'grayscale');
+
+          setCookie('images', 'grayscale');
+
+          _this2._speech("".concat(_this2._i18n.v('imagesGrayscale')));
+
+          activeLink(elements.imagesGrayscale);
+        }); // Speech
+
+        click(elements.speechOn, function () {
+          _this2._setAttrDataBviBody('speech', 'true');
+
+          setCookie('speech', 'true');
+
+          _this2._speech("".concat(_this2._i18n.v('speechOn')));
+
+          activeLink(elements.speechOn);
+
+          _this2._speechPlayer();
+        });
+        click(elements.speechOff, function () {
+          _this2._speech("".concat(_this2._i18n.v('speechOff')));
+
+          _this2._setAttrDataBviBody('speech', 'false');
+
+          setCookie('speech', 'false');
+          activeLink(elements.speechOff);
+
+          _this2._speechPlayer();
+        }); // Line height
+
+        click(elements.lineHeightNormal, function () {
+          _this2._setAttrDataBviBody('lineHeight', 'normal');
+
+          setCookie('lineHeight', 'normal');
+
+          _this2._speech("".concat(_this2._i18n.v('lineHeightNormal')));
+
+          activeLink(elements.lineHeightNormal);
+        });
+        click(elements.lineHeightAverage, function () {
+          _this2._setAttrDataBviBody('lineHeight', 'average');
+
+          setCookie('lineHeight', 'average');
+
+          _this2._speech("".concat(_this2._i18n.v('lineHeightAverage')));
+
+          activeLink(elements.lineHeightAverage);
+        });
+        click(elements.lineHeightBig, function () {
+          _this2._setAttrDataBviBody('lineHeight', 'big');
+
+          setCookie('lineHeight', 'big');
+
+          _this2._speech("".concat(_this2._i18n.v('lineHeightBig')));
+
+          activeLink(elements.lineHeightBig);
+        }); // Letter spacing
+
+        click(elements.letterSpacingNormal, function () {
+          _this2._setAttrDataBviBody('letterSpacing', 'normal');
+
+          setCookie('letterSpacing', 'normal');
+
+          _this2._speech("".concat(_this2._i18n.v('LetterSpacingNormal')));
+
+          activeLink(elements.letterSpacingNormal);
+        });
+        click(elements.letterSpacingAverage, function () {
+          _this2._setAttrDataBviBody('letterSpacing', 'average');
+
+          setCookie('letterSpacing', 'average');
+
+          _this2._speech("".concat(_this2._i18n.v('LetterSpacingAverage')));
+
+          activeLink(elements.letterSpacingAverage);
+        });
+        click(elements.letterSpacingBig, function () {
+          _this2._setAttrDataBviBody('letterSpacing', 'big');
+
+          setCookie('letterSpacing', 'big');
+
+          _this2._speech("".concat(_this2._i18n.v('LetterSpacingBig')));
+
+          activeLink(elements.letterSpacingBig);
+        }); // Font family
+
+        click(elements.fontFamilyArial, function () {
+          _this2._setAttrDataBviBody('fontFamily', 'arial');
+
+          setCookie('fontFamily', 'arial');
+
+          _this2._speech("".concat(_this2._i18n.v('fontArial')));
+
+          activeLink(elements.fontFamilyArial);
+        });
+        click(elements.fontFamilyTimes, function () {
+          _this2._setAttrDataBviBody('fontFamily', 'times');
+
+          setCookie('fontFamily', 'times');
+
+          _this2._speech("".concat(_this2._i18n.v('fontTimes')));
+
+          activeLink(elements.fontFamilyTimes);
+        }); // Built elements
+
+        click(elements.builtElementsOn, function () {
+          _this2._setAttrDataBviBody('builtElements', 'true');
+
+          setCookie('builtElements', 'true');
+
+          _this2._speech("".concat(_this2._i18n.v('builtElementsOn')));
+
+          activeLink(elements.builtElementsOn);
+        });
+        click(elements.builtElementsOff, function () {
+          _this2._setAttrDataBviBody('builtElements', 'false');
+
+          setCookie('builtElements', 'false');
+
+          _this2._speech("".concat(_this2._i18n.v('builtElementsOFF')));
+
+          activeLink(elements.builtElementsOff);
+        }); // Reset
+
+        click(elements.reset, function () {
+          _this2._speech("".concat(_this2._i18n.v('resetSettings')));
+
+          getObject(_this2._config, function (key) {
+            _this2._setAttrDataBviBody(key, _this2._config[key]);
+
+            setCookie(key, _this2._config[key]);
+            activeAll();
+          });
+        });
+        getArray(elements.links, function (element) {
+          click(element, function (event) {
+            var target = event.target.getAttribute('data-bvi');
+
+            if (target === 'close') {
+              _this2._setAttrDataBviBody('panelActive', 'false');
+
+              setCookie('panelActive', 'false');
+
+              _this2._init();
+            }
+
+            if (target === 'modal') {
+              document.body.style.overflow = 'hidden';
+              document.body.classList.add('bvi-noscroll');
+              elements.modal.classList.toggle('show');
+            }
+
+            if (target === 'modal-close') {
+              document.body.classList.remove('bvi-noscroll');
+              document.body.style.overflow = '';
+              elements.modal.classList.remove('show');
+            }
+
+            if (target === 'panel-hide') {
+              document.querySelector('.bvi-panel').classList.add('bvi-panel-hide');
+              document.querySelector('.bvi-link-fixed-top').classList.remove('bvi-hide');
+              document.querySelector('.bvi-link-fixed-top').classList.add('bvi-show');
+              setCookie('panelHide', 'true');
+
+              _this2._speech("".concat(_this2._i18n.v('panelHide')));
+            }
+
+            if (target === 'panel-show') {
+              document.querySelector('.bvi-link-fixed-top').classList.remove('bvi-show');
+              document.querySelector('.bvi-link-fixed-top').classList.add('bvi-hide');
+              document.querySelector('.bvi-panel').classList.remove('bvi-panel-hide');
+              setCookie('panelHide', 'false');
+
+              _this2._speech("".concat(_this2._i18n.v('panelShow')));
+            }
+          });
+        });
+        click(elements.modal, function (event) {
+          if (event.target.contains(elements.modal)) {
+            document.body.classList.remove('bvi-noscroll');
+            document.body.style.overflow = '';
+            elements.modal.classList.remove('show');
+          }
+        });
+      }
+    }, {
+      key: "_getPanel",
+      value: function _getPanel() {
+        var scroll = function scroll() {
+          var scroll = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
+          if (stringToBoolean(getCookie('panelFixed'))) {
+            if (scroll > 200) {
+              document.querySelector('.bvi-panel').classList.add('bvi-fixed-top');
+            } else {
+              document.querySelector('.bvi-panel').classList.remove('bvi-fixed-top');
+            }
           }
         };
+
+        var panelHide = stringToBoolean(getCookie('panelHide')) ? ' bvi-panel-hide' : '';
+        var linkHide = !stringToBoolean(getCookie('panelHide')) ? ' bvi-hide' : 'bvi-show';
+        var html = "\n    <div class='bvi-panel".concat(panelHide, "'>\n        <div class=\"bvi-blocks bvi-block-center\">\n            <div class=\"bvi-block\">\n                <div class=\"bvi-block-title\">").concat(this._i18n.t('fontSize'), "</div>\n                <a class=\"bvi-link bvi-fontSize-minus\">\u0410-</a>\n                <a class=\"bvi-link bvi-fontSize-plus\">\u0410+</a>\n            </div>\n            <div class=\"bvi-block\">\n                <div class=\"bvi-block-title\">").concat(this._i18n.t('siteColors'), "</div>\n                <a href=\"#\" class=\"bvi-link bvi-theme-white\">\u0426</a>\n                <a href=\"#\" class=\"bvi-link bvi-theme-black\">\u0426</a>\n                <a href=\"#\" class=\"bvi-link bvi-theme-blue\">\u0426</a>\n                <a href=\"#\" class=\"bvi-link bvi-theme-brown\">\u0426</a>\n                <a href=\"#\" class=\"bvi-link bvi-theme-green\">\u0426</a>\n            </div>\n            <div class=\"bvi-block\">\n                <div class=\"bvi-block-title\">").concat(this._i18n.t('images'), "</div>\n                <a href=\"#\" class=\"bvi-link bvi-images-on\">\n                    <i class=\"bvi-images bvi-images-image\"></i>\n                </a>\n                <a href=\"#\" class=\"bvi-link bvi-images-off\">\n                    <i class=\"bvi-images bvi-images-minus-circle\"></i>\n                </a>\n                <a href=\"#\" class=\"bvi-link bvi-images-grayscale\">\n                    <i class=\"bvi-images bvi-images-adjust\"></i>\n                </a>\n            </div>\n            <div class=\"bvi-block\">\n                <div class=\"bvi-block-title\">").concat(this._i18n.t('speech'), "</div>\n                <a href=\"#\" class=\"bvi-link bvi-speech-off\">\n                    <i class=\"bvi-images bvi-images-volume-off\"></i>\n                </a>\n                <a href=\"#\" class=\"bvi-link bvi-speech-on\">\n                    <i class=\"bvi-images bvi-images-volume-up\"></i>\n                </a>\n            </div>\n            <div class=\"bvi-block\">\n                <div class=\"bvi-block-title\">").concat(this._i18n.t('settings'), "</div>\n                <a href=\"#\" class=\"bvi-link\" data-bvi=\"modal\">\n                    <i class=\"bvi-images bvi-images-cog\"></i>\n                </a>\n                <a href=\"#\" class=\"bvi-link\" data-bvi=\"close\">\n                    ").concat(this._i18n.t('regularVersionOfTheSite'), "\n                </a>\n                <a href=\"#\" class=\"bvi-link\" data-bvi=\"panel-hide\">\n                    <i class=\"bvi-images bvi-images-minus\"></i>\n                </a>\n            </div>\n        </div>\n        <div class=\"bvi-modal\">\n            <div class=\"bvi-modal-dialog\">\n                <div class=\"bvi-modal-content\">\n                    <div class=\"bvi-modal-header\">\n                        <div class=\"bvi-modal-title\">").concat(this._i18n.t('settings'), "</div>\n                        <a href=\"#\" class=\"bvi-link bvi-modal-close\" data-bvi=\"modal-close\">\xD7</a>\n                    </div>\n                    <div class=\"bvi-modal-body\">\n                        <div class=\"bvi-blocks bvi-block-center\">\n                            <div class=\"bvi-block\">\n                                <div class=\"bvi-block-title\">").concat(this._i18n.t('letterSpacing'), "</div>\n                                <a href=\"#\" class=\"bvi-link bvi-letter-spacing-normal\">").concat(this._i18n.t('normal'), "</a>\n                                <a href=\"#\" class=\"bvi-link bvi-letter-spacing-average\">").concat(this._i18n.t('average'), "</a>\n                                <a href=\"#\" class=\"bvi-link bvi-letter-spacing-big\">").concat(this._i18n.t('big'), "</a>\n                            </div>\n                            <div class=\"bvi-block\">\n                                <div class=\"bvi-block-title\">").concat(this._i18n.t('lineHeight'), "</div>\n                                <a href=\"#\" class=\"bvi-link bvi-line-height-normal\">").concat(this._i18n.t('normal'), "</a>\n                                <a href=\"#\" class=\"bvi-link bvi-line-height-average\">").concat(this._i18n.t('average'), "</a>\n                                <a href=\"#\" class=\"bvi-link bvi-line-height-big\">").concat(this._i18n.t('big'), "</a>\n                            </div>\n                            <div class=\"bvi-block\">\n                                <div class=\"bvi-block-title\">").concat(this._i18n.t('font'), "</div>\n                                <a href=\"#\" class=\"bvi-link bvi-font-family-arial\">").concat(this._i18n.t('arial'), "</a>\n                                <a href=\"#\" class=\"bvi-link bvi-font-family-times\">").concat(this._i18n.t('times'), "</a>\n                            </div>\n                            <div class=\"bvi-block\">\n                                <div class=\"bvi-block-title\">").concat(this._i18n.t('builtElements'), "</div>\n                                <a href=\"#\" class=\"bvi-link bvi-built-elements-on\">").concat(this._i18n.t('on'), "</a>\n                                <a href=\"#\" class=\"bvi-link bvi-built-elements-off\">").concat(this._i18n.t('off'), "</a>\n                            </div>\n                        </div>\n                        <div class=\"bvi-blocks bvi-block-center\">\n                            <a href=\"https://bvi.isvek.ru\" class=\"bvi-copyright\" target=\"_blank\">bvi.isvek.ru</a>\n                        </div>\n                    </div>\n                    <div class=\"bvi-modal-footer\">\n                        <a href=\"#\" class=\"bvi-link bvi-reset\">").concat(this._i18n.t('reset'), "</a>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>");
+        var link = "<a href=\"#\" class=\"bvi-link bvi-link-fixed-top bvi-no-styles ".concat(linkHide, "\" data-bvi=\"panel-show\">") + '<i class="bvi-images bvi-images-eye bvi-images-size-32 bvi-no-styles"></i></a>';
+        window.addEventListener('scroll', scroll);
+        document.querySelector('.bvi-body').insertAdjacentHTML('beforebegin', html);
+        document.querySelector('.bvi-body').insertAdjacentHTML('afterbegin', link);
+        scroll();
+      }
+    }, {
+      key: "_set",
+      value: function _set() {
+        var _this3 = this;
+
+        document.body.classList.add('bvi-active');
+        wrapInner(document.body, 'div', 'bvi-body');
+        getObject(this._config, function (key) {
+          return _this3._setAttrDataBviBody(key, getCookie(key));
+        });
+        getArray(this._elements, function (element) {
+          return element.style.display = 'none';
+        });
+        document.querySelectorAll('img').forEach(function (element) {
+          if (element.classList.contains('bvi-img')) {
+            element.classList.remove('bvi-img');
+          }
+        });
+        document.querySelectorAll('body *').forEach(function (element) {
+          if (element.classList.contains('bvi-background-image')) {
+            element.classList.remove('bvi-background-image');
+          }
+        });
+      }
+    }, {
+      key: "_remove",
+      value: function _remove() {
+        var bviPanel = document.querySelector('.bvi-panel');
+        var bviBody = document.querySelector('.bvi-body');
+        var bviLinkFixedTop = document.querySelector('.bvi-link-fixed-top');
+
+        if (bviPanel) {
+          bviPanel.remove();
+        }
+
+        if (bviBody) {
+          unwrap(bviBody);
+        }
+
+        if (bviLinkFixedTop) {
+          bviLinkFixedTop.remove();
+        }
+
+        this._speech("".concat(this._i18n.v('panelOff')));
+
+        document.body.classList.remove('bvi-active');
+        getArray(this._elements, function (element) {
+          return element.style.display = '';
+        });
+
+        if (stringToBoolean(getCookie('reload'))) {
+          document.location.reload();
+        }
+
+        getObject(this._config, function (key) {
+          removeCookie(key);
+        });
+
+        this._speechPlayer();
+
+        removeCookie('panelActive');
       }
     }, {
       key: "_images",
@@ -1778,8 +1831,6 @@
         document.querySelectorAll('img').forEach(function (element) {
           if (!element.classList.contains('bvi-no-style')) {
             element.classList.add('bvi-img');
-
-            if (element.classList.contains('')) ;
           }
         });
         document.querySelectorAll('.bvi-body *').forEach(function (element) {
@@ -1791,15 +1842,37 @@
         });
       }
     }, {
+      key: "_getConfig",
+      value: function _getConfig(config) {
+        config = _objectSpread2(_objectSpread2({}, Default), config);
+        var extended = {};
+
+        for (var keyDefault in Default) {
+          extended[keyDefault] = config[keyDefault];
+        }
+
+        checkConfig(extended, DefaultType, DefaultOptions);
+        return extended;
+      }
+    }, {
+      key: "_setAttrDataBviBody",
+      value: function _setAttrDataBviBody() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        document.querySelector('.bvi-body').setAttribute("data-bvi-".concat(name), value);
+      }
+    }, {
       key: "_speechPlayer",
       value: function _speechPlayer() {
         var _this4 = this;
 
         var selectorSpeechText = document.querySelectorAll('.bvi-speech-text');
-        var selectorSpeechBtn = document.querySelectorAll('.bvi-speech-btn');
+        var selectorSpeechLink = document.querySelectorAll('.bvi-speech-link');
         var selectorBviSpeech = document.querySelectorAll('.bvi-speech');
 
-        if (supportSynthBrowser && stringToBoolean(getCookie('speech'))) {
+        if ('speechSynthesis' in window && stringToBoolean(getCookie('speech'))) {
+          var synth = window.speechSynthesis;
+
           if (selectorBviSpeech) {
             if (selectorSpeechText) {
               selectorSpeechText.forEach(function (element) {
@@ -1807,88 +1880,85 @@
               });
             }
 
-            if (selectorSpeechBtn) {
-              selectorSpeechBtn.forEach(function (element) {
+            if (selectorSpeechLink) {
+              selectorSpeechLink.forEach(function (element) {
                 return element.remove();
               });
             }
 
-            selectorBviSpeech.forEach(function (element, index) {
+            selectorBviSpeech.forEach(function (speechDivBlock, index) {
               var id = "bvi-speech-text-id-".concat(index + 1);
-              var div = document.createElement('div');
-              wrapInner(element, 'div', "bvi-speech-text ".concat(id));
-              div.className = 'bvi-speech-btn';
-              div.innerHTML = "\n          <a href=\"#\" class=\"bvi-btn bvi-speech-play\">\u0412\u043E\u0441\u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0441\u0442\u0438</a>\n          <a href=\"#\" class=\"bvi-btn bvi-speech-pause disabled\">\u041F\u0430\u0443\u0437\u0430</a>\n          <a href=\"#\" class=\"bvi-btn bvi-speech-resume disabled\">\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C</a>\n          <a href=\"#\" class=\"bvi-btn bvi-speech-stop disabled\">\u0421\u0442\u043E\u043F</i></a>\n        ";
-              element.prepend(div);
+              var html = "\n            <div class=\"bvi-speech-link\">\n              <a href=\"#\" class=\"bvi-link bvi-speech-play\" title=\"\u0412\u043E\u0441\u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0441\u0442\u0438\">\u0412\u043E\u0441\u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0441\u0442\u0438</a>\n              <a href=\"#\" class=\"bvi-link bvi-speech-pause disabled\" title=\"\u041F\u0430\u0443\u0437\u0430\">\u041F\u0430\u0443\u0437\u0430</a>\n              <a href=\"#\" class=\"bvi-link bvi-speech-resume disabled\" title=\"\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C\">\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C</a>\n              <a href=\"#\" class=\"bvi-link bvi-speech-stop disabled\" title=\"\u0421\u0442\u043E\u043F\">\u0421\u0442\u043E\u043F</i></a>\n          </div>";
+              wrapInner(speechDivBlock, 'div', "bvi-speech-text ".concat(id));
+              speechDivBlock.insertAdjacentHTML('afterbegin', html);
+            });
+            var selectorPlay = document.querySelectorAll('.bvi-speech-play');
+            var selectorPause = document.querySelectorAll('.bvi-speech-pause');
+            var selectorResume = document.querySelectorAll('.bvi-speech-resume');
+            var selectorStop = document.querySelectorAll('.bvi-speech-stop');
+
+            var el = function el(elements, callback) {
+              elements.forEach(function (element) {
+                element.addEventListener('click', function (event) {
+                  event.preventDefault();
+
+                  if (typeof callback === 'function') {
+                    return callback(element, event);
+                  }
+                }, false);
+              });
+            };
+
+            el(selectorPlay, function (element, event) {
+              var target = event.target;
+              var text = target.parentNode.nextElementSibling;
+              var closest = event.target.closest('.bvi-speech-link');
+              var play = document.querySelectorAll('.bvi-speech-play');
+              var pause = document.querySelectorAll('.bvi-speech-pause');
+              var resume = document.querySelectorAll('.bvi-speech-resume');
+              var stop = document.querySelectorAll('.bvi-speech-stop');
+
+              _this4._speech(text.textContent, text, true);
+
+              play.forEach(function (element) {
+                return element.classList.remove('disabled');
+              });
+              pause.forEach(function (element) {
+                return element.classList.add('disabled');
+              });
+              resume.forEach(function (element) {
+                return element.classList.add('disabled');
+              });
+              stop.forEach(function (element) {
+                return element.classList.add('disabled');
+              });
+              target.classList.add('disabled');
+              closest.querySelector('.bvi-speech-pause').classList.remove('disabled');
+              closest.querySelector('.bvi-speech-stop').classList.remove('disabled');
+            });
+            el(selectorPause, function (element, event) {
+              var target = event.target;
+              var closest = event.target.closest('.bvi-speech-link');
+              target.classList.add('disabled');
+              closest.querySelector('.bvi-speech-resume').classList.remove('disabled');
+              synth.pause();
+            });
+            el(selectorResume, function (element, event) {
+              var target = event.target;
+              var closest = event.target.closest('.bvi-speech-link');
+              target.classList.add('disabled');
+              closest.querySelector('.bvi-speech-pause').classList.remove('disabled');
+              synth.resume();
+            });
+            el(selectorStop, function (element, event) {
+              var target = event.target;
+              var closest = event.target.closest('.bvi-speech-link');
+              target.classList.add('disabled');
+              closest.querySelector('.bvi-speech-pause').classList.add('disabled');
+              closest.querySelector('.bvi-speech-play').classList.remove('disabled');
+              synth.cancel();
             });
           }
-
-          var selectorPlay = document.querySelectorAll('.bvi-speech-play');
-          var selectorPause = document.querySelectorAll('.bvi-speech-pause');
-          var selectorResume = document.querySelectorAll('.bvi-speech-resume');
-          var selectorStop = document.querySelectorAll('.bvi-speech-stop');
-
-          var el = function el(elements, callback) {
-            elements.forEach(function (element) {
-              element.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                if (typeof callback === 'function') {
-                  return callback(element, event);
-                }
-              }, false);
-            });
-          };
-
-          el(selectorPlay, function (element, event) {
-            var target = event.target;
-            var text = target.parentNode.nextElementSibling;
-            var closest = event.target.closest('.bvi-speech-btn');
-            var play = document.querySelectorAll('.bvi-speech-play');
-            var pause = document.querySelectorAll('.bvi-speech-pause');
-            var resume = document.querySelectorAll('.bvi-speech-resume');
-            var stop = document.querySelectorAll('.bvi-speech-stop');
-
-            _this4._speech(text.textContent, text, true);
-
-            play.forEach(function (element) {
-              return element.classList.remove('disabled');
-            });
-            pause.forEach(function (element) {
-              return element.classList.add('disabled');
-            });
-            resume.forEach(function (element) {
-              return element.classList.add('disabled');
-            });
-            stop.forEach(function (element) {
-              return element.classList.add('disabled');
-            });
-            target.classList.add('disabled');
-            closest.querySelector('.bvi-speech-pause').classList.remove('disabled');
-            closest.querySelector('.bvi-speech-stop').classList.remove('disabled');
-          });
-          el(selectorPause, function (element, event) {
-            var target = event.target;
-            var closest = event.target.closest('.bvi-speech-btn');
-            target.classList.add('disabled');
-            closest.querySelector('.bvi-speech-resume').classList.remove('disabled');
-            synth.pause();
-          });
-          el(selectorResume, function (element, event) {
-            var target = event.target;
-            var closest = event.target.closest('.bvi-speech-btn');
-            target.classList.add('disabled');
-            closest.querySelector('.bvi-speech-pause').classList.remove('disabled');
-            synth.resume();
-          });
-          el(selectorStop, function (element, event) {
-            var target = event.target;
-            var closest = event.target.closest('.bvi-speech-btn');
-            target.classList.add('disabled');
-            closest.querySelector('.bvi-speech-pause').classList.add('disabled');
-            closest.querySelector('.bvi-speech-play').classList.remove('disabled');
-            synth.cancel();
-          });
         } else {
           if (selectorSpeechText) {
             selectorSpeechText.forEach(function (element) {
@@ -1896,8 +1966,8 @@
             });
           }
 
-          if (selectorSpeechBtn) {
-            selectorSpeechBtn.forEach(function (element) {
+          if (selectorSpeechLink) {
+            selectorSpeechLink.forEach(function (element) {
               return element.remove();
             });
           }
@@ -1905,19 +1975,13 @@
       }
     }, {
       key: "_speech",
-      value: function _speech(text) {
+      value: function _speech(text, element) {
         var _this5 = this;
 
-        var element = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
         var echo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-        if (supportSynthBrowser && stringToBoolean(getCookie('speech'))) {
-          synth.cancel();
-          var voices = synth.getVoices();
-          var chunkLength = 120;
-          var patternRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ');
-          var array = [];
-          var $text = text;
+        if ('speechSynthesis' in window && stringToBoolean(getCookie('speech'))) {
+          var synth = window.speechSynthesis;
 
           var getWordAt = function getWordAt(str, pos) {
             str = String(str);
@@ -1931,6 +1995,13 @@
 
             return str.slice(left, right + pos);
           };
+
+          var voices = synth.getVoices();
+          var chunkLength = 120;
+          var patternRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ');
+          var array = [];
+          var $text = text;
+          synth.cancel();
 
           while ($text.length > 0) {
             array.push($text.match(patternRegex)[0]);
@@ -1955,17 +2026,17 @@
                 element.classList.add('bvi-highlighting');
                 var world = getWordAt(event.utterance.text, event.charIndex);
                 var textContent = element.textContent;
-                var term = world.replace(/(\s+)/, "(<[^>]+>)*$1(<[^>]+>)*");
-                var pattern = new RegExp("(" + term + ")", "gi");
-                textContent = textContent.replace(pattern, "<mark>$1</mark>");
-                textContent = textContent.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/, "$1</mark>$2<mark>$4");
+                var term = world.replace(/(\s+)/, '(<[^>]+>)*$1(<[^>]+>)*');
+                var pattern = new RegExp('(' + term + ')', 'gi');
+                textContent = textContent.replace(pattern, '<mark>$1</mark>');
+                textContent = textContent.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/, '$1</mark>$2<mark>$4');
                 element.innerHTML = textContent;
               };
 
               utter.onend = function (event) {
                 element.classList.remove('bvi-highlighting');
                 var textContent = element.textContent;
-                textContent = textContent.replace(/(<mark>$1<\/mark>)/, "$1");
+                textContent = textContent.replace(/(<mark>$1<\/mark>)/, '$1');
                 element.innerHTML = textContent;
               };
             }
@@ -1973,13 +2044,6 @@
             synth.speak(utter);
           });
         }
-      }
-    }, {
-      key: "_getConfig",
-      value: function _getConfig(config) {
-        config = _objectSpread2(_objectSpread2({}, Default), config);
-        checkConfig(config, DefaultType, DefaultOptions);
-        return config;
       }
     }]);
 

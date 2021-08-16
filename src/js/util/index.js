@@ -124,12 +124,38 @@ const unwrap = wrapper => {
   wrapper.parentNode.replaceChild(docFrag, wrapper)
 }
 
-const getKey = (config, callback) => {
-  Object.keys(config).forEach(key => {
+const getObject = (object, callback) => {
+  Object.keys(object).forEach(key => {
     if (typeof callback === 'function') {
       callback(key)
     }
   })
+}
+
+const getArray = (array, callback) => {
+  Array.from(array).forEach(key => {
+    if (typeof callback === 'function') {
+      callback(key)
+    }
+  })
+}
+
+const inArray = (needle, haystack) => {
+  let length = haystack.length
+
+  for (let i = 0; i < length; i++) {
+    if (haystack[i] === needle) {
+      return true
+    }
+  }
+
+  return false
+}
+
+const synth = () => window.speechSynthesis
+
+const synthSupportBrowser = () => {
+  return 'speechSynthesis' in window
 }
 
 export {
@@ -138,5 +164,9 @@ export {
   stringToBoolean,
   wrapInner,
   unwrap,
-  getKey,
+  getObject,
+  getArray,
+  synth,
+  synthSupportBrowser,
+  inArray,
 }

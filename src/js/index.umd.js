@@ -5,9 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-/*import 'core-js/stable';
-import 'regenerator-runtime/runtime';*/
-import "regenerator-runtime/runtime.js";
+/*import 'core-js/stable';*/
+import 'regenerator-runtime/runtime'
 import Bvi from './bvi'
 
 export default { Bvi }

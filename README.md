@@ -1,5 +1,8 @@
 # Button visually impaired
-Button visually impaired - is a plugin that automatically changes the visually impaired version of your site. The panel on the site for the visually impaired allows the color scheme of the site, font sizes, the synthesizer reads aloud settings changes. Thanks to it, you can use the functions of the site that meet the needs of people with disabilities.
+
+Button visually impaired - is a plugin that automatically changes the visually impaired version of your site. The panel
+on the site for the visually impaired allows the color scheme of the site, font sizes, the synthesizer reads aloud
+settings changes. Thanks to it, you can use the functions of the site that meet the needs of people with disabilities.
 
 * Change the font size (up to 200%);
 * Change the color scheme of the site;
@@ -14,68 +17,94 @@ Button visually impaired - is a plugin that automatically changes the visually i
 * Support for browsers Chrome, Firefox, Safari, Microsoft Edge, Opera;
 
 ### Demo
+
 view demo version [here](https://bvi.isvek.ru/demo/).
 
 ### NPM
+
 ```
 $ npm install bvi
 ```
+
 ### Browser Usage
 
-Download the [latest package](https://github.com/veks/button-visually-impaired-javascript/archive/master.zip). unpack and inspect the contents. You need to copy the `bvi.js` and `bvi.css` or their minified variations to your app `dist` folders as follows.
-Link the required CSS in your document `<head>` tag
+Download the [latest package](https://github.com/veks/button-visually-impaired-javascript/archive/master.zip). unpack
+and inspect the contents. You need to copy the `bvi.js` and `bvi.css` or their minified variations to your app `dist`
+folders as follows. Link the required CSS in your document `<head>` tag
+
 ```html
+
 <link href="dist/css/bvi.css" rel="stylesheet">
 ```
 
-Link the required JS in your document  at the end of the pages, right before the closing `</body>` tag
+Link the required JS in your document at the end of the pages, right before the closing `</body>` tag
+
 ```html
+
 <script src="dist/js/bvi.js"></script>
 ```
 
 Run function with default settings
+
 ```html
+
 <script>
-new isvek.Bvi();
+  new isvek.Bvi();
 </script>
 ```
+
 Run function with your settings
+
 ```html
+
 <script>
-  new isvek.Bvi({
-    target: '.className',
+  new isvek.Bvi('.className', {
     fontSize: 24,
     theme: 'black'
     //...etc
   });
 </script>
 ```
+
 ### Html class
 
 Arbitrary links
+
 ```html
 <a href="#" class="className">version for visually impaired</a>
 ```
 
 Speech synthesis
+
 ```html
+
 <div class="bvi-speech">
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+  type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+  essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+  passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 </div>
 ```
 
 Hide element
+
 ```html
+
 <div class="bvi-hide">The text will be hidden when the plugin is enabled.</div>
 ```
 
 Show element
+
 ```html
+
 <div class="bvi-show">The text will be shown when the plugin is enabled.</div>
 ```
 
 Disable styles div block
+
 ```html
+
 <div class="bvi-no-styles">Plugin styles will not be applied in this block.</div>
 ```
 
@@ -100,7 +129,9 @@ lang | string | 'ru-RU' | (`'ru-RU'`&#124;`'en-US')`| Language |
 ### Changelog
 
 #### 1.0.0
+
 * new version created JavaScript
 
 ### License
+
 [MIT License](https://github.com/veks/button-visually-impaired-javascript/blob/master/README.md)

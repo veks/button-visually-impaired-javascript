@@ -1,43 +1,35 @@
 @mixin loop-size($counter) {
   @while $counter > 0 {
-    &[data-bvi-fontsize='#{$counter}'] {
+    &[data-bvi-fontsize='#{$counter}'] * {
       font-size: (0px + $counter) !important;
-    }
 
-    &[data-bvi-fontsize='#{$counter}'] {
       h1,
       h1 * {
-        font-weight: bold !important;
         font-size: (7px + $counter) !important;
       }
 
       h2,
       h2 * {
-        font-weight: bold !important;
         font-size: (6px + $counter) !important;
       }
 
       h3,
       h3 * {
-        font-weight: bold !important;
         font-size: (5px + $counter) !important;
       }
 
       h4,
       h4 * {
-        font-weight: bold !important;
         font-size: (4px + $counter) !important;
       }
 
       h5,
       h5 * {
-        font-weight: bold !important;
         font-size: (3px + $counter) !important;
       }
 
       h6,
       h6 * {
-        font-weight: bold !important;
         font-size: (2px + $counter) !important;
       }
     }
@@ -49,20 +41,60 @@
 @mixin loop-theme($name, $bg, $color) {
   &[data-bvi-theme='#{$name}']:not(.bvi-no-styles) {
     background-color: $bg !important;
-    background: $bg !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    border-color: $color !important;
     color: $color !important;
     fill: $color !important;
+    border-color: $color !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 
-    &[data-bvi-images='off']:not(.bvi-no-styles) {
-      .bvi-background-image,
-      img.bvi-img {
-        &::before {
-          border: 1px dashed $color;
+  &[data-bvi-theme='#{$name}'] *:not(.bvi-no-styles) {
+    background-color: $bg !important;
+    color: $color !important;
+    fill: $color !important;
+    border-color: $color !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+
+    .bvi-speech-link,
+    .bvi-speech-text {
+      border-color: $color;
+    }
+
+    .bvi-link:not(.bvi-no-styles) {
+      color: $color !important;
+      background-color: transparent !important;
+      text-underline: none !important;
+      outline: 0 !important;
+      text-decoration: none !important;
+
+      &.disabled {
+        color: rgba(red($color), green($color), blue($color), 0.5) !important;
+        border: 1px solid rgba(red($color), green($color), blue($color), 0.5) !important;
+        pointer-events: none;
+        cursor: no-drop;
+        text-decoration: none !important;
+
+        &:focus {
+          color: rgba(red($color), green($color), blue($color), 0.5) !important;
+          border: 1px solid rgba(red($color), green($color), blue($color), 0.5) !important;
+          text-underline: none !important;
+          text-decoration: none !important;
         }
+      }
+
+      &:hover {
+        color: $bg !important;
+        background-color: $color !important;
+        text-underline: none !important;
+        text-decoration: none !important;
+      }
+
+      &:focus {
+        color: $color !important;
+        background-color: $bg !important;
+        text-underline: none !important;
+        text-decoration: none !important;
       }
     }
 
@@ -101,7 +133,7 @@
       fill: $color !important;
     }
 
-    &:after:not(.bvi-no-styles) {
+    &::after:not(.bvi-no-styles) {
       background-color: rgba(255, 255, 255, 0) !important;
       color: $color !important;
       box-shadow: none !important;
@@ -109,7 +141,7 @@
       border-color: transparent !important;
     }
 
-    &:before:not(.bvi-no-styles) {
+    &::before:not(.bvi-no-styles) {
       background-color: rgba(255, 255, 255, 0) !important;
       color: $color !important;
       box-shadow: none !important;
@@ -122,117 +154,29 @@
       color: $bg !important;
     }
 
-    .bvi-speech-btn,
-    .bvi-speech-text {
-      border-color: $color;
-    }
-
-    .bvi-highlighting {
-      background-color: $color !important;
-      color: $bg !important;
-
-      mark {
-        background-color: $bg !important;
-        color: $color !important;
-      }
-    }
-
-    .bvi-speech {
-      a {
-        text-decoration: underline !important;
-
-        &.bvi-btn {
-          border-color: $color;
-          color: $color !important;
-          text-decoration: none !important;
-
-          &.disabled {
-            color: rgba(red($color), green($color), blue($color), 0.5) !important;
-            border: 1px solid rgba(red($color), green($color), blue($color), 0.5) !important;
-            pointer-events: none;
-            cursor: no-drop;
-            text-decoration: none !important;
-
-            &:focus {
-              color: rgba(red($color), green($color), blue($color), 0.5) !important;
-              border: 1px solid rgba(red($color), green($color), blue($color), 0.5) !important;
-              text-underline: none !important;
-              text-decoration: none !important;
-            }
-          }
-
-          &:hover {
-            color: $bg !important;
-            background-color: $color !important;
-            text-underline: none !important;
-            text-decoration: none !important;
-          }
-
-          &:focus {
-            color: $color !important;
-            background-color: $bg !important;
-            text-underline: none !important;
-            text-decoration: none !important;
-          }
-        }
-
-        outline: 0 !important;
-      }
-    }
-
     & a:not(.bvi-no-styles) {
       outline: 0 !important;
       color: $color !important;
       background-color: transparent !important;
-      text-decoration: underline !important;
 
-      &.active,
-      &.show {
+      &.active {
         color: $color !important;
         background-color: $bg !important;
-        text-decoration: none !important;
       }
 
-      &:hover {
+      &:hover:not(.bvi-no-styles) {
         color: $bg !important;
         background-color: $color !important;
-        text-decoration: none !important;
 
         &:after {
           background-color: rgba(255, 255, 255, 0) !important;
           color: $bg !important;
-          box-shadow: none !important;
-          text-shadow: none !important;
           border-color: transparent !important;
         }
 
         &:before {
           background-color: rgba(255, 255, 255, 0) !important;
           color: $bg !important;
-          box-shadow: none !important;
-          text-shadow: none !important;
-          border-color: transparent !important;
-        }
-      }
-
-      &:hover:not(.bvi-no-styles) * {
-        color: $bg !important;
-        background-color: $color !important;
-        text-decoration: none !important;
-
-        &:after {
-          background-color: rgba(255, 255, 255, 0) !important;
-          color: $bg !important;
-          box-shadow: none !important;
-          text-shadow: none !important;
-          border-color: transparent !important;
-        }
-
-        &:before {
-          background-color: rgba(255, 255, 255, 0) !important;
-          color: $bg !important;
-          box-shadow: none !important;
-          text-shadow: none !important;
           border-color: transparent !important;
         }
       }
@@ -245,10 +189,9 @@
     & button[type="button"]:not(.bvi-no-styles) {
       color: $bg !important;
       background-color: $color !important;
-      text-decoration: none !important;
     }
 
-    & button:hover:not(.bvi-no-styles),
+    & button:hover,
     & input[type="button"]:hover:not(.bvi-no-styles),
     & input[type="submit"]:hover:not(.bvi-no-styles),
     & button[type="submit"]:hover:not(.bvi-no-styles),
@@ -256,20 +199,11 @@
       &.active {
         color: $bg !important;
         background-color: $color !important;
-        text-decoration: none !important;
       }
 
       &:hover {
         color: $bg !important;
-        //background: $color !important;
         background-color: $color !important;
-        text-decoration: none !important;
-      }
-
-      &:hover * {
-        color: $bg !important;
-        background-color: $color !important;
-        text-decoration: none !important;
       }
     }
   }
