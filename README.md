@@ -34,14 +34,14 @@ folders as follows. Link the required CSS in your document `<head>` tag
 
 ```html
 
-<link href="dist/css/bvi.css" rel="stylesheet">
+<link href="dist/css/bvi.min.css" rel="stylesheet">
 ```
 
 Link the required JS in your document at the end of the pages, right before the closing `</body>` tag
 
 ```html
 
-<script src="dist/js/bvi.js"></script>
+<script src="dist/js/bvi.min.js"></script>
 ```
 
 Run function with default settings
@@ -58,7 +58,8 @@ Run function with your settings
 ```html
 
 <script>
-  new isvek.Bvi('.className', {
+  new isvek.Bvi({
+    target: '.className',
     fontSize: 24,
     theme: 'black'
     //...etc
@@ -123,7 +124,7 @@ fontFamily | string | 'arial' |  (`arial`&#124;`times`) | Fonts |
 builtElements | boolean | false | (`true`&#124;`false`) | Inline elements are a component of an HTML element that allows you to embed documents, videos, maps, and interactive media into a page.|
 panelFixed | boolean | true | (`true`&#124;`false`) | Fixing the panel for the visually impaired at the top of the page. |
 panelHide | boolean | false | (`true`&#124;`false`) | Hides the panel for the visually impaired and shows the panel icon. |
-reloadPage | boolean | false | (`true`&#124;`false`) | Enable / Disable page reload when switching to the regular version of the site. |
+reload | boolean | false | (`true`&#124;`false`) | Enable / Disable page reload when switching to the regular version of the site. |
 lang | string | 'ru-RU' | (`'ru-RU'`&#124;`'en-US')`| Language |
 
 ### Changelog
