@@ -1,0 +1,14 @@
+/*!
+ * Button visually impaired v1.0.0 (https://bvi.isvek.ru/)
+ * Copyright 2014-2021 <bvi@isvek.ru>
+ * Licensed under MIT (https://github.com/veks/button-visually-impaired-javascript/blob/master/LICENSE.md)
+ */
+
+// Configuration
+@import "variables";
+@import "mixins/body";
+
+// Components
+@import "panel";
+@import "body";
+@import "images";

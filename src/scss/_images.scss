@@ -1,0 +1,62 @@
+.bvi-images {
+  width: 18px;
+  height: 18px;
+  letter-spacing: normal;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 1;
+  background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+
+  &.bvi-images-cog {
+    background-image:  url("../img/cog.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-eye-slash {
+    background-image: url("../img/eye-slash.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-volume-up {
+    background-image: url("../img/volume-up.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-volume-off {
+    background-image: url("../img/volume-off.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-adjust {
+    background-image: url("../img/adjust.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-minus-circle {
+    background-image: url("../img/minus-circle.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-image {
+    background-image: url("../img/image.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-minus {
+    background-image:  url("../img/minus.svg");
+    background-repeat: no-repeat;
+  }
+
+  &.bvi-images-eye {
+    background-image: url("../img/eye.svg");
+    background-repeat: no-repeat;
+    fill: green;
+  }
+
+  &.bvi-images-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}

@@ -1,0 +1,210 @@
+@mixin loop-size($counter) {
+  @while $counter > 0 {
+    &[data-bvi-fontsize='#{$counter}'] * {
+      font-size: (0px + $counter) !important;
+
+      h1,
+      h1 * {
+        font-size: (7px + $counter) !important;
+      }
+
+      h2,
+      h2 * {
+        font-size: (6px + $counter) !important;
+      }
+
+      h3,
+      h3 * {
+        font-size: (5px + $counter) !important;
+      }
+
+      h4,
+      h4 * {
+        font-size: (4px + $counter) !important;
+      }
+
+      h5,
+      h5 * {
+        font-size: (3px + $counter) !important;
+      }
+
+      h6,
+      h6 * {
+        font-size: (2px + $counter) !important;
+      }
+    }
+
+    $counter: $counter - 1;
+  }
+}
+
+@mixin loop-theme($name, $bg, $color) {
+  &[data-bvi-theme='#{$name}']:not(.bvi-no-styles) {
+    background-color: $bg !important;
+    color: $color !important;
+    fill: $color !important;
+    border-color: $color !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  &[data-bvi-theme='#{$name}'] *:not(.bvi-no-styles) {
+    background-color: $bg !important;
+    color: $color !important;
+    fill: $color !important;
+    border-color: $color !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+
+    .bvi-speech-link,
+    .bvi-speech-text {
+      border-color: $color;
+    }
+
+    .bvi-link:not(.bvi-no-styles) {
+      color: $color !important;
+      background-color: transparent !important;
+      text-underline: none !important;
+      outline: 0 !important;
+      text-decoration: none !important;
+
+      &.disabled {
+        color: rgba(red($color), green($color), blue($color), 0.5) !important;
+        border: 1px solid rgba(red($color), green($color), blue($color), 0.5) !important;
+        pointer-events: none;
+        cursor: no-drop;
+        text-decoration: none !important;
+
+        &:focus {
+          color: rgba(red($color), green($color), blue($color), 0.5) !important;
+          border: 1px solid rgba(red($color), green($color), blue($color), 0.5) !important;
+          text-underline: none !important;
+          text-decoration: none !important;
+        }
+      }
+
+      &:hover {
+        color: $bg !important;
+        background-color: $color !important;
+        text-underline: none !important;
+        text-decoration: none !important;
+      }
+
+      &:focus {
+        color: $color !important;
+        background-color: $bg !important;
+        text-underline: none !important;
+        text-decoration: none !important;
+      }
+    }
+
+    :checked:not(.bvi-no-styles),
+    :default:not(.bvi-no-styles),
+    :disabled:not(.bvi-no-styles),
+    :empty:not(.bvi-no-styles),
+    :enabled:not(.bvi-no-styles),
+    :first-child:not(.bvi-no-styles),
+    :first-of-type:not(.bvi-no-styles),
+    :focus:not(.bvi-no-styles),
+    :indeterminate:not(.bvi-no-styles),
+    :hover:not(.bvi-no-styles),
+    :last-child:not(.bvi-no-styles),
+    :last-of-type:not(.bvi-no-styles),
+    :link:not(.bvi-no-styles),
+    :nth-last-child:not(.bvi-no-styles),
+    :nth-last-of-type:not(.bvi-no-styles),
+    :nth-of-type:not(.bvi-no-styles),
+    :only-child:not(.bvi-no-styles),
+    :only-of-type:not(.bvi-no-styles),
+    :optional:not(.bvi-no-styles),
+    :read-write:not(.bvi-no-styles),
+    :required:not(.bvi-no-styles),
+    :root:not(.bvi-no-styles),
+    :target:not(.bvi-no-styles),
+    :valid:not(.bvi-no-styles),
+    :visited:not(.bvi-no-styles),
+    :first-child:first-letter:not(.bvi-no-styles),
+    :default:not(.bvi-no-styles) {
+      background-color: $bg !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      border-color: $color !important;
+      color: $color !important;
+      fill: $color !important;
+    }
+
+    &::after:not(.bvi-no-styles) {
+      background-color: rgba(255, 255, 255, 0) !important;
+      color: $color !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      border-color: transparent !important;
+    }
+
+    &::before:not(.bvi-no-styles) {
+      background-color: rgba(255, 255, 255, 0) !important;
+      color: $color !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      border-color: transparent !important;
+    }
+
+    &::selection:not(.bvi-no-styles) {
+      background-color: $color !important;
+      color: $bg !important;
+    }
+
+    & a:not(.bvi-no-styles) {
+      outline: 0 !important;
+      color: $color !important;
+      background-color: transparent !important;
+
+      &.active {
+        color: $color !important;
+        background-color: $bg !important;
+      }
+
+      &:hover:not(.bvi-no-styles) {
+        color: $bg !important;
+        background-color: $color !important;
+
+        &:after {
+          background-color: rgba(255, 255, 255, 0) !important;
+          color: $bg !important;
+          border-color: transparent !important;
+        }
+
+        &:before {
+          background-color: rgba(255, 255, 255, 0) !important;
+          color: $bg !important;
+          border-color: transparent !important;
+        }
+      }
+    }
+
+    & button:not(.bvi-no-styles),
+    & input[type="submit"]:not(.bvi-no-styles),
+    & input[type="button"]:not(.bvi-no-styles),
+    & button[type="submit"]:not(.bvi-no-styles),
+    & button[type="button"]:not(.bvi-no-styles) {
+      color: $bg !important;
+      background-color: $color !important;
+    }
+
+    & button:hover,
+    & input[type="button"]:hover:not(.bvi-no-styles),
+    & input[type="submit"]:hover:not(.bvi-no-styles),
+    & button[type="submit"]:hover:not(.bvi-no-styles),
+    & button[type="button"]:hover:not(.bvi-no-styles) {
+      &.active {
+        color: $bg !important;
+        background-color: $color !important;
+      }
+
+      &:hover {
+        color: $bg !important;
+        background-color: $color !important;
+      }
+    }
+  }
+}
