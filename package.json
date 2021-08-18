@@ -1,6 +1,6 @@
 {
   "name": "bvi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Button visually impaired - is a plugin that automatically changes the visually impaired version of your site. The panel on the site for the visually impaired allows the color scheme of the site, font sizes, the synthesizer reads aloud settings changes. Thanks to it, you can use the functions of the site that meet the needs of people with disabilities.",
   "license": "MIT",
   "type": "module",
