@@ -26,10 +26,13 @@ view demo version [here](https://bvi.isvek.ru/demo/).
 $ npm install bvi
 ```
 
+``` javascript
+import bvi from "bvi"
+```
 ### Browser Usage
 
 Download the [latest package](https://github.com/veks/button-visually-impaired-javascript/archive/master.zip). unpack
-and inspect the contents. You need to copy the `bvi.js` and `bvi.css` or their minified variations to your app `dist`
+and inspect the contents. You need to copy the `bvi.min.js` and `bvi.min.css` or their minified variations to your app `dist`
 folders as follows. Link the required CSS in your document `<head>` tag
 
 ```html

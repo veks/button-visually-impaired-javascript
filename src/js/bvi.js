@@ -12,6 +12,7 @@ import {
   unwrap,
   getObject,
   getArray,
+  synth,
 } from './util'
 
 import {
@@ -111,10 +112,9 @@ class Bvi {
       this._speechPlayer()
 
       if ('speechSynthesis' in window && stringToBoolean(getCookie('speech'))) {
-        const synth = window.speechSynthesis
 
         setInterval(() => {
-          if (synth.pending === false) {
+          if (synth().pending === false) {
             let play = document.querySelectorAll('.bvi-speech-play')
             let pause = document.querySelectorAll('.bvi-speech-pause')
             let resume = document.querySelectorAll('.bvi-speech-resume')
@@ -150,8 +150,8 @@ class Bvi {
         getObject(this._config, key => setCookie(key, this._config[key]))
         setCookie('panelActive', true)
 
-        this._speech(`${this._i18n.v('panelOn')}`)
         this._init()
+        this._speech(`${this._i18n.v('panelOn')}`)
       })
     })
 
@@ -701,7 +701,6 @@ class Bvi {
     let selectorBviSpeech = document.querySelectorAll('.bvi-speech')
 
     if ('speechSynthesis' in window && stringToBoolean(getCookie('speech'))) {
-      const synth = window.speechSynthesis
 
       if (selectorBviSpeech) {
         if (selectorSpeechText) {
@@ -768,7 +767,7 @@ class Bvi {
 
           target.classList.add('disabled')
           closest.querySelector('.bvi-speech-resume').classList.remove('disabled')
-          synth.pause()
+          synth().pause()
         })
 
         el(selectorResume, (element, event) => {
@@ -777,7 +776,7 @@ class Bvi {
 
           target.classList.add('disabled')
           closest.querySelector('.bvi-speech-pause').classList.remove('disabled')
-          synth.resume()
+          synth().resume()
         })
 
         el(selectorStop, (element, event) => {
@@ -787,7 +786,7 @@ class Bvi {
           target.classList.add('disabled')
           closest.querySelector('.bvi-speech-pause').classList.add('disabled')
           closest.querySelector('.bvi-speech-play').classList.remove('disabled')
-          synth.cancel();
+          synth().cancel();
         })
       }
     } else {
@@ -803,7 +802,7 @@ class Bvi {
 
   _speech(text, element, echo = false) {
     if ('speechSynthesis' in window && stringToBoolean(getCookie('speech'))) {
-      const synth = window.speechSynthesis
+      synth().cancel()
       const getWordAt = (str, pos) => {
         str = String(str)
         pos = Number(pos) >>> 0
@@ -816,12 +815,12 @@ class Bvi {
         }
         return str.slice(left, right + pos)
       }
-      let voices = synth.getVoices()
+
+      let voices = synth().getVoices()
       let chunkLength = 120
       let patternRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ')
       let array = []
       let $text = text
-      synth.cancel()
 
       while ($text.length > 0) {
         array.push($text.match(patternRegex)[0])
@@ -833,10 +832,14 @@ class Bvi {
         utter.volume = 1
         utter.rate = 1
         utter.pitch = 1
-        utter.lang = `${this._config.lang}`
+        utter.lang = this._config.lang
 
         for (let i = 0; i < voices.length; i++) {
-          if (voices[i].lang === this._config.lang && voices[i].name === 'Microsoft Pavel - Russian (Russia)') {
+          if (this._config.lang === 'ru-RU' && voices[i].name === 'Microsoft Pavel - Russian (Russia)') {
+            utter.voice = voices[i]
+          }
+
+          if (this._config.lang === 'en-US' && voices[i].name === 'Microsoft Pavel - English (English)') {
             utter.voice = voices[i]
           }
         }
@@ -861,7 +864,7 @@ class Bvi {
           }
         }
 
-        synth.speak(utter)
+        synth().speak(utter)
       })
     }
   }
