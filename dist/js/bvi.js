@@ -1995,11 +1995,11 @@
             return str.slice(left, right + pos);
           };
 
-          var voices = synth().getVoices();
           var chunkLength = 120;
           var patternRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ');
           var array = [];
           var $text = text;
+          var voices = synth().getVoices();
 
           while ($text.length > 0) {
             array.push($text.match(patternRegex)[0]);
@@ -2028,7 +2028,7 @@
                 element.classList.add('bvi-highlighting');
                 var world = getWordAt(event.utterance.text, event.charIndex);
                 var textContent = element.textContent;
-                var term = world.replace(/(\s+)/, '(<[^>]+>)*$1(<[^>]+>)*');
+                var term = world.replace(/(\s+)/, '((<[^>]+>)*$1(<[^>]+>)*)');
                 var pattern = new RegExp('(' + term + ')', 'gi');
                 textContent = textContent.replace(pattern, '<mark>$1</mark>');
                 textContent = textContent.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/, '$1</mark>$2<mark>$4');

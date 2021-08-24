@@ -816,11 +816,11 @@ class Bvi {
         return str.slice(left, right + pos)
       }
 
-      let voices = synth().getVoices()
       let chunkLength = 120
       let patternRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ')
       let array = []
       let $text = text
+      let voices = synth().getVoices()
 
       while ($text.length > 0) {
         array.push($text.match(patternRegex)[0])
@@ -845,18 +845,19 @@ class Bvi {
         }
 
         if (echo) {
-          utter.onboundary = function (event) {
+          utter.onboundary = event => {
+
             element.classList.add('bvi-highlighting')
             let world = getWordAt(event.utterance.text, event.charIndex)
             let textContent = element.textContent
-            let term = world.replace(/(\s+)/, '(<[^>]+>)*$1(<[^>]+>)*')
+            let term = world.replace(/(\s+)/, '((<[^>]+>)*$1(<[^>]+>)*)')
             let pattern = new RegExp('(' + term + ')', 'gi')
             textContent = textContent.replace(pattern, '<mark>$1</mark>')
             textContent = textContent.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/, '$1</mark>$2<mark>$4')
             element.innerHTML = textContent
           }
 
-          utter.onend = function (event) {
+          utter.onend = event => {
             element.classList.remove('bvi-highlighting')
             let textContent = element.textContent
             textContent = textContent.replace(/(<mark>$1<\/mark>)/, '$1')
