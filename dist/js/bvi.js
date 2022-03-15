@@ -1081,7 +1081,7 @@
     var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
     name = "bvi_".concat(name, "=");
     var decodedCookie = decodeURIComponent(document.cookie);
-    var cookies = decodedCookie.split(',');
+    var cookies = decodedCookie.split(';');
 
     for (var i = 0; i < cookies.length; i++) {
       var cookie = cookies[i].trim();

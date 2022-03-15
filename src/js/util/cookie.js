@@ -16,7 +16,7 @@ const setCookie = function (name = '', value = '') {
 const getCookie = function (name = '') {
   name = `bvi_${name}=`;
   let decodedCookie = decodeURIComponent(document.cookie);
-  let cookies = decodedCookie.split(',');
+  let cookies = decodedCookie.split(';');
 
   for (let i = 0; i < cookies.length; i++) {
     let cookie = cookies[i].trim();
