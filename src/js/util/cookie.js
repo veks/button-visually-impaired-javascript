@@ -10,25 +10,26 @@ const setCookie = function (name = '', value = '') {
   let time = now.getTime();
   time += 24 * 60 * 60 * 1000;
   now.setTime(time);
-  document.cookie = `bvi_${name}=${value};path=/;expires=${now.toUTCString()};domain=${location.host}`;
+  document.cookie = `bvi_${name}=${value},path=/,expires=${now.toUTCString()},domain=${location.host}`;
 };
 
 const getCookie = function (name = '') {
   name = `bvi_${name}=`;
   let decodedCookie = decodeURIComponent(document.cookie);
-  let cookies = decodedCookie.split(';');
+  let cookies = decodedCookie.split(',');
 
   for (let i = 0; i < cookies.length; i++) {
     let cookie = cookies[i].trim();
 
     if (cookie.indexOf(name) !== -1) {
-      return cookie.substring(name.length, cookie.length);
+      let options = cookie.split(",");
+      return options[0].substring(name.length, options[0].length);
     }
   }
 };
 
 const removeCookie = function (name = '') {
-  document.cookie = `bvi_${name}=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;domain=${location.host}`;
+  document.cookie = `bvi_${name}=,path=/,expires=Thu, 01 Jan 1970 00:00:01 GMT,domain=${location.host}`;
 };
 
 export {
