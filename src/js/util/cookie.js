@@ -10,7 +10,7 @@ const setCookie = function (name = '', value = '') {
   let time = now.getTime();
   time += 24 * 60 * 60 * 1000;
   now.setTime(time);
-  document.cookie = `bvi_${name}=${value};path=/;expires=${now.toUTCString()};domain=${location.host}`;
+  document.cookie = `bvi_${name}=${value};path=/;expires=${now.toUTCString()};domain=${location.hostname !== 'localhost' ? location.host : 'localhost'}`;
 };
 
 const getCookie = function (name = '') {
@@ -28,7 +28,7 @@ const getCookie = function (name = '') {
 };
 
 const removeCookie = function (name = '') {
-  document.cookie = `bvi_${name}=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;domain=${location.host}`;
+  document.cookie = `bvi_${name}=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;domain=${location.hostname !== 'localhost' ? location.host : 'localhost'}`;
 };
 
 export {
