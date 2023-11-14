@@ -27,7 +27,9 @@ $ npm install bvi
 ```
 
 ``` javascript
-import bvi from "bvi"
+import * as isvek from "bvi"
+
+new isvek.Bvi()
 ```
 ### Browser Usage
 
