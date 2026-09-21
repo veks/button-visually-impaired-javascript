@@ -22,6 +22,10 @@ Button visually impaired — плагин, который добавляет н�
 
 Демо-версия доступна [здесь](https://bvi.isvek.ru/demo/).
 
+Тестовые страницы с готовыми сценариями и со всеми видами элементов форм доступны на GitHub Pages:
+[Русский](https://veks.github.io/button-visually-impaired-javascript/test/) и
+[English](https://veks.github.io/button-visually-impaired-javascript/test/en.html).
+
 ### NPM
 
 ```

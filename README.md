@@ -22,6 +22,10 @@ every change and any text you mark.
 
 view demo version [here](https://bvi.isvek.ru/demo/).
 
+The test pages with ready-made scenarios and every kind of form control are on GitHub Pages:
+[English](https://veks.github.io/button-visually-impaired-javascript/test/en.html) and
+[Русский](https://veks.github.io/button-visually-impaired-javascript/test/).
+
 ### NPM
 
 ```
