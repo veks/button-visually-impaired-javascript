@@ -1,0 +1,33 @@
+/// Стили компонента «themes» пакета Button visually impaired.
+/// @group variables
+
+/// Цвет текста светлой темы.
+/// @type Color
+$theme-color-white: #000 !default;
+/// Цвет текста тёмной темы.
+/// @type Color
+$theme-color-black: #fff !default;
+/// Цвет текста синей темы.
+/// @type Color
+$theme-color-blue: #063462 !default;
+/// Цвет текста коричневой темы.
+/// @type Color
+$theme-color-brown: #4D4B43 !default;
+/// Цвет текста зелёной темы.
+/// @type Color
+$theme-color-green: #A9E44D !default;
+/// Цвет фона светлой темы.
+/// @type Color
+$theme-bg-white: #fff !default;
+/// Цвет фона тёмной темы.
+/// @type Color
+$theme-bg-black: #000 !default;
+/// Цвет фона синей темы.
+/// @type Color
+$theme-bg-blue: #9DD1FF !default;
+/// Цвет фона коричневой темы.
+/// @type Color
+$theme-bg-brown: #F7F3D6 !default;
+/// Цвет фона зелёной темы.
+/// @type Color
+$theme-bg-green: #3B2716 !default;

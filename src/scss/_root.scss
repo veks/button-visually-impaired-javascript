@@ -1,0 +1,105 @@
+/// Публичные CSS-свойства для настройки панели без пересборки Sass.
+/// @group bvi
+
+@use "variables";
+
+:root {
+  --bvi-panel-color: #{variables.$panel-color};
+  --bvi-panel-contrast-color: #{variables.$panel-contrast-color};
+  --bvi-panel-bg: #{variables.$panel-bg};
+  --bvi-panel-accent: #{variables.$panel-accent};
+  --bvi-panel-accent-strong: #{variables.$panel-accent-strong};
+  --bvi-panel-font-family: #{variables.$panel-font-family};
+  --bvi-panel-font-size: #{variables.$panel-font-size};
+  --bvi-panel-padding: #{variables.$panel-padding};
+  --bvi-panel-shadow: #{variables.$panel-shadow};
+  --bvi-panel-z-index: #{variables.$panel-z-index};
+  --bvi-panel-slide-duration: #{variables.$panel-slide-duration};
+  --bvi-panel-slide-easing: #{variables.$panel-slide-easing};
+  --bvi-panel-menu-duration: #{variables.$panel-menu-duration};
+  --bvi-panel-menu-easing: #{variables.$panel-menu-easing};
+  --bvi-panel-blocks-max-width: #{variables.$panel-blocks-max-width};
+  --bvi-panel-blocks-gap: #{variables.$panel-blocks-gap};
+  --bvi-panel-blocks-mobile-gap: #{variables.$panel-blocks-mobile-gap};
+  --bvi-panel-blocks-tablet-gap: #{variables.$panel-blocks-tablet-gap};
+  --bvi-panel-block-padding: #{variables.$panel-block-padding};
+  --bvi-panel-block-tablet-padding: #{variables.$panel-block-tablet-padding};
+  --bvi-panel-block-mobile-padding: #{variables.$panel-block-mobile-padding};
+  --bvi-panel-link-margin: #{variables.$panel-link-margin};
+  --bvi-panel-block-title-margin-bottom: #{variables.$panel-block-title-margin-bottom};
+  --bvi-panel-block-title-mobile-margin-bottom: #{variables.$panel-block-title-mobile-margin-bottom};
+  --bvi-panel-select-max-width: #{variables.$panel-select-max-width};
+  --bvi-panel-select-min-height: #{variables.$panel-select-min-height};
+  --bvi-panel-select-padding: #{variables.$panel-select-padding};
+  --bvi-panel-select-border-color: #{variables.$panel-select-border-color};
+  --bvi-panel-select-border-width: #{variables.$panel-select-border-width};
+  --bvi-panel-select-radius: #{variables.$panel-select-radius};
+  --bvi-panel-select-arrow-size: #{variables.$panel-select-arrow-size};
+  --bvi-panel-select-arrow-offset: #{variables.$panel-select-arrow-offset};
+  --bvi-link-color: #{variables.$link-color};
+  --bvi-link-bg: #{variables.$link-bg};
+  --bvi-link-hover: #{variables.$link-hover};
+  --bvi-link-border-color: #{variables.$link-border-color};
+  --bvi-link-active-color: #{variables.$link-active-color};
+  --bvi-link-active-bg: #{variables.$link-active-bg};
+  --bvi-link-active-border-color: #{variables.$link-active-border-color};
+  --bvi-link-min-size: #{variables.$link-min-size};
+  --bvi-link-font-size: #{variables.$link-font-size};
+  --bvi-link-border-width: #{variables.$link-border-width};
+  --bvi-link-padding: #{variables.$link-padding};
+  --bvi-link-radius: #{variables.$link-radius};
+  --bvi-link-focus-width: #{variables.$link-focus-width};
+  --bvi-link-focus-offset: #{variables.$link-focus-offset};
+  --bvi-link-active-inner-ring-width: #{variables.$link-active-inner-ring-width};
+  --bvi-link-transition: #{variables.$link-transition};
+  --bvi-link-active-duration: #{variables.$link-active-duration};
+  --bvi-link-active-easing: #{variables.$link-active-easing};
+  --bvi-link-compact-padding: #{variables.$link-compact-padding};
+  --bvi-theme-white-color: #{variables.$theme-color-white};
+  --bvi-theme-white-bg: #{variables.$theme-bg-white};
+  --bvi-theme-black-color: #{variables.$theme-color-black};
+  --bvi-theme-black-bg: #{variables.$theme-bg-black};
+  --bvi-theme-blue-color: #{variables.$theme-color-blue};
+  --bvi-theme-blue-bg: #{variables.$theme-bg-blue};
+  --bvi-theme-brown-color: #{variables.$theme-color-brown};
+  --bvi-theme-brown-bg: #{variables.$theme-bg-brown};
+  --bvi-theme-green-color: #{variables.$theme-color-green};
+  --bvi-theme-green-bg: #{variables.$theme-bg-green};
+
+  --bvi-site-color: var(--bvi-theme-white-color);
+  --bvi-site-bg: var(--bvi-theme-white-bg);
+  --bvi-modal-z-index: #{variables.$modal-z-index};
+  --bvi-modal-overlay-color: #{variables.$modal-overlay-color};
+  --bvi-modal-transition-duration: #{variables.$modal-transition-duration};
+  --bvi-modal-transition-easing: #{variables.$modal-transition-easing};
+  --bvi-modal-max-width: #{variables.$modal-max-width};
+  --bvi-modal-dialog-margin: #{variables.$modal-dialog-margin};
+  --bvi-modal-dialog-vertical-offset: #{variables.$modal-dialog-vertical-offset};
+  --bvi-modal-border-color: #{variables.$modal-border-color};
+  --bvi-modal-border-width: #{variables.$modal-border-width};
+  --bvi-modal-radius: #{variables.$modal-radius};
+  --bvi-modal-shadow: #{variables.$modal-shadow};
+  --bvi-modal-divider-color: #{variables.$modal-divider-color};
+  --bvi-modal-header-footer-padding: #{variables.$modal-header-footer-padding};
+  --bvi-modal-footer-gap: #{variables.$modal-footer-gap};
+  --bvi-modal-body-padding: #{variables.$modal-body-padding};
+  --bvi-modal-title-font-size: #{variables.$modal-title-font-size};
+  --bvi-modal-title-font-weight: #{variables.$modal-title-font-weight};
+  --bvi-modal-scrollbar-width: #{variables.$modal-scrollbar-width};
+  --bvi-modal-scrollbar-radius: #{variables.$modal-scrollbar-radius};
+  --bvi-modal-close-font-size: #{variables.$modal-close-font-size};
+  --bvi-modal-close-text-shadow: #{variables.$modal-close-text-shadow};
+  --bvi-modal-close-opacity: #{variables.$modal-close-opacity};
+  --bvi-modal-mobile-gutter: #{variables.$modal-mobile-gutter};
+  --bvi-modal-mobile-header-footer-padding: #{variables.$modal-mobile-header-footer-padding};
+  --bvi-modal-mobile-body-padding: #{variables.$modal-mobile-body-padding};
+  --bvi-modal-blocks-gap: #{variables.$modal-blocks-gap};
+  --bvi-modal-block-padding: #{variables.$modal-block-padding};
+  --bvi-modal-block-title-margin-bottom: #{variables.$modal-block-title-margin-bottom};
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+  :root {
+    --bvi-link-hover: color-mix(in oklch, var(--bvi-link-bg) 88%, var(--bvi-panel-accent));
+  }
+}

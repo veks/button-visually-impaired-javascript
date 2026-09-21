@@ -1,0 +1,41 @@
+/// Стили компонента «buttons» пакета Button visually impaired.
+/// @group variables
+
+@use "panel";
+
+/// Цвет текста кнопок.
+/// @type Color
+$link-color: panel.$panel-color !default;
+/// Цвет фона кнопок.
+/// @type Color
+$link-bg: var(--bvi-site-bg) !default;
+/// Цвет фона кнопок при наведении.
+/// @type Color
+$link-hover: color-mix(in oklch, $link-bg 88%, panel.$panel-accent) !default;
+/// Цвет рамки кнопок.
+/// @type Color
+$link-border-color: panel.$panel-accent !default;
+/// Цвет текста активной кнопки.
+/// @type Color
+$link-active-color: panel.$panel-contrast-color !default;
+/// Цвет фона активной кнопки.
+/// @type Color
+$link-active-bg: panel.$panel-accent !default;
+/// Цвет рамки активной кнопки.
+/// @type Color
+$link-active-border-color: panel.$panel-accent-strong !default;
+/// Геометрия кнопок панели.
+$link-min-size: 2.75rem !default;
+$link-font-size: 1rem !default;
+$link-border-width: .125rem !default;
+$link-padding: .375rem .75rem !default;
+$link-radius: 1rem !default;
+$link-focus-width: .1875rem !default;
+$link-focus-offset: .125rem !default;
+$link-active-inner-ring-width: .125rem !default;
+/// Плавность наведения.
+$link-transition: background-color .15s ease-in-out !default;
+/// Анимация активации.
+$link-active-duration: .35s !default;
+$link-active-easing: ease-out !default;
+$link-compact-padding: .5rem !default;

@@ -1,0 +1,34 @@
+/// Миксины модального окна.
+/// @group mixins
+
+@use "../variables";
+
+/// Растягивает модальное окно почти на весь экран.
+/// @output Правила содержимого `.bvi-modal` внутри `.bvi-modal`.
+@mixin modal-fullscreen {
+  padding:
+    max(var(--bvi-modal-mobile-gutter, #{variables.$modal-mobile-gutter}), env(safe-area-inset-top))
+    max(var(--bvi-modal-mobile-gutter, #{variables.$modal-mobile-gutter}), env(safe-area-inset-right))
+    max(var(--bvi-modal-mobile-gutter, #{variables.$modal-mobile-gutter}), env(safe-area-inset-bottom))
+    max(var(--bvi-modal-mobile-gutter, #{variables.$modal-mobile-gutter}), env(safe-area-inset-left));
+
+  .bvi-modal-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+  }
+
+  .bvi-modal-content {
+    max-height: 100%;
+  }
+
+  .bvi-modal-header,
+  .bvi-modal-footer {
+    padding: var(--bvi-modal-mobile-header-footer-padding, #{variables.$modal-mobile-header-footer-padding});
+  }
+
+  .bvi-modal-body {
+    padding: var(--bvi-modal-mobile-body-padding, #{variables.$modal-mobile-body-padding});
+  }
+}

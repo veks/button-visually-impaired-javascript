@@ -1,0 +1,29 @@
+/// Стили компонента «base» пакета Button visually impaired.
+/// @group page
+
+@use "../variables";
+@use "../mixins";
+
+body {
+  &.bvi-active {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+
+    &.bvi-noscroll {
+      overflow: hidden !important;
+    }
+  }
+
+  .bvi-body {
+    padding: 0 .5rem;
+
+    @include mixins.loop-theme('white', variables.$theme-bg-white, variables.$theme-color-white);
+    @include mixins.loop-theme('black', variables.$theme-bg-black, variables.$theme-color-black);
+    @include mixins.loop-theme('blue', variables.$theme-bg-blue, variables.$theme-color-blue);
+    @include mixins.loop-theme('brown', variables.$theme-bg-brown, variables.$theme-color-brown);
+    @include mixins.loop-theme('green', variables.$theme-bg-green, variables.$theme-color-green);
+    @include mixins.loop-size(40);
+  }
+}

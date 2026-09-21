@@ -1,0 +1,9 @@
+/// Стили компонента «themes» пакета Button visually impaired.
+/// @group panel
+
+@each $name in ("white", "black", "blue", "brown", "green") {
+  html:has(.bvi-body[data-bvi-theme="#{$name}"]) {
+    --bvi-site-bg: var(--bvi-theme-#{$name}-bg);
+    --bvi-site-color: var(--bvi-theme-#{$name}-color);
+  }
+}

@@ -1,0 +1,20 @@
+/// Стили компонента «embeds» пакета Button visually impaired.
+/// @group page
+
+@use "../mixins";
+
+body {
+  .bvi-body {
+    &[data-bvi-builtelements='true']:not(.bvi-no-styles) {
+      @include mixins.embedded-elements {
+        display: block !important;
+      }
+    }
+
+    &[data-bvi-builtelements='false']:not(.bvi-no-styles) {
+      @include mixins.embedded-elements {
+        display: none !important;
+      }
+    }
+  }
+}

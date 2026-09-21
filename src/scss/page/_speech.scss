@@ -1,0 +1,36 @@
+/// Стили компонента «speech» пакета Button visually impaired.
+/// @group page
+
+body {
+  .bvi-body {
+    .bvi-speech {
+      margin-bottom: 1.5rem;
+
+      .bvi-speech-link {
+        display: inline-block;
+        border: .0625rem dashed transparent;
+        border-bottom: 0;
+        padding: .7rem;
+      }
+
+      .bvi-speech-text {
+        border: .0625rem dashed transparent;
+        padding: .7rem;
+      }
+
+      .bvi-highlighting {
+        &.bvi-highlighting-fallback {
+          outline: .125rem solid currentColor;
+          outline-offset: .125rem;
+        }
+
+        .bvi-speech-word-active {
+          font-weight: bold;
+          outline: .125rem solid currentColor;
+          outline-offset: .125rem;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

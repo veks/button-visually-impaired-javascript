@@ -1,0 +1,33 @@
+/// Стили компонента «svg» пакета Button visually impaired.
+/// @group functions
+
+@use "sass:string";
+
+/// Рекурсивно заменяет все вхождения подстроки.
+/// @param {String} $string - Исходная строка.
+/// @param {String} $search - Искомая подстрока.
+/// @param {String} $replace - Строка замены.
+/// @return {String} Преобразованная строка.
+/// @since 2.0.0
+@function str-replace($string, $search, $replace) {
+  $index: string.index($string, $search);
+
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace +
+      str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+/// Кодирует SVG-разметку для использования в `data:` URI.
+/// @param {String} $svg - SVG-разметка.
+/// @return {String} CSS-значение `url()`.
+/// @since 2.0.0
+@function svg-uri($svg) {
+  $encoded: str-replace($svg, "<", "%3C");
+  $encoded: str-replace($encoded, ">", "%3E");
+  $encoded: str-replace($encoded, "#", "%23");
+
+  @return url("data:image/svg+xml,#{$encoded}");
+}

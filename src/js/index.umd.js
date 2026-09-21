@@ -1,12 +1,13 @@
 /**
- * --------------------------------------------------------------------------
- * Button visually impaired (v1.0.0): index.umd.js
- * Licensed under MIT (https://github.com/veks/button-visually-impaired-javascript/blob/master/LICENSE.md)
- * --------------------------------------------------------------------------
+ * UMD-точка входа библиотеки: экспорт по умолчанию Rollup превращает в глобальную переменную `isvek`
+ * (`isvek.Bvi`, `isvek.Speech`), поэтому внутри проекта его никто не импортирует.
+ * @module bvi/umd
+ * @noinspection JSUnusedGlobalSymbols
  */
-
-/*import 'core-js/stable';*/
-import 'regenerator-runtime/runtime'
 import Bvi from './bvi'
+import Speech from './speech'
 
-export default { Bvi }
+export default {
+  Bvi,
+  Speech,
+}

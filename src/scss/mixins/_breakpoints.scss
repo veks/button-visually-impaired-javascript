@@ -1,0 +1,28 @@
+/// Миксины адаптивности панели.
+/// @group mixins
+
+$_breakpoint-gap: .00125rem;
+
+/// Правила от заданной ширины viewport и шире.
+/// @param {Number} $width - Граница из `variables.$breakpoint-*`.
+@mixin up($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+/// Правила строго уже заданной ширины viewport.
+/// @param {Number} $width - Граница из `variables.$breakpoint-*`.
+@mixin down($width) {
+  @media (max-width: $width - $_breakpoint-gap) {
+    @content;
+  }
+}
+
+/// Правила для низкого viewport, например телефона в ландшафте.
+/// @param {Number} $height - Граница из `variables.$breakpoint-short`.
+@mixin short($height) {
+  @media (max-height: $height) {
+    @content;
+  }
+}

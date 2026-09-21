@@ -1,0 +1,16 @@
+/// Выбирает поддерживаемые встроенные элементы страницы.
+/// @group mixins
+
+@mixin embedded-elements {
+  .wp-audio-shortcode,
+  audio,
+  canvas,
+  embed,
+  iframe,
+  object,
+  video,
+  ymaps,
+  figure {
+    @content;
+  }
+}

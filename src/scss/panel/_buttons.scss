@@ -1,0 +1,158 @@
+/// Стили компонента «buttons» пакета Button visually impaired.
+/// @group panel
+
+@use "../mixins";
+@use "../variables";
+
+html {
+  body {
+    .bvi-panel {
+      a {
+        color: var(--bvi-panel-color, #{variables.$panel-color}) !important;
+        outline: 0 !important;
+        background-color: transparent !important;
+        text-decoration: none !important;
+
+        &:hover,
+        &:focus {
+          color: var(--bvi-panel-color, #{variables.$panel-color}) !important;
+          outline: 0 !important;
+          background-color: transparent !important;
+          text-decoration: none !important;
+        }
+      }
+
+      .bvi-link {
+        margin: 0;
+        text-transform: none;
+        -webkit-appearance: none;
+        appearance: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: var(--bvi-link-min-size, #{variables.$link-min-size});
+        min-height: var(--bvi-link-min-size, #{variables.$link-min-size});
+        max-width: 100%;
+        line-height: 1.5;
+        font-size: var(--bvi-link-font-size, #{variables.$link-font-size}) !important;
+        color: var(--bvi-link-color, #{variables.$link-color}) !important;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        background-color: var(--bvi-link-bg, #{variables.$link-bg}) !important;
+        border: var(--bvi-link-border-width, #{variables.$link-border-width}) solid var(--bvi-link-border-color, #{variables.$link-border-color}) !important;
+        padding: var(--bvi-link-padding, #{variables.$link-padding});
+        border-radius: var(--bvi-link-radius, #{variables.$link-radius});
+        position: relative;
+        font-weight: bold;
+        transition: none;
+
+        &::after {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+          content: "";
+        }
+
+        &:hover,
+        &:focus {
+          background-color: var(--bvi-link-hover, #{variables.$link-hover}) !important;
+          transition: var(--bvi-link-transition, #{variables.$link-transition});
+        }
+
+        &:focus-visible {
+          outline: var(--bvi-link-focus-width, #{variables.$link-focus-width}) solid var(--bvi-panel-color, #{variables.$panel-color}) !important;
+          outline-offset: var(--bvi-link-focus-offset, #{variables.$link-focus-offset}) !important;
+        }
+
+        &.active {
+          transition: none;
+          animation: bvi-link-pulse var(--bvi-link-active-duration, #{variables.$link-active-duration}) var(--bvi-link-active-easing, #{variables.$link-active-easing});
+          color: var(--bvi-link-active-color, #{variables.$link-active-color}) !important;
+          background-color: var(--bvi-link-active-bg, #{variables.$link-active-bg}) !important;
+          border-color: var(--bvi-link-active-border-color, #{variables.$link-active-border-color}) !important;
+          --bvi-link-ring: var(--bvi-panel-contrast-color, #{variables.$panel-contrast-color});
+          --bvi-link-halo: var(--bvi-panel-accent, #{variables.$panel-accent});
+          box-shadow: inset 0 0 0 var(--bvi-link-active-inner-ring-width, #{variables.$link-active-inner-ring-width}) var(--bvi-link-ring);
+        }
+
+        &.bvi-theme-white {
+          background-color: var(--bvi-theme-white-bg, #{variables.$theme-bg-white}) !important;
+          color: var(--bvi-theme-white-color, #{variables.$theme-color-white}) !important;
+        }
+
+        &.bvi-theme-black {
+          background-color: var(--bvi-theme-black-bg, #{variables.$theme-bg-black}) !important;
+          color: var(--bvi-theme-black-color, #{variables.$theme-color-black}) !important;
+        }
+
+        &.bvi-theme-blue {
+          background-color: var(--bvi-theme-blue-bg, #{variables.$theme-bg-blue}) !important;
+          color: var(--bvi-theme-blue-color, #{variables.$theme-color-blue}) !important;
+        }
+
+        &.bvi-theme-brown {
+          background-color: var(--bvi-theme-brown-bg, #{variables.$theme-bg-brown}) !important;
+          color: var(--bvi-theme-brown-color, #{variables.$theme-color-brown}) !important;
+        }
+
+        &.bvi-theme-green {
+          background-color: var(--bvi-theme-green-bg, #{variables.$theme-bg-green}) !important;
+          color: var(--bvi-theme-green-color, #{variables.$theme-color-green}) !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          &:hover,
+          &:focus {
+            transition: none;
+          }
+
+          &.active {
+            animation: none;
+          }
+        }
+
+        @each $theme in ("white", "black", "blue", "brown", "green") {
+          &.bvi-theme-#{$theme}.active {
+            --bvi-link-ring: currentColor;
+            --bvi-link-halo: currentColor;
+          }
+        }
+
+        @supports (color: color-mix(in oklch, #000, #fff)) {
+          @each $theme in ("white", "black", "blue", "brown", "green") {
+            &.bvi-theme-#{$theme}.active {
+              --bvi-link-ring: color-mix(in oklch, currentColor 60%, transparent);
+            }
+          }
+        }
+
+        @include mixins.down(variables.$breakpoint-compact) {
+          padding-right: var(--bvi-link-compact-padding, #{variables.$link-compact-padding});
+          padding-left: var(--bvi-link-compact-padding, #{variables.$link-compact-padding});
+        }
+      }
+    }
+  }
+}
+
+@keyframes bvi-link-pulse {
+  from {
+    box-shadow:
+      inset 0 0 0 var(--bvi-link-active-inner-ring-width, #{variables.$link-active-inner-ring-width}) var(--bvi-link-ring),
+      0 0 0 0 color-mix(in oklch, var(--bvi-link-halo) 45%, transparent);
+  }
+
+  to {
+    box-shadow:
+      inset 0 0 0 var(--bvi-link-active-inner-ring-width, #{variables.$link-active-inner-ring-width}) var(--bvi-link-ring),
+      0 0 0 .5rem color-mix(in oklch, var(--bvi-link-halo) 0%, transparent);
+  }
+}

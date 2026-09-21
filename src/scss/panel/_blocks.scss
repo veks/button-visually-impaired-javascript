@@ -1,0 +1,199 @@
+/// Стили компонента «blocks» пакета Button visually impaired.
+/// @group panel
+
+@use "../mixins";
+@use "../variables";
+
+html {
+  body {
+    .bvi-panel {
+      .bvi-blocks {
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        flex-flow: row wrap;
+        gap: var(--bvi-panel-blocks-mobile-gap, #{variables.$panel-blocks-mobile-gap});
+        max-width: var(--bvi-panel-blocks-max-width, #{variables.$panel-blocks-max-width});
+
+        &.bvi-block-start {
+          justify-content: flex-start;
+        }
+
+        &.bvi-block-center {
+          justify-content: center;
+        }
+
+        &.bvi-block-end {
+          justify-content: flex-end;
+        }
+      }
+
+      .bvi-block {
+        flex: 1 1 auto;
+        padding: var(--bvi-panel-block-mobile-padding, #{variables.$panel-block-mobile-padding});
+        max-width: 100%;
+
+        &.bvi-block-wide {
+          flex: 1 1 100%;
+        }
+
+        > .bvi-link {
+          margin: var(--bvi-panel-link-margin, #{variables.$panel-link-margin});
+        }
+
+        .bvi-block-title {
+          text-align: center;
+          font-weight: 600 !important;
+          font-size: 1rem !important;
+          display: block;
+          margin-bottom: var(--bvi-panel-block-title-mobile-margin-bottom, #{variables.$panel-block-title-mobile-margin-bottom});
+        }
+      }
+
+      .bvi-select {
+        -webkit-appearance: none;
+        appearance: none;
+        display: block;
+        width: 100%;
+        max-width: var(--bvi-panel-select-max-width, #{variables.$panel-select-max-width});
+        min-height: var(--bvi-panel-select-min-height, #{variables.$panel-select-min-height});
+        margin: 0 auto;
+        padding: var(--bvi-panel-select-padding, #{variables.$panel-select-padding});
+        border: var(--bvi-panel-select-border-width, #{variables.$panel-select-border-width}) solid var(--bvi-panel-select-border-color, #{variables.$panel-select-border-color}) !important;
+        border-radius: var(--bvi-panel-select-radius, #{variables.$panel-select-radius});
+        background-color: var(--bvi-link-bg, #{variables.$link-bg}) !important;
+        background-image:
+          linear-gradient(45deg, transparent 50%, currentColor 50%),
+          linear-gradient(135deg, currentColor 50%, transparent 50%) !important;
+        background-repeat: no-repeat !important;
+        background-size: var(--bvi-panel-select-arrow-size, #{variables.$panel-select-arrow-size}) var(--bvi-panel-select-arrow-size, #{variables.$panel-select-arrow-size}) !important;
+        background-position:
+          calc(100% - var(--bvi-panel-select-arrow-offset, #{variables.$panel-select-arrow-offset}) - var(--bvi-panel-select-arrow-size, #{variables.$panel-select-arrow-size})) 50%,
+          calc(100% - var(--bvi-panel-select-arrow-offset, #{variables.$panel-select-arrow-offset})) 50% !important;
+        color: var(--bvi-link-color, #{variables.$link-color}) !important;
+        font-size: var(--bvi-link-font-size, #{variables.$link-font-size}) !important;
+        font-weight: bold;
+        line-height: 1.5;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        transition: var(--bvi-link-transition, #{variables.$link-transition});
+
+        &:hover {
+          background-color: var(--bvi-link-hover, #{variables.$link-hover}) !important;
+        }
+
+        &:focus-visible {
+          outline: var(--bvi-link-focus-width, #{variables.$link-focus-width}) solid var(--bvi-panel-color, #{variables.$panel-color}) !important;
+          outline-offset: var(--bvi-link-focus-offset, #{variables.$link-focus-offset}) !important;
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          opacity: .6;
+        }
+
+        option {
+          background-color: var(--bvi-panel-contrast-color, #{variables.$panel-contrast-color});
+          color: var(--bvi-panel-color, #{variables.$panel-color});
+          font-weight: normal;
+        }
+      }
+
+      .bvi-menu-toggle {
+        display: flex;
+        width: 100%;
+        gap: .5rem;
+      }
+
+      .bvi-menu {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows var(--bvi-panel-menu-duration, #{variables.$panel-menu-duration}) var(--bvi-panel-menu-easing, #{variables.$panel-menu-easing});
+
+        > .bvi-blocks {
+          min-height: 0;
+          padding: 0 .125rem;
+          overflow: hidden;
+          visibility: hidden;
+          opacity: 0;
+          transition:
+            opacity calc(var(--bvi-panel-menu-duration, #{variables.$panel-menu-duration}) * .6) var(--bvi-panel-menu-easing, #{variables.$panel-menu-easing}),
+            visibility 0s linear var(--bvi-panel-menu-duration, #{variables.$panel-menu-duration});
+        }
+      }
+
+      &.bvi-menu-open > .bvi-menu {
+        grid-template-rows: 1fr;
+
+        > .bvi-blocks {
+          padding-block: .125rem;
+          visibility: visible;
+          opacity: 1;
+          transition-delay: 0s;
+        }
+      }
+
+      &.bvi-menu-open > .bvi-menu-toggle {
+        margin-bottom: var(--bvi-panel-blocks-mobile-gap, #{variables.$panel-blocks-mobile-gap});
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bvi-menu,
+        .bvi-menu > .bvi-blocks {
+          transition: none;
+        }
+      }
+
+      @include mixins.down(variables.$breakpoint-compact) {
+        .bvi-block {
+          padding-right: 0;
+          padding-left: 0;
+        }
+
+        .bvi-link {
+          max-width: 100%;
+        }
+      }
+
+      @include mixins.up(variables.$breakpoint-tablet) {
+        .bvi-blocks {
+          gap: var(--bvi-panel-blocks-tablet-gap, #{variables.$panel-blocks-tablet-gap});
+        }
+
+        .bvi-block {
+          padding: var(--bvi-panel-block-tablet-padding, #{variables.$panel-block-tablet-padding});
+        }
+
+        .bvi-block .bvi-block-title {
+          margin-bottom: var(--bvi-panel-block-title-margin-bottom, #{variables.$panel-block-title-margin-bottom});
+        }
+      }
+
+      @include mixins.up(variables.$breakpoint-desktop) {
+        .bvi-menu-toggle {
+          display: none;
+        }
+
+        .bvi-menu {
+          display: contents;
+
+          > .bvi-blocks {
+            padding: 0;
+            overflow: visible;
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+
+        .bvi-blocks {
+          gap: var(--bvi-panel-blocks-gap, #{variables.$panel-blocks-gap});
+        }
+
+        .bvi-block {
+          flex: 0 1 auto;
+          padding: var(--bvi-panel-block-padding, #{variables.$panel-block-padding});
+        }
+      }
+    }
+  }
+}

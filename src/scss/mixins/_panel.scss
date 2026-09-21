@@ -1,0 +1,13 @@
+/// Миксины панели.
+/// @group mixins
+
+/// Ограничивает высоту закреплённой панели половиной экрана.
+/// @output Правила для `.bvi-fixed-top` внутри `.bvi-panel`.
+@mixin panel-fixed-limit {
+  &.bvi-fixed-top {
+    max-height: 50vh;
+    max-height: 50dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}

@@ -1,0 +1,91 @@
+/// Стили компонента «container» пакета Button visually impaired.
+/// @group panel
+
+@use "../mixins";
+@use "../variables";
+
+html {
+  &.bvi-active {
+    font-size: 100%;
+    scroll-padding-top: var(--bvi-panel-offset, 0);
+
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+  }
+
+  body {
+    .bvi-panel {
+      font-family: var(--bvi-panel-font-family, #{variables.$panel-font-family}) !important;
+      font-size: var(--bvi-panel-font-size, #{variables.$panel-font-size}) !important;
+      padding:
+        max(var(--bvi-panel-padding, #{variables.$panel-padding}), env(safe-area-inset-top))
+        max(var(--bvi-panel-padding, #{variables.$panel-padding}), env(safe-area-inset-right))
+        var(--bvi-panel-padding, #{variables.$panel-padding})
+        max(var(--bvi-panel-padding, #{variables.$panel-padding}), env(safe-area-inset-left));
+      color: var(--bvi-panel-color, #{variables.$panel-color});
+      top: 0;
+      left: 0;
+      right: 0;
+      letter-spacing: 0;
+      position: relative;
+      text-shadow: none;
+      line-height: normal;
+      border: 0;
+      background-color: var(--bvi-panel-bg, #{variables.$panel-bg});
+      box-shadow: var(--bvi-panel-shadow, #{variables.$panel-shadow});
+      z-index: var(--bvi-panel-z-index, #{variables.$panel-z-index}) !important;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+
+      * {
+        font-family: var(--bvi-panel-font-family, #{variables.$panel-font-family}) !important;
+        font-size: var(--bvi-panel-font-size, #{variables.$panel-font-size}) !important;
+      }
+
+      &.bvi-fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: var(--bvi-panel-z-index, #{variables.$panel-z-index});
+        animation: bvi-panel-slide-down var(--bvi-panel-slide-duration, #{variables.$panel-slide-duration}) var(--bvi-panel-slide-easing, #{variables.$panel-slide-easing});
+
+        @media (prefers-reduced-motion: reduce) {
+          animation: none;
+        }
+      }
+
+      &.bvi-panel-hide {
+        display: none;
+      }
+
+      @include mixins.down(variables.$breakpoint-tablet) {
+        @include mixins.panel-fixed-limit;
+      }
+
+      @include mixins.short(variables.$breakpoint-short) {
+        @include mixins.panel-fixed-limit;
+      }
+    }
+  }
+}
+
+html body .bvi-panel-placeholder {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+@keyframes bvi-panel-slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,305 @@
+/// Стили компонента «themes» пакета Button visually impaired.
+/// @group mixins
+
+/// Создаёт тему контрастности и применяет её ко всем потомкам контейнера.
+/// @param {String} $name - Имя темы.
+/// @param {Color} $bg - Цвет фона.
+/// @param {Color} $color - Основной цвет содержимого.
+/// @output Контрастные правила темы для контейнера и его потомков.
+@mixin loop-theme($name, $bg, $color) {
+  &[data-bvi-theme='#{$name}']:not(.bvi-no-styles) {
+    --bvi-site-bg: var(--bvi-theme-#{$name}-bg, #{$bg});
+    --bvi-site-color: var(--bvi-theme-#{$name}-color, #{$color});
+    background-color: var(--bvi-site-bg) !important;
+    color: var(--bvi-site-color) !important;
+    fill: var(--bvi-site-color) !important;
+    border-color: var(--bvi-site-color) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  &[data-bvi-theme='#{$name}'] *:not(.bvi-no-styles) {
+    background-color: var(--bvi-site-bg) !important;
+    color: var(--bvi-site-color) !important;
+    fill: var(--bvi-site-color) !important;
+    border-color: var(--bvi-site-color) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+
+    .bvi-speech-link,
+    .bvi-speech-text {
+      border-color: var(--bvi-site-color);
+    }
+
+    & input[type="checkbox"],
+    & input[type="radio"] {
+      -webkit-appearance: none;
+      appearance: none;
+      display: inline-grid;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin: 0 .375rem 0 0;
+      place-content: center;
+      vertical-align: middle;
+      background-color: var(--bvi-site-bg) !important;
+      border: .125rem solid var(--bvi-site-color) !important;
+      border-radius: .125rem;
+      cursor: pointer;
+
+      &::before {
+        width: .625rem;
+        height: .625rem;
+        content: "";
+        background-color: var(--bvi-site-color);
+        transform: scale(0);
+      }
+
+      &:checked::before {
+        transform: scale(1);
+      }
+
+      &:focus-visible {
+        outline: .1875rem solid var(--bvi-site-color);
+        outline-offset: .125rem;
+      }
+    }
+
+    & input[type="radio"] {
+      border-radius: 50%;
+
+      &::before {
+        border-radius: 50%;
+      }
+    }
+
+    & input:is(
+      [type="email"],
+      [type="number"],
+      [type="password"],
+      [type="search"],
+      [type="tel"],
+      [type="text"],
+      [type="url"],
+      [type="date"],
+      [type="datetime-local"],
+      [type="month"],
+      [type="time"],
+      [type="week"]
+    ),
+    & select,
+    & textarea {
+      color: var(--bvi-site-color) !important;
+      caret-color: var(--bvi-site-color);
+      background-color: var(--bvi-site-bg) !important;
+      border-color: var(--bvi-site-color) !important;
+    }
+
+    & select option,
+    & select optgroup {
+      color: var(--bvi-site-color) !important;
+      background-color: var(--bvi-site-bg) !important;
+    }
+
+    & input::placeholder,
+    & textarea::placeholder {
+      color: var(--bvi-site-color) !important;
+      opacity: .75;
+    }
+
+    & input:-webkit-autofill,
+    & input:-webkit-autofill:hover,
+    & input:-webkit-autofill:focus {
+      -webkit-text-fill-color: var(--bvi-site-color);
+      box-shadow: 0 0 0 100rem var(--bvi-site-bg) inset !important;
+      caret-color: var(--bvi-site-color);
+    }
+
+    & input[type="color"] {
+      width: 2.75rem;
+      min-height: 2.25rem;
+      padding: .125rem;
+      background-color: var(--bvi-site-bg) !important;
+      border: .125rem solid var(--bvi-site-color) !important;
+      border-radius: .125rem;
+      cursor: pointer;
+    }
+
+    & input[type="file"] {
+      color: var(--bvi-site-color) !important;
+      background-color: var(--bvi-site-bg) !important;
+      border: .125rem solid var(--bvi-site-color) !important;
+    }
+
+    & input[type="file"]::file-selector-button {
+      margin-right: .5rem;
+      color: var(--bvi-site-bg);
+      background-color: var(--bvi-site-color);
+      border: .125rem solid var(--bvi-site-color);
+      cursor: pointer;
+    }
+
+    & input[type="range"] {
+      height: 1.5rem;
+      padding: 0;
+      appearance: none;
+      background-color: transparent !important;
+      border: 0 !important;
+      cursor: pointer;
+
+      &::-webkit-slider-runnable-track {
+        height: .25rem;
+        background-color: var(--bvi-site-color);
+      }
+
+      &::-webkit-slider-thumb {
+        width: 1rem;
+        height: 1rem;
+        margin-top: -.375rem;
+        appearance: none;
+        background-color: var(--bvi-site-bg);
+        border: .125rem solid var(--bvi-site-color);
+        border-radius: 50%;
+      }
+
+      &::-moz-range-track {
+        height: .25rem;
+        background-color: var(--bvi-site-color);
+      }
+
+      &::-moz-range-thumb {
+        width: .75rem;
+        height: .75rem;
+        background-color: var(--bvi-site-bg);
+        border: .125rem solid var(--bvi-site-color);
+        border-radius: 50%;
+      }
+    }
+
+    & progress,
+    & meter {
+      accent-color: var(--bvi-site-color);
+      background-color: var(--bvi-site-bg) !important;
+      border: .125rem solid var(--bvi-site-color) !important;
+    }
+
+    & progress::-webkit-progress-bar {
+      background-color: var(--bvi-site-bg);
+    }
+
+    & progress::-webkit-progress-value,
+    & progress::-moz-progress-bar {
+      background-color: var(--bvi-site-color);
+    }
+
+    & :disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+    & :is(input, select, textarea, button):focus-visible {
+      outline: .1875rem solid var(--bvi-site-color) !important;
+      outline-offset: .125rem;
+    }
+
+    .bvi-link:not(.bvi-no-styles) {
+      color: var(--bvi-site-color) !important;
+      background-color: transparent !important;
+      outline: 0 !important;
+      text-decoration: none !important;
+
+      &.disabled {
+        color: var(--bvi-site-color) !important;
+        border: .125rem dashed var(--bvi-site-color) !important;
+        opacity: .8;
+        pointer-events: none;
+        cursor: no-drop;
+        text-decoration: none !important;
+
+        &:focus {
+          color: var(--bvi-site-color) !important;
+          border: .125rem dashed var(--bvi-site-color) !important;
+          text-decoration: none !important;
+        }
+      }
+
+      &:hover {
+        color: var(--bvi-site-bg) !important;
+        background-color: var(--bvi-site-color) !important;
+        text-decoration: none !important;
+      }
+
+      &:focus {
+        color: var(--bvi-site-color) !important;
+        background-color: var(--bvi-site-bg) !important;
+        text-decoration: none !important;
+      }
+
+      &:focus-visible {
+        outline: .1875rem solid var(--bvi-site-color) !important;
+        outline-offset: .125rem;
+      }
+    }
+
+    &::selection {
+      background-color: var(--bvi-site-color) !important;
+      color: var(--bvi-site-bg) !important;
+    }
+
+    & a:not(.bvi-no-styles) {
+      color: var(--bvi-site-color) !important;
+      background-color: transparent !important;
+
+      &:focus-visible {
+        outline: .1875rem solid var(--bvi-site-color) !important;
+        outline-offset: .125rem;
+      }
+
+      &.active {
+        color: var(--bvi-site-color) !important;
+        background-color: var(--bvi-site-bg) !important;
+      }
+
+      &:hover:not(.bvi-no-styles) {
+        color: var(--bvi-site-bg) !important;
+        background-color: var(--bvi-site-color) !important;
+
+        &:after {
+          background-color: transparent !important;
+          color: var(--bvi-site-bg) !important;
+          border-color: transparent !important;
+        }
+
+        &:before {
+          background-color: transparent !important;
+          color: var(--bvi-site-bg) !important;
+          border-color: transparent !important;
+        }
+      }
+    }
+
+    & button:not(.bvi-no-styles):not(.bvi-link),
+    & input[type="submit"]:not(.bvi-no-styles),
+    & input[type="button"]:not(.bvi-no-styles),
+    & button[type="submit"]:not(.bvi-no-styles):not(.bvi-link),
+    & button[type="button"]:not(.bvi-no-styles):not(.bvi-link) {
+      color: var(--bvi-site-bg) !important;
+      background-color: var(--bvi-site-color) !important;
+    }
+
+    & button:hover:not(.bvi-link),
+    & input[type="button"]:hover:not(.bvi-no-styles),
+    & input[type="submit"]:hover:not(.bvi-no-styles),
+    & button[type="submit"]:hover:not(.bvi-no-styles):not(.bvi-link),
+    & button[type="button"]:hover:not(.bvi-no-styles):not(.bvi-link) {
+      &.active {
+        color: var(--bvi-site-bg) !important;
+        background-color: var(--bvi-site-color) !important;
+      }
+
+      &:hover {
+          color: var(--bvi-site-bg) !important;
+          background-color: var(--bvi-site-color) !important;
+      }
+    }
+  }
+}

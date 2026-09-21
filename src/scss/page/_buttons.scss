@@ -1,0 +1,62 @@
+/// Стили компонента «buttons» пакета Button visually impaired.
+/// @group page
+
+@use "../variables";
+
+body {
+  .bvi-body {
+    .bvi-link {
+      margin: 0;
+      text-transform: none;
+      -webkit-appearance: none;
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--bvi-link-min-size, #{variables.$link-min-size});
+      min-height: var(--bvi-link-min-size, #{variables.$link-min-size});
+      font-weight: 400;
+      line-height: 1.5;
+      font-size: var(--bvi-link-font-size, #{variables.$link-font-size}) !important;
+      color: var(--bvi-link-color, #{variables.$link-color}) !important;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      background-color: var(--bvi-link-bg, #{variables.$link-bg}) !important;
+      border: var(--bvi-link-border-width, #{variables.$link-border-width}) solid var(--bvi-link-border-color, #{variables.$link-border-color}) !important;
+      padding: var(--bvi-link-padding, #{variables.$link-padding});
+      border-radius: var(--bvi-link-radius, #{variables.$link-radius});
+      position: relative;
+      transition: none;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        content: "";
+      }
+    }
+
+    .bvi-link-fixed-top {
+      position: fixed !important;
+      top: max(.75rem, env(safe-area-inset-top)) !important;
+      right: max(.75rem, env(safe-area-inset-right)) !important;
+      z-index: 999999 !important;
+    }
+
+    .bvi-hide {
+      display: none !important;
+    }
+
+    .bvi-show {
+      display: block !important;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+/// Стили компонента «font-size» пакета Button visually impaired.
+/// @group mixins
+
+@use "sass:math";
+
+/// Создаёт стили масштабирования текста для каждого размера до указанного.
+/// @param {Number} $counter - Максимальный размер шрифта в пикселях.
+/// @output Правила размеров шрифта для атрибутов `data-bvi-fontsize`.
+@mixin loop-size($counter) {
+  @while $counter > 0 {
+    &[data-bvi-fontsize='#{$counter}'] * {
+      font-size: math.div($counter, 16) * 1rem !important;
+
+      h1,
+      h1 * {
+        font-size: math.div(7 + $counter, 16) * 1rem !important;
+      }
+
+      h2,
+      h2 * {
+        font-size: math.div(6 + $counter, 16) * 1rem !important;
+      }
+
+      h3,
+      h3 * {
+        font-size: math.div(5 + $counter, 16) * 1rem !important;
+      }
+
+      h4,
+      h4 * {
+        font-size: math.div(4 + $counter, 16) * 1rem !important;
+      }
+
+      h5,
+      h5 * {
+        font-size: math.div(3 + $counter, 16) * 1rem !important;
+      }
+
+      h6,
+      h6 * {
+        font-size: math.div(2 + $counter, 16) * 1rem !important;
+      }
+    }
+
+    $counter: $counter - 1;
+  }
+}

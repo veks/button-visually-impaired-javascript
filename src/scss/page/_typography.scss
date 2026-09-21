@@ -1,0 +1,62 @@
+/// Стили компонента «typography» пакета Button visually impaired.
+/// @group page
+
+body {
+  .bvi-body {
+    &[data-bvi-lineheight='normal']:not(.bvi-no-styles) {
+      line-height: 1.5 !important;
+    }
+
+    &[data-bvi-lineheight='average']:not(.bvi-no-styles) {
+      line-height: 2 !important;
+
+      *:not(.bvi-no-styles):not(.bvi-link) {
+        line-height: 2 !important;
+      }
+    }
+
+    &[data-bvi-lineheight='big']:not(.bvi-no-styles) {
+      line-height: 2.5 !important;
+
+      *:not(.bvi-no-styles):not(.bvi-link) {
+        line-height: 2.5 !important;
+      }
+    }
+
+    &[data-bvi-letterspacing='normal']:not(.bvi-no-styles) {
+      letter-spacing: 0 !important;
+    }
+
+    &[data-bvi-letterspacing='average']:not(.bvi-no-styles) {
+      letter-spacing: .125rem !important;
+
+      *:not(.bvi-no-styles):not(.bvi-link) {
+        letter-spacing: .125rem !important;
+      }
+    }
+
+    &[data-bvi-letterspacing='big']:not(.bvi-no-styles) {
+      letter-spacing: .25rem !important;
+
+      *:not(.bvi-no-styles):not(.bvi-link) {
+        letter-spacing: .25rem !important;
+      }
+    }
+
+    &[data-bvi-fontfamily='arial']:not(.bvi-no-styles) {
+      font-family: Arial, sans-serif !important;
+
+      *:not(i):not(span):not(.bvi-no-styles):not(.bvi-link) {
+        font-family: Arial, sans-serif !important;
+      }
+    }
+
+    &[data-bvi-fontfamily='times']:not(.bvi-no-styles) {
+      font-family: "Times New roman", serif !important;
+
+      *:not(i):not(span):not(.bvi-no-styles):not(.bvi-link) {
+        font-family: "Times New roman", serif !important;
+      }
+    }
+  }
+}

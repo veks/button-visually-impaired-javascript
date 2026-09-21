@@ -1,0 +1,34 @@
+/// Токены модального окна настроек панели.
+/// @group variables
+
+$modal-z-index: 1050 !default;
+$modal-overlay-color: color-mix(in oklch, #000 50%, transparent) !default;
+$modal-transition-duration: 200ms !default;
+$modal-transition-easing: ease-in !default;
+$modal-max-width: 31.25rem !default;
+$modal-dialog-margin: 1.75rem !default;
+$modal-dialog-vertical-offset: 3.5rem !default;
+$modal-border-color: color-mix(in oklch, var(--bvi-site-color) 40%, transparent) !default;
+$modal-border-width: .0625rem !default;
+$modal-radius: 1rem !default;
+/// Тень окна.
+$modal-shadow: 0 1.5rem 3.5rem -.5rem color-mix(in oklch, #000 40%, transparent) !default;
+$modal-divider-color: color-mix(in oklch, var(--bvi-site-color) 30%, transparent) !default;
+$modal-header-footer-padding: 1rem 1.25rem !default;
+/// Промежуток в подвале.
+$modal-footer-gap: .5rem !default;
+$modal-body-padding: 1.25rem !default;
+$modal-title-font-size: 1.25rem !default;
+$modal-title-font-weight: 600 !default;
+$modal-scrollbar-width: .5rem !default;
+$modal-scrollbar-radius: .25rem !default;
+$modal-close-font-size: 1.2rem !default;
+$modal-close-text-shadow: 0 .0625rem 0 !default;
+$modal-close-opacity: .75 !default;
+$modal-mobile-gutter: .5rem !default;
+$modal-mobile-header-footer-padding: .75rem 1rem !default;
+$modal-mobile-body-padding: 1rem .5rem !default;
+/// Отступы групп в окне.
+$modal-blocks-gap: 1rem !default;
+$modal-block-padding: .5rem 0 !default;
+$modal-block-title-margin-bottom: .75rem !default;

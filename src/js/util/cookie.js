@@ -1,38 +1,44 @@
 /**
- * --------------------------------------------------------------------------
- * Button visually impaired (v1.0.0): util/cookie.js
- * Licensed under MIT (https://github.com/veks/button-visually-impaired-javascript/blob/master/LICENSE.md)
- * --------------------------------------------------------------------------
+ * Сохраняет значение cookie с префиксом `bvi_` на один день.
+ * @param {string} name - Имя cookie без префикса.
+ * @param {string|number|boolean} [value=''] - Значение, преобразуемое в строку.
+ * @returns {void}
  */
-
 const setCookie = function (name = '', value = '') {
-  let now = new Date();
-  let time = now.getTime();
-  time += 24 * 60 * 60 * 1000;
-  now.setTime(time);
-  document.cookie = `bvi_${name}=${value};path=/;expires=${now.toUTCString()};domain=${location.host}`;
-};
+  const expires = new Date(Date.now() + 24 * 60 * 60 * 1000)
 
+  document.cookie = `bvi_${name}=${encodeURIComponent(value)};path=/;expires=${expires.toUTCString()};SameSite=Lax`
+}
+
+/**
+ * Читает cookie с префиксом `bvi_`.
+ * @param {string} name - Имя cookie без префикса.
+ * @returns {string|undefined} Значение cookie или `undefined`, если оно не найдено.
+ */
 const getCookie = function (name = '') {
-  name = `bvi_${name}=`;
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let cookies = decodedCookie.split(';');
+  const cookieName = `bvi_${name}=`
+  const cookies = document.cookie.split(';')
 
   for (let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i].trim();
+    const cookie = cookies[i].trim()
 
-    if (cookie.indexOf(name) !== -1) {
-      return cookie.substring(name.length, cookie.length);
+    if (cookie.indexOf(cookieName) === 0) {
+      return decodeURIComponent(cookie.substring(cookieName.length, cookie.length))
     }
   }
-};
+}
 
+/**
+ * Удаляет cookie с префиксом `bvi_`.
+ * @param {string} name - Имя cookie без префикса.
+ * @returns {void}
+ */
 const removeCookie = function (name = '') {
-  document.cookie = `bvi_${name}=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;domain=${location.host}`;
-};
+  document.cookie = `bvi_${name}=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;SameSite=Lax`
+}
 
 export {
   setCookie,
   getCookie,
   removeCookie,
-};
+}

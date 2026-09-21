@@ -1,0 +1,52 @@
+/// Стили компонента «panel» пакета Button visually impaired.
+/// @group variables
+
+/// Основной цвет текста, границ и фокуса панели.
+/// @type Color
+$panel-color: var(--bvi-site-color) !default;
+/// Контрастный цвет для поверхностей и внутреннего кольца выбранной кнопки.
+/// @type Color
+$panel-contrast-color: var(--bvi-site-bg) !default;
+/// Цвет фона панели.
+/// @type Color
+$panel-bg: var(--bvi-site-bg) !default;
+/// Акцентный цвет.
+/// @type Color
+$panel-accent: var(--bvi-site-color) !default;
+/// Акцентный цвет рамки активной кнопки.
+/// @type Color
+$panel-accent-strong: var(--bvi-site-color) !default;
+/// Шрифт и базовый размер текста панели.
+$panel-font-family: Arial, sans-serif !default;
+$panel-font-size: 1rem !default;
+/// Внешние размеры и слой панели.
+$panel-padding: .5rem !default;
+$panel-shadow: 0 1.125rem 3rem -.375rem color-mix(in oklch, #676f7b 12%, transparent) !default;
+$panel-z-index: 999999 !default;
+/// Анимация закрепления панели.
+$panel-slide-duration: .25s !default;
+$panel-slide-easing: ease-out !default;
+/// Раскрытие меню.
+$panel-menu-duration: .2s !default;
+$panel-menu-easing: ease-out !default;
+/// Сетка групп настроек.
+$panel-blocks-max-width: 90rem !default;
+$panel-blocks-gap: .5rem !default;
+$panel-blocks-mobile-gap: .25rem !default;
+$panel-blocks-tablet-gap: .5rem !default;
+$panel-block-padding: .688rem .938rem !default;
+$panel-block-tablet-padding: .375rem .5rem !default;
+$panel-block-mobile-padding: .25rem !default;
+/// Поля вокруг кнопки в группе.
+$panel-link-margin: .25rem .125rem !default;
+$panel-block-title-margin-bottom: .8rem !default;
+$panel-block-title-mobile-margin-bottom: .25rem !default;
+$panel-select-max-width: 28rem !default;
+$panel-select-min-height: 2.75rem !default;
+$panel-select-padding: .375rem 2.5rem .375rem 1rem !default;
+$panel-select-border-color: $panel-accent !default;
+$panel-select-border-width: .125rem !default;
+$panel-select-radius: 1rem !default;
+/// Стрелка поля выбора.
+$panel-select-arrow-size: .5rem !default;
+$panel-select-arrow-offset: 1rem !default;

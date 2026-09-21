@@ -1,0 +1,13 @@
+/// Адаптивные границы панели: минимальная ширина viewport (mobile-first).
+/// @group variables
+
+/// Узкий телефон, ниже 360px.
+$breakpoint-compact: 22.5rem !default;
+/// Телефон, от 576px.
+$breakpoint-mobile: 36rem !default;
+/// Планшет, от 768px.
+$breakpoint-tablet: 48rem !default;
+/// Ноутбук и desktop, от 1248px.
+$breakpoint-desktop: 78rem !default;
+/// Низкий экран, ниже 512px по высоте.
+$breakpoint-short: 32rem !default;
